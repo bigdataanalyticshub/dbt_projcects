@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: pricing_datasets
+    description: "Final pricing analytics mart with revenue projections"
+    columns:
+      - name: oppid
+        tests:
+          - not_null

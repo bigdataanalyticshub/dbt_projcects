@@ -1,0 +1,91 @@
+version: 2
+
+models:
+
+  ###########################################################################
+  # 1. ACS_CDB_CLEAN
+  ###########################################################################
+  - name: acs_cdb_clean
+    description: "Cleaned ACS Claim Detail Bill (header-level) with provider normalizations, repriced flags, and LOB classification."
+    columns:
+      - name: unique_bill_id
+        tests:
+          - not_null
+          - unique
+
+  ###########################################################################
+  # 2. ACS_DBL_CLEAN
+  ###########################################################################
+  - name: acs_dbl_clean
+    description: "Cleaned ACS detail-level (line-level) dataset with normalized provider information and contract type flags."
+    columns:
+      - name: unique_billline_id
+        tests:
+          - not_null
+          - unique
+
+  ###########################################################################
+  # 3. LINE_LEVEL_GENEX
+  ###########################################################################
+  - name: line_level_genex
+    description: "Line-level GENEX table applying PPO/GENEX normalization, all reduction buckets, bill-level flags, and review adjustments."
+
+
+  ###########################################################################
+  # 4. ADJUSTMENT_LEVEL_GENEX
+  ###########################################################################
+  - name: adjustment_level_genex
+    description: "Adjustment-level GENEX view containing one row per bill-line reduction bucket, with all normalized allowed/reduction logic."
+
+
+  ###########################################################################
+  # 5. PH_SA_DP_STACK
+  ###########################################################################
+  - name: ph_sa_dp_stack
+
+  ###########################################################################
+  # 6. BILL_LEVEL_GENEX
+  ###########################################################################
+  - name: bill_level_genex
+
+  ###########################################################################
+  # 7. APRICUS_LINE_LEVEL
+  ###########################################################################
+  - name: apricus_line_level
+    description: "Cleaned Prospective Apricus Salesforce detail-level (line-level) dataset with normalized columns and base exclusions."
+    columns:
+      - name: smp_bill_line_id
+        tests:
+          - not_null
+          - unique
+    #   - name: smp_bill_id
+    #     tests:
+    #       - not_null
+    #       - unique
+
+  ###########################################################################
+  # 8. SMARTADVISOR_LINE_LEVEL
+  ###########################################################################
+  - name: smartadvisor_line_level
+    description: "Cleaned SmartAdvisor detail-level (line-level) dataset with normalized columns and base exclusions."
+
+
+  ###########################################################################
+  # 9. DECISIONPOINT_LINE_LEVEL
+  ###########################################################################
+  - name: decisionpoint_line_level
+    description: "Cleaned DecisionPoint detail-level (line-level) dataset with normalized columns and base exclusions."
+
+
+  ###########################################################################
+  # 10. PROSPECTIVE_SA_LINE_LEVEL
+  ###########################################################################
+  - name: prospective_sa_line_level
+    description: "Cleaned SmartAdvisor detail-level (line-level) dataset with normalized columns and base exclusions. Implemented prospective reporting logic."
+
+
+  ###########################################################################
+  # 11. CARE_CONNECT_CALLS
+  ###########################################################################
+  - name: care_connect_calls
+    description: "Cleaned CC24 call-level dataset with normalized columns and base exclusions."

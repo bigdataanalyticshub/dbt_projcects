@@ -1,0 +1,512 @@
+version: 2
+
+models:
+  - name: coventry_gl_transactions
+    description: ""
+    columns:
+      - name: le
+        data_type: number
+        description: ""
+
+      - name: rcvbl_num
+        data_type: varchar
+        description: ""
+
+      - name: amnt
+        data_type: number
+        description: ""
+
+      - name: be
+        data_type: number
+        description: ""
+
+      - name: ae
+        data_type: number
+        description: ""
+
+      - name: acctg_dt
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: src
+        data_type: varchar
+        description: ""
+
+      - name: lob
+        data_type: varchar
+        description: ""
+
+      - name: revnu
+        data_type: varchar
+        description: ""
+
+      - name: rsn
+        data_type: varchar
+        description: ""
+
+      - name: vt
+        data_type: varchar
+        description: ""
+
+      - name: bc
+        data_type: varchar
+        description: ""
+
+      - name: prodt
+        data_type: varchar
+        description: ""
+
+      - name: gl_acct
+        data_type: varchar
+        description: ""
+
+      - name: ns_class_cd
+        data_type: varchar
+        description: ""
+
+      - name: curr_clm_key
+        data_type: varchar
+        description: ""
+
+      - name: seq
+        data_type: number
+        description: ""
+
+      - name: rec_typ
+        data_type: varchar
+        description: ""
+
+      - name: rcvbl_id
+        data_type: number
+        description: ""
+
+      - name: trns_id
+        data_type: number
+        description: ""
+        tests:
+        - unique
+        - not_null
+
+      - name: xref_trns_id
+        data_type: number
+        description: ""
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: ""
+
+      - name: ppa_flg
+        data_type: varchar
+        description: ""
+
+      - name: irms_prodt_id
+        data_type: number
+        description: ""
+
+      - name: acctg_period_id
+        data_type: number
+        description: ""
+
+      - name: run_id
+        data_type: number
+        description: ""
+
+      - name: legal_entity
+        data_type: varchar
+        description: ""
+
+      - name: ns_dept
+        data_type: varchar
+        description: ""
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: ""
+
+      - name: be_name
+        data_type: varchar
+        description: ""
+
+      - name: ae_name
+        data_type: varchar
+        description: ""
+
+      - name: prcs_desc
+        data_type: varchar
+        description: ""
+
+      - name: dpst_dt
+        data_type: date
+        description: ""
+
+      - name: dpst_fnlzd_dt
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: patnt_nm
+        data_type: varchar
+        description: ""
+
+      - name: mos
+        data_type: number
+        description: ""
+
+      - name: check_num
+        data_type: varchar
+        description: ""
+
+      - name: check_dt
+        data_type: date
+        description: ""
+
+      - name: dpst_id
+        data_type: number
+        description: ""
+
+      - name: sec_usr_nm
+        data_type: varchar
+        description: ""
+
+      - name: pymt_comnt
+        data_type: varchar
+        description: ""
+
+      - name: adjmt_rsn
+        data_type: varchar
+        description: ""
+
+      - name: finalized_run_id
+        data_type: number
+        description: ""
+
+      - name: care_typ_cd
+        data_type: varchar
+        description: ""
+
+      - name: bill_jur_state_cd
+        data_type: varchar
+        description: ""
+
+      - name: mcps_bill_id
+        data_type: varchar
+        description: ""
+
+  - name: qani_gl_transactions
+    description: ""
+    columns:
+      - name: legal_entity
+        data_type: varchar
+        description: ""
+
+      - name: le
+        data_type: number
+        description: ""
+
+      - name: rcvbl_num
+        data_type: varchar
+        description: ""
+
+      - name: amnt
+        data_type: number
+        description: ""
+
+      - name: be
+        data_type: number
+        description: ""
+
+      - name: be_name
+        data_type: varchar
+        description: ""
+
+      - name: ae
+        data_type: number
+        description: ""
+
+      - name: ae_name
+        data_type: varchar
+        description: ""
+
+      - name: acctg_dt
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: acctg_period
+        data_type: number
+        description: ""
+
+      - name: src
+        data_type: varchar
+        description: ""
+
+      - name: lob
+        data_type: varchar
+        description: ""
+
+      - name: revnu
+        data_type: varchar
+        description: ""
+
+      - name: rsn
+        data_type: varchar
+        description: ""
+
+      - name: vt
+        data_type: varchar
+        description: ""
+
+      - name: bc
+        data_type: varchar
+        description: ""
+
+      - name: gl_acct
+        data_type: varchar
+        description: ""
+
+      - name: ns_dept
+        data_type: varchar
+        description: ""
+
+      - name: ns_class_cd
+        data_type: varchar
+        description: ""
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: ""
+
+      - name: seq
+        data_type: number
+        description: ""
+
+      - name: rcvbl_id
+        data_type: number
+        description: ""
+
+      - name: trns_id
+        data_type: number
+        description: ""
+        tests:
+        - unique
+        - not_null
+
+      - name: xref_trns_id
+        data_type: number
+        description: ""
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: ""
+
+      - name: ppa_flg
+        data_type: varchar
+        description: ""
+
+      - name: irms_prodt_id
+        data_type: number
+        description: ""
+
+      - name: care_typ_cd
+        data_type: varchar
+        description: ""
+
+      - name: bill_jur_state_cd
+        data_type: varchar
+        description: ""
+
+      - name: mcps_bill_id
+        data_type: varchar
+        description: ""
+
+  - name: gnx_gl_transactions
+    description: ""
+    columns:
+      - name: le
+        data_type: number
+        description: ""
+
+      - name: rcvbl_num
+        data_type: varchar
+        description: ""
+
+      - name: amnt
+        data_type: number
+        description: ""
+
+      - name: be
+        data_type: number
+        description: ""
+
+      - name: ae
+        data_type: number
+        description: ""
+
+      - name: acctg_dt
+        data_type: date
+        description: ""
+
+      - name: src
+        data_type: varchar
+        description: ""
+
+      - name: lob
+        data_type: varchar
+        description: ""
+
+      - name: revnu
+        data_type: varchar
+        description: ""
+
+      - name: rsn
+        data_type: varchar
+        description: ""
+
+      - name: vt
+        data_type: varchar
+        description: ""
+
+      - name: bc
+        data_type: varchar
+        description: ""
+
+      - name: c_code
+        data_type: varchar
+        description: ""
+
+      - name: e_code
+        data_type: varchar
+        description: ""
+
+      - name: cc
+        data_type: varchar
+        description: ""
+
+      - name: prodt
+        data_type: varchar
+        description: ""
+
+      - name: gl_acct
+        data_type: varchar
+        description: ""
+
+      - name: ns_class_cd
+        data_type: varchar
+        description: ""
+
+      - name: curr_clm_key
+        data_type: varchar
+        description: ""
+
+      - name: seq
+        data_type: number
+        description: ""
+
+      - name: rec_typ
+        data_type: varchar
+        description: ""
+
+      - name: rcvbl_id
+        data_type: number
+        description: ""
+
+      - name: trns_id
+        data_type: number
+        description: ""
+        tests:
+        - unique
+        - not_null
+
+      - name: xref_trns_id
+        data_type: number
+        description: ""
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: ""
+
+      - name: ppa_flg
+        data_type: varchar
+        description: ""
+
+      - name: irms_prodt_id
+        data_type: number
+        description: ""
+
+      - name: acctg_period
+        data_type: number
+        description: ""
+
+      - name: run_id
+        data_type: number
+        description: ""
+
+      - name: legal_entity
+        data_type: varchar
+        description: ""
+
+      - name: ns_dept
+        data_type: varchar
+        description: ""
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: ""
+
+      - name: be_name
+        data_type: varchar
+        description: ""
+
+      - name: ae_name
+        data_type: varchar
+        description: ""
+
+      - name: prcs_desc
+        data_type: varchar
+        description: ""
+
+      - name: dpst_dt
+        data_type: date
+        description: ""
+
+      - name: dpst_fnlzd_dt
+        data_type: date
+        description: ""
+
+      - name: patnt_nm
+        data_type: varchar
+        description: ""
+
+      - name: mos
+        data_type: number
+        description: ""
+
+      - name: check_num
+        data_type: varchar
+        description: ""
+
+      - name: check_dt
+        data_type: date
+        description: ""
+
+      - name: dpst_id
+        data_type: number
+        description: ""
+
+      - name: sec_usr_nm
+        data_type: varchar
+        description: ""
+
+      - name: pymt_comnt
+        data_type: varchar
+        description: ""
+
+      - name: adjmt_rsn
+        data_type: varchar
+        description: ""
+
+      - name: finalized_run_id
+        data_type: number
+        description: ""
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: ""

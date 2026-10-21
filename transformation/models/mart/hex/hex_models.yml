@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: hex_auditlog
+    description: "Flattened Hex audit log for usage analytics"
+    columns:
+      - name: action
+        tests:
+          - not_null
+
+      - name: actor_email
+        tests:
+          - not_null
+
+      - name: target_type
+        tests:
+          - not_null
+
+      - name: occurred_at
+        tests:
+          - not_null

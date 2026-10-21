@@ -1,0 +1,9 @@
+version: 1
+
+sources:
+  - name: cvtdwpmrptng
+    database: COVENTRY_DW
+    schema: PMRPTNG
+    tables:
+      - name: pm_pro_ntwrk_tins_usr_src
+      - name: pm_retro_ntwrk_ids_usr_src

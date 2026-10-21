@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: cms_cases_all_v
+  - name: dm_invoice_activities

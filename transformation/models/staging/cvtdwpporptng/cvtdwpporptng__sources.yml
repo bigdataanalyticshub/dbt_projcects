@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: cvtdwpporptng
+    database: coventry_dw
+    schema: pporptng
+    tables:
+      - name: prv_basedata_provider
+        description: "Provider base data information including contact details and locations"
+        columns:
+          - name: bdp_prv_id
+            description: "Unique identifier for provider"
+
+          - name: bdp_prv_npi
+            description: "National Provider Identifier"
+
+          - name: bdp_tax_id
+            description: "Provider tax ID"
+            tests:
+              - not_null
+
+          - name: bdp_directory_flag
+            description: "Directory indicator flag"
+
+          - name: dw_created_dt
+            description: "Record creation date"
+            tests:
+              - not_null
+
+      - name: prv_basedata_provider_part_class
+        description: "Provider participation class information including rates and locations"
+        columns:
+          - name: dw_bdpc_row_id
+            description: "Unique identifier for the record"
+            tests:
+              - unique
+              - not_null
+
+          - name: bdpc_prv_id
+            description: "Provider ID"
+            tests:
+              - not_null
+
+          - name: bdpc_effective_date
+            description: "Effective date of the participation class"
+            tests:
+              - not_null
+
+          - name: bdpc_term_date
+            description: "Termination date of the participation class"

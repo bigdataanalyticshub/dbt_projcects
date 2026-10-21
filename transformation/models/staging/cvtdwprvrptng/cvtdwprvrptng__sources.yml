@@ -1,0 +1,93 @@
+version: 2
+
+sources:
+  - name: cvtdwprvrptng
+    database: COVENTRY_DW
+    schema: prvrptng
+    tables:
+      - name: prov_tin_hlth_syst_usr_src
+        description: "Provider TIN Health System User Source Table"
+        columns:
+          - name: prov_tin
+            description: "Provider TIN identifier"
+            tests:
+              - not_null
+
+          - name: clstr_nme
+            description: "Cluster name"
+
+          - name: comnt
+            description: "Comments"
+
+          - name: dw_created_dt
+            description: "Date record was created"
+            tests:
+              - not_null
+
+          - name: dw_updated_dt
+            description: "Date record was last updated"
+            tests:
+              - not_null
+
+          - name: dw_updated_by
+            description: "User who last updated the record"
+
+          - name: eff_dt
+            description: "Effective date"
+
+          - name: hlth_syst_nm
+            description: "Health system name"
+
+          - name: opt_eff_dt
+            description: "Option effective date"
+
+          - name: opt_est_penetration
+            description: "Estimated penetration"
+
+          - name: opt_est_svngs
+            description: "Estimated savings"
+
+          - name: opt_eval_indc
+            description: "Evaluation indicator"
+
+          - name: opt_implmtn_dt
+            description: "Implementation date"
+
+          - name: opt_implmtn_notes
+            description: "Implementation notes"
+
+          - name: opt_tin_active_indc
+            description: "TIN active indicator"
+
+          - name: opt_tin_exclude_indc
+            description: "TIN exclude indicator"
+
+          - name: opt_tin_exclude_notes
+            description: "TIN exclude notes"
+
+          - name: opt_tin_product
+            description: "TIN product"
+
+          - name: prmry_state
+            description: "Primary state"
+
+          - name: prov_spclty
+            description: "Provider specialty"
+
+          - name: prov_spclty_2
+            description: "Provider specialty 2"
+
+          - name: prov_spclty_3
+            description: "Provider specialty 3"
+
+          - name: prov_spclty_4
+            description: "Provider specialty 4"
+
+          - name: prov_spclty_5
+            description: "Provider specialty 5"
+
+          - name: tn_nme
+            description: "TIN name"
+
+          - name: trmntn_dt
+            description: "Termination date"

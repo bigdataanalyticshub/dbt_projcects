@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: vw_auditpro_billlevel
+
+  - name: vw_auditpro_billmessages
+    columns:
+      - name: SA_BILL_ID
+        tests:
+          - not_null
+          - unique
+
+  - name: vw_auditpro_docdenials
+    columns:
+      - name: ORIGINALBILLID
+        tests:
+          - not_null
+          - unique
+
+  - name: vw_auditpro_rules_pend_line
+
+  - name: auditpro_rules

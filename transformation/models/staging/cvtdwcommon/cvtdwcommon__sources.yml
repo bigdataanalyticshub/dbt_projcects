@@ -1,0 +1,107 @@
+version: 2
+
+sources:
+  - name: cvtdwcommon
+    database: COVENTRY_DW
+    schema: common
+    tables:
+      - name: clnt_br_system_usr_src
+      - name: ntwrk_usr_src
+        description: "Network User Source Table"
+        columns:
+          - name: dw_ntwrk_row_id
+            description: "Unique identifier for network record"
+            tests:
+              - unique
+              - not_null
+
+          - name: dw_eff_dt
+            description: "Effective date of the network record"
+            tests:
+              - not_null
+
+          - name: dw_trmntn_dt
+            description: "Termination date of the network record"
+            tests:
+              - not_null
+
+          - name: ntwrk_cd
+            description: "Network code"
+
+          - name: ntwrk_class_desc
+            description: "Network class description"
+
+          - name: ntwrk_desc
+            description: "Network description"
+
+          - name: ntwrk_secure_ind
+            description: "Network security indicator"
+
+          - name: ntwrk_type_desc
+            description: "Network type description"
+
+          - name: override_contract_flag
+            description: "Contract override flag"
+
+          - name: ref_data_revw_cd
+            description: "Reference data review code"
+
+          - name: revw_by_user_login_nm_cd
+            description: "Review by user login name code"
+
+          - name: revw_comnt
+            description: "Review comments"
+
+          - name: revw_dt
+            description: "Review date"
+
+          - name: sbntwrk_cd
+            description: "Subnetwork code"
+
+          - name: sbntwrk_desc
+            description: "Subnetwork description"
+
+      - name: ntwrk_prodt_rptng_usr_src
+        description: "Network Product Reporting User Source Table"
+        columns:
+          - name: dw_ntwrk_prodt_rptng_row_id
+            description: "Unique identifier for network product reporting"
+            tests:
+              - unique
+              - not_null
+
+          - name: dw_updated_dt
+            description: "Last update date"
+            tests:
+              - not_null
+
+          - name: mcps_prodt_cd
+            description: "MCPS product code"
+            tests:
+              - not_null
+
+          - name: dw_updated_by
+            description: "Updated by user identifier"
+
+          - name: dw_created_dt
+            description: "Record creation date"
+            tests:
+              - not_null
+
+          - name: ntwrk_prodt_rptng_desc
+            description: "Network product reporting description"
+
+          - name: comnt
+            description: "Comments"
+
+          - name: ntwrk_cd
+            description: "Network code"
+
+          - name: ntwrk_rptng_class_desc
+            description: "Network reporting class description"
+
+          - name: ntwrk_rptng_type
+            description: "Network reporting type"
+
+          - name: ntwrk_src_type_desc
+            description: "Network source type description"

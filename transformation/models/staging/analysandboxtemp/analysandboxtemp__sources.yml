@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: anlyssandboxtemp
+    database: analysis_sandbox
+    schema: temp
+    tags: [ "anlyssandboxtemp" ]
+    tables:
+      - name: ns_customer_raw_april_28
+      - name: cr_legal_entities_ar
+      - name: clinical_genex_be_c_code_mapping_extract

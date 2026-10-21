@@ -1,0 +1,8 @@
+version: 1
+
+sources:
+  - name: cvtdwcprrptng
+    database: coventry_dw
+    schema: cprrptng
+    tables:
+      - name: cpr_clnt_prodt_state

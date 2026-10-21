@@ -1,0 +1,34 @@
+version: 1
+
+models:
+
+  ###########################################################################
+  # 1. PROSPECTIVE_SERVICE_REF
+  ###########################################################################
+  - name: prospective_service_ref
+    description: "Maps the existing categories from the CMS and AMA to defined prospective service types for SmartAdvisor reporting."
+    columns:
+      - name: procedure_code
+        tests:
+          - unique
+
+  ###########################################################################
+  # 2. PROSPECTIVE_NTWRK_ID_REF
+  ###########################################################################
+  - name: prospective_ntwrk_id_ref
+    description: "Adapts Genex's prospective network id mappings and conforms the names to work with Apricus' prospective_ntwrk_tin_ref table."
+    columns:
+      - name: ntwrk_id
+        tests:
+          - unique
+
+  # ###########################################################################
+  # # 3. PROSPECTIVE_NTWRK_TIN_REF
+  # ###########################################################################
+  - name: prospective_ntwrk_tin_ref
+    description: "Adapts Apricus' prospective network tin mappings and conforms the names to work with Genex's prospective_ntwrk_id_ref table."
+    columns:
+      - name: ntwrk_tin
+        tests:
+          - unique
+

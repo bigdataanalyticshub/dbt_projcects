@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: cvtdwconfmrt
+    database: coventry_dw
+    schema: confmrt
+    tables:
+      - name: conf_clnt_hrchy_mv
+        description: "Configuration Client Hierarchy Materialized View"
+        columns:
+          - name: dw_conf_clnt_row_id
+            description: "Unique identifier for client hierarchy"
+            tests:
+              - unique
+              - not_null
+
+          - name: conf_clnt_lvl_nm
+            description: "Client level name"
+            tests:
+              - not_null
+
+          - name: dw_conf_clnt_key
+            description: "Client configuration key"
+
+          - name: ae_id
+            description: "AE identifier"
+
+          - name: be_id
+            description: "BE identifier"
+
+          - name: mcps_indc
+            description: "MCPS indicator"
+            tests:
+              - not_null
+
+          - name: dw_updated_dt
+            description: "Record last update date"
+            tests:
+              - not_null
+
+          - name: utc_created_on
+            description: "UTC creation timestamp"
+
+          - name: utc_updated_on
+            description: "UTC last update timestamp"

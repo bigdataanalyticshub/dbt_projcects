@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: adaptive
+    description: >
+      Raw Workday Adaptive Planning data landed by OpenFlow via the Adaptive
+      `exportData` API. Fact tables store one JSON object per row in
+      MONTHLY_DATA, keyed by "MM/YYYY" period. OpenFlow full-replaces each
+      table per load (single LOAD_TIMESTAMP per load).
+    database: EBT_ODS
+    schema: ADAPTIVE
+    config:
+      loaded_at_field: load_timestamp
+    tables:
+      # ---- Fact tables (MONTHLY_DATA VARIANT: {"MM/YYYY": amount}) ----
+      - name: adaptive_actuals_raw
+        description: "Actual financial results. MONTHLY_DATA spans multiple calendar years."
+      - name: adaptive_budget_2025_raw
+        description: "Budget plan for fiscal year 2025."
+      - name: adaptive_budget_2026_raw
+        description: "Budget plan for fiscal year 2026."
+      - name: adaptive_outlook_raw
+        description: "Outlook / reforecast figures. MONTHLY_DATA spans multiple calendar years."
+
+      # ---- Dimension tables ----
+      - name: adaptive_accounts_raw
+        description: "Account master (chart of accounts) with hierarchy and account attributes. Attribute-exploded (multiple rows per account)."
+      - name: adaptive_levels_raw
+        description: "Level (org structure) master with hierarchy path and attributes. Attribute-exploded (multiple rows per level)."
+      - name: adaptive_dimensions_raw
+        description: "Custom dimension values and their attributes. Attribute-exploded."
+      - name: adaptive_versions_raw
+        description: "Adaptive version metadata (actuals vs plan versions, folders, plan windows)."

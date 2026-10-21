@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: stg_adaptive__actuals
+    description: "Actuals flattened to one row per account/level/item/customer/month."
+    columns:
+      - name: period_month
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+      - name: scenario
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['ACTUAL']
+
+  - name: stg_adaptive__budget_2025
+    description: "FY2025 budget flattened to one row per month."
+    columns:
+      - name: period_month
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+
+  - name: stg_adaptive__budget_2026
+    description: "FY2026 budget flattened to one row per month."
+    columns:
+      - name: period_month
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+
+  - name: stg_adaptive__outlook
+    description: "Outlook/reforecast flattened to one row per month."
+    columns:
+      - name: period_month
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+
+  - name: stg_adaptive__accounts
+    description: "Account master, one row per account_id."
+    columns:
+      - name: account_id
+        tests: [not_null, unique]
+
+  - name: stg_adaptive__levels
+    description: "Level master collapsed to one row per level_id. level_code (raw LEVEL_NAME) is the fact join key."
+    columns:
+      - name: level_id
+        tests: [not_null, unique]
+      - name: level_code
+        tests: [not_null, unique]
+
+  - name: stg_adaptive__versions
+    description: "Version metadata, one row per version_id."
+    columns:
+      - name: version_id
+        tests: [not_null, unique]
+      - name: version_name
+        tests: [not_null, unique]

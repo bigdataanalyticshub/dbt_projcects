@@ -1,0 +1,30 @@
+transformation:
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT', 'mitchellcsg_prod') }}"
+
+      user: "{{ env_var('DBT_SNOWFLAKE_USER', 'ANDRE.BYFIELD@ENLYTE.COM') }}"
+      authenticator: externalbrowser
+
+      role: DBT_DEVELOPER
+      database: DATAWAREHOUSE_CTS__PREPROD
+      warehouse: WH_TAG_L
+      schema: ANALYTICS
+      threads: 6
+      client_session_keep_alive: False
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT', 'mitchellcsg_prod') }}"
+
+      user: "{{ env_var('DBT_SNOWFLAKE_USER', 'ANDRE.BYFIELD@ENLYTE.COM') }}"
+
+      role: CTS_OPS
+      database: DATAWAREHOUSE_CTS
+      warehouse: WH_TAG_L
+      schema: ANALYTICS
+      threads: 6
+      client_session_keep_alive: False
+
+  target: "{{ env_var('DBT_SNOWFLAKE_TARGET', 'dev') }}"

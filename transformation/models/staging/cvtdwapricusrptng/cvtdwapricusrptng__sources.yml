@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: cvtdwapricusrptng
+    database: COVENTRY_DW
+    schema: apricusrptng
+    tags: ["cvtdwapricusrptng"]
+    loaded_at_field: dw_updated_dt
+    freshness:
+        error_after:
+          count: 24
+          period: hour
+    tables:
+      - name: retro_par_pymt_v

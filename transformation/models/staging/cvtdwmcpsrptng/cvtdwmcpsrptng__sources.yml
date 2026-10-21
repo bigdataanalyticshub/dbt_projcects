@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: cvtdwmcpsrptng
+    database: coventry_dw
+    schema: mcpsrptng
+    tables:
+      - name: mcps_bill_hdr_fact
+        description: "MCPS Billing Header Fact table containing billing transaction details"
+        columns:
+          - name: mcps_bill_id
+            description: "Unique identifier for MCPS bill"
+
+          - name: bill_rcvd_dt
+            description: "Date when bill was received"
+
+          - name: bill_ttl_chrg_amnt
+            description: "Total charge amount for the bill"
+            tests:
+              - not_null
+
+          - name: bill_fee_chrgd_amnt
+            description: "Fee charged amount for the bill"
+
+          - name: clm_status_cd
+            description: "Claim status code"
+            tests:
+              - not_null
+
+          - name: clnt_acro
+            description: "Client acronym"
+            tests:
+              - not_null
+
+          - name: svc_state_cd
+            description: "Service state code"
+
+          - name: dw_created_dt
+            description: "Record creation date"
+            tests:
+              - not_null
+
+          - name: dw_updated_dt
+            description: "Record last update date"
+            tests:
+              - not_null
+      - name: mcps_prodt
+      - name: mcps_bill_line_fact

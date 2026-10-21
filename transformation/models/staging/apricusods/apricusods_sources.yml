@@ -1,0 +1,15 @@
+version: 1
+
+sources:
+  - name: apricusods
+    database: coventry_ods
+    schema: apricusods
+    tables:
+      - name: aprcs_dme_service_item
+      - name: aprcs_dme_bill
+      - name: aprcs_dme_bill_line_item
+      - name: aprcs_case
+      - name: aprcs_dme_injury
+      - name: aprcs_account
+      - name: aprcs_dme_provider_product
+      - name: aprcs_dme_provider_contract
