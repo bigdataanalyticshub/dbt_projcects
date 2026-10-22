@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: sandpodsdbo
+    database: strategy_and_planning_ods
+    schema: ods
+    tables:
+      - name: cmssalesforcedata__hist
+      - name: dealdashboardv2__hist
+      - name: pricingprodlist__hist

@@ -1,0 +1,10 @@
+version: 1
+
+sources:
+  - name: dwctshex
+    database: DATAWAREHOUSE_CTS
+    schema: HEX
+    tables:
+      - name: genex_special_instructions
+      - name: nco_test_mapping
+      - name: wcs_client_breakouts

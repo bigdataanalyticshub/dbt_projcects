@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: dwacs
+    database: datawarehouse
+    schema: acs
+    tables:
+      - name: vw_claim_detail_bill
+      - name: vw_claim_detail_bill_control_history
+      - name: vw_claim_detail_bill_pend_history
+      - name: vw_claim_detail_billline
+      - name: vw_claim_detail_billline_adjsubcatname
+      - name: vw_claim_detail_edixmit_control
+      - name: vw_provider_data_explorer
+      - name: billrulefire
+      - name: pend
+      - name: tablelookup
+      - name: vw_claim_detail_billline_ppo_network

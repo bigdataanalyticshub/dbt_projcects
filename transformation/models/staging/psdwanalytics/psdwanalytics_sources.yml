@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: psdwanalytics
+    database: ps_dw
+    schema: analytics
+    tags: [ "psdwanalytics" ]
+    loaded_at_field: lastupdatedate
+    freshness:
+        error_after:
+          count: 24
+          period: hour
+    tables:
+      - name: ps_invoice_item

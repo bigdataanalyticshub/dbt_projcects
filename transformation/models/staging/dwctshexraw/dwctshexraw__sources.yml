@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: dwctshexraw
+    database: DATAWAREHOUSE_CTS
+    schema: HEX_RAW
+    tables:
+      - name: hex_auditlog
+        description: "Raw Hex audit logs stored as JSON VARIANT"

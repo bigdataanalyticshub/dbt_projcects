@@ -1,0 +1,15 @@
+version: 2
+
+
+sources:
+  - name: genexodsdmcms
+    database: genex_ods
+    schema: dmcms
+    loaded_at_field: "convert_timezone('America/Los_Angeles', 'UTC', load_timestamp)"
+    tags: ["genexodsdmcms"]
+    tables:
+      - name: dm_invoice_activities
+        freshness:
+          error_after:
+            count: 24
+            period: hour

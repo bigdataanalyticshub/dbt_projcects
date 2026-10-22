@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: strtgynplnodsstg
+    database: STRATEGY_AND_PLANNING_ODS
+    schema: STG
+    tables:
+      - name: dealdashboardv2
+      - name: cmosalesforcedata
+      - name: pricingprodlist

@@ -1,0 +1,8 @@
+version: 1
+
+sources:
+  - name: genexodscareconnect
+    database: genex_ods
+    schema: care_connect
+    tables:
+      - name: care_connect_v_t

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: psdwanalyticsods
+    database: ps_dw
+    schema: analytics_ods
+    tags: ["psdwanalyticsods"]
+    loaded_at_field: updateon
+    freshness:
+        error_after:
+          count: 24
+          period: hour
+    tables:
+      - name: tblclient

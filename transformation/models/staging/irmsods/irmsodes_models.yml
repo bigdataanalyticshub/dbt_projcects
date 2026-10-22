@@ -1,0 +1,3989 @@
+version: 2
+
+models:
+  - name: stg_irmsods__adjmt_rsn_r
+    description: "Staging table for adjustment reason reference data from IRMS ODS"
+    columns:
+      - name: dw_adjmt_rsn_r_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse adjustment reason reference table"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Code representing the reason for adjustment"
+
+      - name: adjmt_src_syst
+        data_type: varchar
+        description: "Source system of the adjustment reason"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Description of the adjustment reason"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__applctn_comnt
+    description: "Staging table for application comments from IRMS ODS"
+    columns:
+      - name: dw_applctn_comnt_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse application comment table"
+
+      - name: applctn_comnt_id
+        data_type: number
+        description: "Unique identifier for each application comment"
+
+      - name: applctn_comnt_desc
+        data_type: varchar
+        description: "Description or content of the application comment"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__bank_acct_lock_box_addr
+    description: "Staged data for Bank Account Lock Box Address information from IRMSODS"
+    columns:
+      - name: dw_bank_acct_lock_box_addr_row_id
+        data_type: number
+        description: "Unique identifier for each row in the Bank Account Lock Box Address table"
+
+      - name: bank_id
+        data_type: number
+        description: "Unique identifier for the bank"
+
+      - name: bank_acct_num
+        data_type: varchar
+        description: "Bank account number associated with the lock box"
+
+      - name: lock_box_id
+        data_type: number
+        description: "Unique identifier for the lock box"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the data processing run"
+
+      - name: irms_prodt_id
+        data_type: number
+        description: "IRMS product identifier associated with the lock box"
+
+      - name: addr_lin_1
+        data_type: varchar
+        description: "First line of the lock box address"
+
+      - name: addr_lin_2
+        data_type: varchar
+        description: "Second line of the lock box address (if applicable)"
+
+      - name: city_nm
+        data_type: varchar
+        description: "City name of the lock box address"
+
+      - name: state_cd
+        data_type: varchar
+        description: "State code of the lock box address"
+
+      - name: zip_cd
+        data_type: varchar
+        description: "ZIP code of the lock box address"
+
+      - name: zip_plus4
+        data_type: varchar
+        description: "Additional 4 digits of the ZIP code (if available)"
+
+      - name: eff_dt
+        data_type: date
+        description: "Effective date of the lock box address"
+
+      - name: trmntn_dt
+        data_type: date
+        description: "Termination date of the lock box address (if applicable)"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__bus_ent
+    description: "Staging table for business entity data from IRMS ODS"
+    columns:
+      - name: dw_bus_ent_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse business entity table"
+
+      - name: bus_ent_id
+        data_type: number
+        description: "Unique identifier for each business entity"
+
+      - name: admin_typ_cd
+        data_type: varchar
+        description: "Code representing the administrative type of the business entity"
+
+      - name: bus_ent_nm
+        data_type: varchar
+        description: "Name of the business entity"
+
+      - name: inv_nm
+        data_type: varchar
+        description: "Invoice name associated with the business entity"
+
+      - name: sector_cd
+        data_type: number
+        description: "Code representing the sector of the business entity"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Code representing the legal entity of the business"
+
+      - name: dept
+        data_type: varchar
+        description: "Department associated with the business entity"
+
+      - name: oprtng_unit
+        data_type: varchar
+        description: "Operating unit of the business entity"
+
+      - name: cntrct_ent_flg
+        data_type: varchar
+        description: "Flag indicating if the business entity is a contract entity"
+
+      - name: cntrctd_bus_ent_id
+        data_type: number
+        description: "ID of the contracted business entity, if applicable"
+
+      - name: ns_cust_id
+        data_type: number
+        description: "NetSuite customer ID associated with the business entity"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__bus_ent_clnt_mpng
+    description: "Staging table for business entity client mapping from IRMS ODS"
+    columns:
+      - name: dw_bus_ent_clnt_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse business entity client mapping table"
+
+      - name: bus_ent_id
+        data_type: number
+        description: "Unique identifier for the business entity"
+
+      - name: clnt_cd
+        data_type: varchar
+        description: "Client code associated with the business entity"
+
+      - name: clnt_src
+        data_type: varchar
+        description: "Source of the client information"
+
+      - name: last_upd_dt
+        data_type: date
+        description: "Date of the last update to this mapping"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__clm_amnt
+    description: "Staging table for claim amount data from IRMS ODS"
+    columns:
+      - name: dw_clm_amnt_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse claim amount table"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction ID associated with the claim amount"
+
+      - name: cntrct_typ_cd
+        data_type: varchar
+        description: "Code representing the contract type"
+
+      - name: clm_id
+        data_type: number
+        description: "Unique identifier for the claim"
+
+      - name: src_prodt_id
+        data_type: number
+        description: "Source product ID associated with the claim"
+
+      - name: prov_typ_cd
+        data_type: varchar
+        description: "Code representing the provider type"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Sequence number of the source claim"
+
+      - name: care_typ_cd
+        data_type: varchar
+        description: "Code representing the type of care"
+
+      - name: prov_state_cd
+        data_type: varchar
+        description: "State code of the provider"
+
+      - name: prc_dt
+        data_type: date
+        description: "Date of pricing"
+
+      - name: orignl_prcng_dt
+        data_type: date
+        description: "Original pricing date"
+
+      - name: gross_orignl_chrgd_amnt
+        data_type: number
+        description: "Gross original charged amount"
+
+      - name: net_orignl_chrgd_amnt
+        data_type: number
+        description: "Net original charged amount"
+
+      - name: gross_base_billd_amnt
+        data_type: number
+        description: "Gross base billed amount"
+
+      - name: net_base_billd_amnt
+        data_type: number
+        description: "Net base billed amount"
+
+      - name: gross_negtd_amnt
+        data_type: number
+        description: "Gross negotiated amount"
+
+      - name: net_negtd_amnt
+        data_type: number
+        description: "Net negotiated amount"
+
+      - name: gross_svngs_amnt
+        data_type: number
+        description: "Gross savings amount"
+
+      - name: net_svngs_amnt
+        data_type: number
+        description: "Net savings amount"
+
+      - name: gross_fee_amnt
+        data_type: number
+        description: "Gross fee amount"
+
+      - name: net_fee_amnt
+        data_type: number
+        description: "Net fee amount"
+
+      - name: rate_prcnt
+        data_type: number
+        description: "Rate percentage"
+
+      - name: ppa_flg
+        data_type: varchar
+        description: "Flag indicating if this is a PPA (Prior Period Adjustment)"
+
+      - name: input_media
+        data_type: varchar
+        description: "Input media type"
+
+      - name: output_media
+        data_type: varchar
+        description: "Output media type"
+
+      - name: net_chng_spec_disc_fctr_owed
+        data_type: number
+        description: "Net change in special discount factor owed"
+
+      - name: net_bill_revw_amnt
+        data_type: number
+        description: "Net bill review amount"
+
+      - name: fee_sched_admin_fee
+        data_type: number
+        description: "Fee schedule admin fee"
+
+      - name: old_inv_num
+        data_type: varchar
+        description: "Old invoice number"
+
+      - name: clm_grp_num
+        data_type: varchar
+        description: "Claim group number"
+
+      - name: ppo_admin_fee
+        data_type: number
+        description: "PPO admin fee"
+
+      - name: xref_clm_num
+        data_type: varchar
+        description: "Cross-reference claim number"
+
+      - name: case_typ_cd
+        data_type: varchar
+        description: "Case type code"
+
+      - name: event_typ_cd
+        data_type: varchar
+        description: "Event type code"
+
+      - name: net_clncl_val_amnt
+        data_type: number
+        description: "Net clinical value amount"
+
+      - name: record_type
+        data_type: varchar
+        description: "Type of record"
+
+      - name: case_num
+        data_type: varchar
+        description: "Case number"
+
+      - name: inv_num
+        data_type: varchar
+        description: "Invoice number"
+
+      - name: whlsl_rtl_flg
+        data_type: varchar
+        description: "Flag indicating wholesale or retail"
+
+      - name: inv_amnt_whlsl
+        data_type: number
+        description: "Invoice amount for wholesale"
+
+      - name: inv_amnt_rtl
+        data_type: number
+        description: "Invoice amount for retail"
+
+      - name: gl_product
+        data_type: varchar
+        description: "General ledger product code"
+
+      - name: gl_location
+        data_type: varchar
+        description: "General ledger location"
+
+      - name: med_voc_ind
+        data_type: varchar
+        description: "Medical or vocational indicator"
+
+      - name: cbe_seq_num
+        data_type: varchar
+        description: "CBE sequence number"
+
+      - name: adjstr_id
+        data_type: number
+        description: "Adjuster ID"
+
+      - name: reason_cd
+        data_type: varchar
+        description: "Reason code"
+
+      - name: rtl_clncl_val_amnt
+        data_type: number
+        description: "Retail clinical value amount"
+
+      - name: per_clm_fee
+        data_type: number
+        description: "Per claim fee"
+
+      - name: prct_svngs_tax
+        data_type: number
+        description: "Percent savings tax"
+
+      - name: per_clm_tax
+        data_type: number
+        description: "Per claim tax"
+
+      - name: gross_per_clm_fee
+        data_type: number
+        description: "Gross per claim fee"
+
+      - name: bill_jur_state_cd
+        data_type: varchar
+        description: "Billing jurisdiction state code"
+
+      - name: whl_ess_fee
+        data_type: number
+        description: "Wholesale ESS fee"
+
+      - name: rtl_ess_fee
+        data_type: number
+        description: "Retail ESS fee"
+
+      - name: whl_rev_fee_1
+        data_type: number
+        description: "Wholesale revenue fee 1"
+
+      - name: rtl_rev_fee_1
+        data_type: number
+        description: "Retail revenue fee 1"
+
+      - name: whl_rev_fee_2
+        data_type: number
+        description: "Wholesale revenue fee 2"
+
+      - name: rtl_rev_fee_2
+        data_type: number
+        description: "Retail revenue fee 2"
+
+      - name: whl_rev_fee_3
+        data_type: number
+        description: "Wholesale revenue fee 3"
+
+      - name: rtl_rev_fee_3
+        data_type: number
+        description: "Retail revenue fee 3"
+
+      - name: dcn_type
+        data_type: varchar
+        description: "DCN type"
+
+      - name: icn
+        data_type: varchar
+        description: "ICN (Internal Control Number)"
+
+      - name: charge_amount
+        data_type: number
+        description: "Charge amount"
+
+      - name: payment_amount
+        data_type: number
+        description: "Payment amount"
+
+      - name: deliver_835_date
+        data_type: date
+        description: "Date of 835 delivery"
+
+      - name: carrier_received_date
+        data_type: date
+        description: "Date received by carrier"
+
+      - name: electronic_fee
+        data_type: number
+        description: "Electronic fee"
+
+      - name: jurisdiction_state
+        data_type: varchar
+        description: "Jurisdiction state"
+
+      - name: carrier_fein
+        data_type: varchar
+        description: "Carrier FEIN (Federal Employer Identification Number)"
+
+      - name: per_clm_msg_cd
+        data_type: varchar
+        description: "Per claim message code"
+
+      - name: mcps_clm_num
+        data_type: varchar
+        description: "MCPS claim number"
+
+      - name: mcps_clm_seq_num
+        data_type: number
+        description: "MCPS claim sequence number"
+
+      - name: mcps_intsrc_prod
+        data_type: varchar
+        description: "MCPS internal source product"
+
+      - name: vendor_bill_id
+        data_type: varchar
+        description: "Vendor bill ID"
+
+      - name: mcps_prov_tin
+        data_type: varchar
+        description: "MCPS provider TIN (Tax Identification Number)"
+
+      - name: fee_meth_cd
+        data_type: varchar
+        description: "Fee method code"
+
+      - name: obn_fnl_flg
+        data_type: varchar
+        description: "OBN final flag"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__clm_stgng_que
+    description: "Staged data for Claim Staging Queue from IRMSODS, containing detailed information about claims in process"
+    columns:
+      - name: dw_clm_stgng_que_row_id
+        data_type: number
+        description: "Unique identifier for each row in the Claim Staging Queue table"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the data processing run"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key, uniquely identifying the claim"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Sequence number for the source claim"
+
+      - name: csq_status_cd
+        data_type: varchar
+        description: "Status code for the claim in the staging queue"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "Identifier for the accounting period"
+
+      - name: bk_to_bus_ent_id
+        data_type: number
+        description: "Book to business entity identifier"
+
+      - name: prfl_typ_cd
+        data_type: varchar
+        description: "Profile type code"
+
+      - name: prov_typ_cd
+        data_type: varchar
+        description: "Provider type code"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: cntrct_typ_cd
+        data_type: varchar
+        description: "Contract type code"
+
+      - name: input_media
+        data_type: varchar
+        description: "Input media type for the claim"
+
+      - name: output_media
+        data_type: varchar
+        description: "Output media type for the claim"
+
+      - name: orignl_prcng_dt
+        data_type: date
+        description: "Original pricing date for the claim"
+
+      - name: prc_dt
+        data_type: date
+        description: "Processing date for the claim"
+
+      - name: src_prodt_cd
+        data_type: varchar
+        description: "Source product code"
+
+      - name: xref_clm_key
+        data_type: varchar
+        description: "Cross-reference claim key"
+
+      - name: emplyr_cd
+        data_type: varchar
+        description: "Employer code"
+
+      - name: emplyr_nm
+        data_type: varchar
+        description: "Employer name"
+
+      - name: gross_base_billd_amnt
+        data_type: number
+        description: "Gross base billed amount"
+
+      - name: gross_orignl_chrgd_amnt
+        data_type: number
+        description: "Gross original charged amount"
+
+      - name: gross_negtd_amnt
+        data_type: number
+        description: "Gross negotiated amount"
+
+      - name: gross_fee_amnt
+        data_type: number
+        description: "Gross fee amount"
+
+      - name: gross_svngs_amnt
+        data_type: number
+        description: "Gross savings amount"
+
+      - name: net_base_billd_amnt
+        data_type: number
+        description: "Net base billed amount"
+
+      - name: net_orignl_chrgd_amnt
+        data_type: number
+        description: "Net original charged amount"
+
+      - name: net_negtd_amnt
+        data_type: number
+        description: "Net negotiated amount"
+
+      - name: net_fee_amnt
+        data_type: number
+        description: "Net fee amount"
+
+      - name: net_svngs_amnt
+        data_type: number
+        description: "Net savings amount"
+
+      - name: rate_prcnt
+        data_type: number
+        description: "Rate percentage"
+
+      - name: prov_state_cd
+        data_type: varchar
+        description: "Provider state code"
+
+      - name: prov_acrnym
+        data_type: varchar
+        description: "Provider acronym"
+
+      - name: prov_nm
+        data_type: varchar
+        description: "Provider name"
+
+      - name: first_nm
+        data_type: varchar
+        description: "First name of the patient"
+
+      - name: mid_init
+        data_type: varchar
+        description: "Middle initial of the patient"
+
+      - name: last_nm
+        data_type: varchar
+        description: "Last name of the patient"
+
+      - name: admsn_dt
+        data_type: date
+        description: "Admission date"
+
+      - name: dob
+        data_type: date
+        description: "Date of birth of the patient"
+
+      - name: dschg_dt
+        data_type: date
+        description: "Discharge date"
+
+      - name: days_in_hosp
+        data_type: number
+        description: "Number of days in hospital"
+
+      - name: care_typ_cd
+        data_type: varchar
+        description: "Care type code"
+
+      - name: prodt_catg
+        data_type: varchar
+        description: "Product category"
+
+      - name: inj_dt
+        data_type: date
+        description: "Injury date"
+
+      - name: clnt_clm_key
+        data_type: varchar
+        description: "Client claim key"
+
+      - name: net_bill_revw_amnt
+        data_type: number
+        description: "Net bill review amount"
+
+      - name: rec_typ
+        data_type: varchar
+        description: "Record type"
+
+      - name: eds_prov_ntwrk_id
+        data_type: varchar
+        description: "EDS provider network ID"
+
+      - name: net_chng_spec_disc_fctr_owed
+        data_type: number
+        description: "Net change special discount factor owed"
+
+      - name: eds_rsn_cd
+        data_type: varchar
+        description: "EDS reason code"
+
+      - name: eds_prov_state
+        data_type: varchar
+        description: "EDS provider state"
+
+      - name: eds_inv_cd
+        data_type: varchar
+        description: "EDS invoice code"
+
+      - name: adjmt_rsn_cd_1
+        data_type: varchar
+        description: "Adjustment reason code 1"
+
+      - name: adjmt_rsn_cd_2
+        data_type: varchar
+        description: "Adjustment reason code 2"
+
+      - name: adjmt_rsn_cd_3
+        data_type: varchar
+        description: "Adjustment reason code 3"
+
+      - name: clm_prcng_team
+        data_type: varchar
+        description: "Claim pricing team"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service"
+
+      - name: acctg_dt
+        data_type: date
+        description: "Accounting date"
+
+      - name: agng_dt
+        data_type: date
+        description: "Aging date"
+
+      - name: applctn_comnt_id
+        data_type: number
+        description: "Application comment ID"
+
+      - name: bllng_incld_flg
+        data_type: varchar
+        description: "Billing included flag"
+
+      - name: tax_rptng_id
+        data_type: varchar
+        description: "Tax reporting ID"
+
+      - name: mh_pre_cntrct_flg
+        data_type: varchar
+        description: "MH pre-contract flag"
+
+      - name: dup_clm_flg
+        data_type: varchar
+        description: "Duplicate claim flag"
+
+      - name: brand_nm
+        data_type: varchar
+        description: "Brand name"
+
+      - name: clm_grp_num
+        data_type: varchar
+        description: "Claim group number"
+
+      - name: ppo_admin_fee
+        data_type: number
+        description: "PPO admin fee"
+
+      - name: fee_sched_admin_fee
+        data_type: number
+        description: "Fee schedule admin fee"
+
+      - name: br_ofc_num
+        data_type: varchar
+        description: "Branch office number"
+
+      - name: old_clm_id
+        data_type: varchar
+        description: "Old claim ID"
+
+      - name: old_inv_num
+        data_type: varchar
+        description: "Old invoice number"
+
+      - name: prov_addr
+        data_type: varchar
+        description: "Provider address"
+
+      - name: prov_city
+        data_type: varchar
+        description: "Provider city"
+
+      - name: prov_zip
+        data_type: varchar
+        description: "Provider ZIP code"
+
+      - name: bus_ent_nm_sbl
+        data_type: varchar
+        description: "Business entity name (Siebel)"
+
+      - name: case_typ_cd
+        data_type: varchar
+        description: "Case type code"
+
+      - name: event_typ_cd
+        data_type: varchar
+        description: "Event type code"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Bill to business entity ID"
+
+      - name: sector_cd
+        data_type: number
+        description: "Sector code"
+
+      - name: net_clncl_val_amnt
+        data_type: number
+        description: "Net clinical value amount"
+
+      - name: rtl_clncl_val_amnt
+        data_type: number
+        description: "Retail clinical value amount"
+
+      - name: per_clm_fee
+        data_type: number
+        description: "Per claim fee"
+
+      - name: gross_per_clm_fee
+        data_type: number
+        description: "Gross per claim fee"
+
+      - name: bill_jur_state_cd
+        data_type: varchar
+        description: "Billing jurisdiction state code"
+
+      - name: wc_clm_num
+        data_type: varchar
+        description: "Workers' compensation claim number"
+
+      - name: whl_ess_fee
+        data_type: number
+        description: "Wholesale ESS fee"
+
+      - name: rtl_ess_fee
+        data_type: number
+        description: "Retail ESS fee"
+
+      - name: whl_rev_fee_1
+        data_type: number
+        description: "Wholesale review fee 1"
+
+      - name: rtl_rev_fee_1
+        data_type: number
+        description: "Retail review fee 1"
+
+      - name: whl_rev_fee_2
+        data_type: number
+        description: "Wholesale review fee 2"
+
+      - name: rtl_rev_fee_2
+        data_type: number
+        description: "Retail review fee 2"
+
+      - name: whl_rev_fee_3
+        data_type: number
+        description: "Wholesale review fee 3"
+
+      - name: rtl_rev_fee_3
+        data_type: number
+        description: "Retail review fee 3"
+
+      - name: patient_id
+        data_type: number
+        description: "Patient ID"
+
+      - name: prov_id
+        data_type: number
+        description: "Provider ID"
+
+      - name: per_clm_msg_cd
+        data_type: varchar
+        description: "Per claim message code"
+
+      - name: mcps_clm_num
+        data_type: varchar
+        description: "MCPS claim number"
+
+      - name: mcps_clm_seq_num
+        data_type: number
+        description: "MCPS claim sequence number"
+
+      - name: mcps_intsrc_prod
+        data_type: varchar
+        description: "MCPS internal source product"
+
+      - name: vendor_bill_id
+        data_type: varchar
+        description: "Vendor bill ID"
+
+      - name: mcps_prov_tin
+        data_type: varchar
+        description: "MCPS provider tax identification number"
+
+      - name: ham_upld_dt
+        data_type: date
+        description: "HAM upload date"
+
+      - name: fee_meth_cd
+        data_type: varchar
+        description: "Fee method code"
+
+      - name: obn_fnl_flg
+        data_type: varchar
+        description: "OBN final flag"
+
+      - name: prcnt_svngs_flg
+        data_type: varchar
+        description: "Percent savings flag"
+
+      - name: line_count
+        data_type: number
+        description: "Line count"
+
+      - name: doc_id
+        data_type: varchar
+        description: "Document ID"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Adjustment reason description"
+
+      - name: insured_last_nm
+        data_type: varchar
+        description: "Insured's last name"
+
+      - name: insured_first_nm
+        data_type: varchar
+        description: "Insured's first name"
+
+      - name: payor_id
+        data_type: varchar
+        description: "Payor ID"
+
+      - name: payor_nm
+        data_type: varchar
+        description: "Payor name"
+
+      - name: payor_cntrl_num
+        data_type: varchar
+        description: "Payor control number"
+
+      - name: submtr_id
+        data_type: varchar
+        description: "Submitter ID"
+
+      - name: cntrl_num
+        data_type: varchar
+        description: "Control number"
+
+      - name: gnx_c_code
+        data_type: varchar
+        description: "GNX C code"
+
+      - name: gnx_e_code
+        data_type: varchar
+        description: "GNX E code"
+
+      - name: site_cd
+        data_type: varchar
+        description: "Site code"
+
+      - name: cost_cntr
+        data_type: varchar
+        description: "Cost center"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+      - name: prc_dt_key
+        data_type: number
+        description: "Processing date key"
+
+  - name: stg_irmsods__clnc_clm_stgng_que
+    description: "Staging table for clinical claim staging queue from IRMS ODS"
+    columns:
+      - name: dw_clnc_clm_stgng_que_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse clinical claim staging queue table"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Source claim sequence number"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID associated with the claim"
+
+      - name: csq_status_cd
+        data_type: varchar
+        description: "CSQ status code"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "Accounting period ID associated with the claim"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: src_prodt_cd
+        data_type: varchar
+        description: "Source product code"
+
+      - name: brand_nm
+        data_type: varchar
+        description: "Brand name"
+
+      - name: acctg_dt
+        data_type: date
+        description: "Accounting date"
+
+      - name: bk_to_bus_ent_id
+        data_type: number
+        description: "Book-to business entity ID"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Bill-to business entity ID"
+
+      - name: record_type
+        data_type: varchar
+        description: "Type of record"
+
+      - name: claimant_num
+        data_type: varchar
+        description: "Claimant number"
+
+      - name: case_num
+        data_type: varchar
+        description: "Case number"
+
+      - name: inv_num
+        data_type: varchar
+        description: "Invoice number"
+
+      - name: orig_inv_num
+        data_type: varchar
+        description: "Original invoice number"
+
+      - name: reason_cd
+        data_type: varchar
+        description: "Reason code"
+
+      - name: inv_dt
+        data_type: date
+        description: "Invoice date"
+
+      - name: referral_dt
+        data_type: date
+        description: "Referral date"
+
+      - name: whlsl_rtl_flg
+        data_type: varchar
+        description: "Wholesale/Retail flag"
+
+      - name: inv_amnt_whlsl
+        data_type: number
+        description: "Invoice amount wholesale"
+
+      - name: inv_amnt_rtl
+        data_type: number
+        description: "Invoice amount retail"
+
+      - name: gl_product
+        data_type: varchar
+        description: "General ledger product code"
+
+      - name: gl_location
+        data_type: varchar
+        description: "General ledger location"
+
+      - name: employer_grp
+        data_type: varchar
+        description: "Employer group"
+
+      - name: acct_location
+        data_type: varchar
+        description: "Account location"
+
+      - name: claimant_benefit_st
+        data_type: varchar
+        description: "Claimant benefit state"
+
+      - name: inj_dt
+        data_type: date
+        description: "Injury date"
+
+      - name: claim_num
+        data_type: varchar
+        description: "Claim number"
+
+      - name: case_type
+        data_type: varchar
+        description: "Case type"
+
+      - name: referral_type
+        data_type: varchar
+        description: "Referral type"
+
+      - name: provider_nm
+        data_type: varchar
+        description: "Provider name"
+
+      - name: provider_num
+        data_type: varchar
+        description: "Provider number"
+
+      - name: cust_cert_num
+        data_type: varchar
+        description: "Customer certificate number"
+
+      - name: seq_num
+        data_type: varchar
+        description: "Sequence number"
+
+      - name: bill_from_dt
+        data_type: date
+        description: "Bill from date"
+
+      - name: bill_to_dt
+        data_type: date
+        description: "Bill to date"
+
+      - name: cust_client_num
+        data_type: varchar
+        description: "Customer client number"
+
+      - name: cust_client_loc_num
+        data_type: varchar
+        description: "Customer client location number"
+
+      - name: cust_client_subclnt_num
+        data_type: varchar
+        description: "Customer client subclient number"
+
+      - name: cust_client_othloc_num
+        data_type: varchar
+        description: "Customer client other location number"
+
+      - name: num_of_lines
+        data_type: number
+        description: "Number of lines"
+
+      - name: adjstr_phys_loc_num
+        data_type: varchar
+        description: "Adjuster physical location number"
+
+      - name: med_voc_ind
+        data_type: varchar
+        description: "Medical/Vocational indicator"
+
+      - name: trv_daily_inv_snd_flg
+        data_type: varchar
+        description: "Travel daily invoice send flag"
+
+      - name: claimant_nm
+        data_type: varchar
+        description: "Claimant name"
+
+      - name: adjstr_nm
+        data_type: varchar
+        description: "Adjuster name"
+
+      - name: cust_cmpny_nm
+        data_type: varchar
+        description: "Customer company name"
+
+      - name: cust_addr_ln1
+        data_type: varchar
+        description: "Customer address line 1"
+
+      - name: cust_addr_ln2
+        data_type: varchar
+        description: "Customer address line 2"
+
+      - name: cust_addr_ln3
+        data_type: varchar
+        description: "Customer address line 3"
+
+      - name: ship_to_addr1
+        data_type: varchar
+        description: "Ship to address line 1"
+
+      - name: ship_to_addr2
+        data_type: varchar
+        description: "Ship to address line 2"
+
+      - name: ship_to_addr3
+        data_type: varchar
+        description: "Ship to address line 3"
+
+      - name: ship_to_addr4
+        data_type: varchar
+        description: "Ship to address line 4"
+
+      - name: cm_nm
+        data_type: varchar
+        description: "Case manager name"
+
+      - name: ship_to_nm
+        data_type: varchar
+        description: "Ship to name"
+
+      - name: ship_to_city_state_zip
+        data_type: varchar
+        description: "Ship to city, state, and zip code"
+
+      - name: ssn
+        data_type: varchar
+        description: "Social Security Number"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__deposit
+    description: "Staging table for deposit information from IRMS ODS"
+    columns:
+      - name: dw_deposit_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse deposit table"
+
+      - name: dpst_id
+        data_type: number
+        description: "Unique identifier for each deposit"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID associated with the deposit"
+
+      - name: bank_id
+        data_type: number
+        description: "Bank identifier"
+
+      - name: bank_acct_num
+        data_type: varchar
+        description: "Bank account number"
+
+      - name: lock_box_id
+        data_type: number
+        description: "Lock box identifier"
+
+      - name: data_ownr_cd
+        data_type: varchar
+        description: "Data owner code"
+
+      - name: dpst_dt
+        data_type: date
+        description: "Deposit date"
+
+      - name: dpst_amnt
+        data_type: number
+        description: "Deposit amount"
+
+      - name: dpst_desc
+        data_type: varchar
+        description: "Deposit description"
+
+      - name: dpst_balnc
+        data_type: number
+        description: "Deposit balance"
+
+      - name: dpst_finlzd_flg
+        data_type: varchar
+        description: "Flag indicating if the deposit is finalized"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__dme_rcvbl_po_mpng
+    description: "Staging model for DME (Durable Medical Equipment) receivable to purchase order mapping data from IRMSODS"
+    columns:
+      - name: dw_dme_rcvbl_po_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse DME receivable to PO mapping table"
+
+      - name: rcvbl_num
+        data_type: varchar
+        description: "Receivable number, used to identify the specific receivable"
+
+      - name: po_id
+        data_type: number
+        description: "Purchase Order identifier associated with the receivable"
+
+      - name: upd_dt
+        data_type: date
+        description: "Date when the mapping was last updated in the source system"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__fee_svngs_dtl
+    description: "Staged data for Fee Savings Detail from IRMSODS, containing information about fee savings for claims"
+    columns:
+      - name: dw_fee_svngs_dtl_row_id
+        data_type: number
+        description: "Unique identifier for each row in the Fee Savings Detail table"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key, uniquely identifying the claim"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Sequence number for the source claim"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the data processing run"
+
+      - name: fee_dtl_seq_num
+        data_type: number
+        description: "Sequence number for the fee detail"
+
+      - name: fee_mpng_id
+        data_type: number
+        description: "Identifier for the fee mapping"
+
+      - name: lob_revnu_id
+        data_type: number
+        description: "Line of Business revenue identifier"
+
+      - name: svngs_catg
+        data_type: varchar
+        description: "Category of savings"
+
+      - name: primary_svngs_fee
+        data_type: number
+        description: "Primary savings fee amount"
+
+      - name: primary_svngs_amnt
+        data_type: number
+        description: "Primary savings amount"
+
+      - name: secondary_svngs_fee
+        data_type: number
+        description: "Secondary savings fee amount"
+
+      - name: secondary_svngs_amnt
+        data_type: number
+        description: "Secondary savings amount"
+
+      - name: prcsd_run_id
+        data_type: number
+        description: "Identifier for the processed run"
+
+      - name: gross_primary_svngs_fee
+        data_type: number
+        description: "Gross primary savings fee amount"
+
+      - name: gross_primary_svngs_amnt
+        data_type: number
+        description: "Gross primary savings amount"
+
+      - name: gross_secondary_svngs_fee
+        data_type: number
+        description: "Gross secondary savings fee amount"
+
+      - name: gross_secondary_svngs_amnt
+        data_type: number
+        description: "Gross secondary savings amount"
+
+      - name: ntwrk_cd
+        data_type: varchar
+        description: "Network code associated with the savings"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction identifier"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__glbl_rcvbl_mpng
+    description: "Staging model for global receivable mapping data from IRMSODS"
+    columns:
+      - name: dw_glbl_rcvbl_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse global receivable mapping table"
+
+      - name: rcvbl_id
+        data_type: number
+        description: "Identifier for the receivable"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Identifier for the business entity being billed"
+
+      - name: glbl_mpng_cd
+        data_type: varchar
+        description: "Global mapping code for the receivable"
+
+      - name: bllng_id
+        data_type: number
+        description: "Identifier for the billing record"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Code identifying the source system of the record"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the data processing run"
+
+      - name: extrnl_inv_src_cd
+        data_type: varchar
+        description: "Code identifying the external invoice source"
+
+      - name: glbl_mpng_seq_num
+        data_type: number
+        description: "Sequence number for the global mapping"
+
+      - name: glbl_mpng_typ_cd
+        data_type: varchar
+        description: "Code indicating the type of global mapping"
+
+      - name: extrnl_inv_num
+        data_type: varchar
+        description: "External invoice number"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__irms_claim
+    description: "Staging table for IRMS claim data from IRMS ODS"
+    columns:
+      - name: dw_irms_claim_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse IRMS claim table"
+
+      - name: clm_id
+        data_type: number
+        description: "Unique identifier for each claim"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: bk_to_bus_ent_id
+        data_type: number
+        description: "Book-to business entity ID"
+
+      - name: patient_id
+        data_type: number
+        description: "Patient identifier"
+
+      - name: emplyr_id
+        data_type: number
+        description: "Employer identifier"
+
+      - name: prov_id
+        data_type: number
+        description: "Provider identifier"
+
+      - name: prov_state_cd
+        data_type: varchar
+        description: "Provider state code"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key"
+
+      - name: bus_ent_nm_sbl
+        data_type: varchar
+        description: "Business entity name (Siebel)"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Source claim sequence number"
+
+      - name: clnt_clm_key
+        data_type: varchar
+        description: "Client claim key"
+
+      - name: xref_clm_key
+        data_type: varchar
+        description: "Cross-reference claim key"
+
+      - name: admsn_dt
+        data_type: date
+        description: "Admission date"
+
+      - name: dschg_dt
+        data_type: date
+        description: "Discharge date"
+
+      - name: days_in_hosp
+        data_type: number
+        description: "Number of days in hospital"
+
+      - name: inj_dt
+        data_type: date
+        description: "Injury date"
+
+      - name: eds_prov_ntwrk_id
+        data_type: varchar
+        description: "EDS provider network ID"
+
+      - name: br_ofc_num
+        data_type: varchar
+        description: "Branch office number"
+
+      - name: old_clm_id
+        data_type: varchar
+        description: "Old claim ID"
+
+      - name: patient_clm_num
+        data_type: varchar
+        description: "Patient claim number"
+
+      - name: icd9_cd
+        data_type: varchar
+        description: "ICD-9 code"
+
+      - name: cln_cust_clnt_id
+        data_type: number
+        description: "Clinical customer client ID"
+
+      - name: referral_dt
+        data_type: date
+        description: "Referral date"
+
+      - name: referral_type
+        data_type: varchar
+        description: "Referral type"
+
+      - name: case_type
+        data_type: varchar
+        description: "Case type"
+
+      - name: cbe_cert_num
+        data_type: varchar
+        description: "CBE certificate number"
+
+      - name: wc_clm_num
+        data_type: varchar
+        description: "Workers' compensation claim number"
+
+      - name: claim_number
+        data_type: varchar
+        description: "Claim number"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__irms_receivable
+    description: "Staging table for IRMS receivable data from IRMS ODS"
+    columns:
+      - name: dw_irms_receivable_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse IRMS receivable table"
+
+      - name: rcvbl_id
+        data_type: number
+        description: "Unique identifier for each receivable"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID associated with the receivable"
+
+      - name: pymt_terms_id
+        data_type: number
+        description: "Payment terms identifier"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Bill-to business entity ID"
+
+      - name: bkng_status_cd
+        data_type: varchar
+        description: "Booking status code"
+
+      - name: rcvbl_inv_typ_cd
+        data_type: varchar
+        description: "Receivable invoice type code"
+
+      - name: pymt_status_cd
+        data_type: varchar
+        description: "Payment status code"
+
+      - name: pymt_status_dt
+        data_type: date
+        description: "Payment status date"
+
+      - name: status_cd
+        data_type: varchar
+        description: "Status code"
+
+      - name: bal
+        data_type: number
+        description: "Balance"
+
+      - name: agng_dt
+        data_type: date
+        description: "Aging date"
+
+      - name: pymt_exists_flg
+        data_type: varchar
+        description: "Flag indicating if payment exists"
+
+      - name: lin_of_bus_cd
+        data_type: varchar
+        description: "Line of business code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__irms_transaction
+    description: "Staging table for IRMS transaction data from IRMS ODS"
+    columns:
+      - name: dw_irms_transaction_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse IRMS transaction table"
+
+      - name: trns_id
+        data_type: number
+        description: "Unique identifier for each transaction"
+
+      - name: xref_trns_id
+        data_type: number
+        description: "Cross-reference transaction ID"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Bill-to business entity ID"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID associated with the transaction"
+
+      - name: prfl_id
+        data_type: number
+        description: "Profile ID"
+
+      - name: prfl_prodt_seq_num
+        data_type: number
+        description: "Profile product sequence number"
+
+      - name: bk_to_bus_ent_id
+        data_type: number
+        description: "Book-to business entity ID"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "Accounting period ID"
+
+      - name: irms_prodt_id
+        data_type: number
+        description: "IRMS product ID"
+
+      - name: rcvbl_id
+        data_type: number
+        description: "Receivable ID"
+
+      - name: bllng_id
+        data_type: number
+        description: "Billing ID associated with the transaction"
+
+      - name: svc_unt_id
+        data_type: number
+        description: "Service unit ID"
+
+      - name: glbl_mpng_cd
+        data_type: varchar
+        description: "Global mapping code"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: data_ownr_cd
+        data_type: varchar
+        description: "Data owner code"
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: "Transaction type code"
+
+      - name: bkng_status_cd
+        data_type: varchar
+        description: "Booking status code"
+
+      - name: status_cd
+        data_type: varchar
+        description: "Status code"
+
+      - name: bllng_incld_flg
+        data_type: varchar
+        description: "Flag indicating if the transaction is included in billing"
+
+      - name: actv_dt
+        data_type: date
+        description: "Active date of the transaction"
+
+      - name: cncl_dt
+        data_type: date
+        description: "Cancellation date of the transaction"
+
+      - name: trns_amnt
+        data_type: number
+        description: "Transaction amount"
+
+      - name: gl_posted_dt
+        data_type: date
+        description: "Date when the transaction was posted to the general ledger"
+
+      - name: acctg_dt
+        data_type: date
+        description: "Accounting date"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service"
+
+      - name: ppa_flg
+        data_type: varchar
+        description: "Prior Period Adjustment flag"
+
+      - name: glbl_mpng_typ_cd
+        data_type: varchar
+        description: "Global mapping type code"
+
+      - name: glbl_mpng_seq_num
+        data_type: number
+        description: "Global mapping sequence number"
+
+      - name: create_dt
+        data_type: date
+        description: "Creation date of the transaction"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__irms_trns_adjmt
+    description: "Staging table for IRMS transaction adjustments from IRMS ODS"
+    columns:
+      - name: dw_irms_trns_adjmt_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse IRMS transaction adjustment table"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction ID associated with the adjustment"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Adjustment reason code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__lgl_ent_mpng
+    description: "Staged data for Legal Entity Mapping table from IRMSODS"
+    columns:
+      - name: dw_lgl_ent_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the Legal Entity Mapping table"
+
+      - name: le_mpng_id
+        data_type: number
+        description: "Unique identifier for each legal entity mapping"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Code representing the legal entity"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code from which the mapping originates"
+
+      - name: src_prodt_cd
+        data_type: varchar
+        description: "Source product code associated with the mapping"
+
+      - name: cost_cntr
+        data_type: varchar
+        description: "Cost center associated with the legal entity mapping"
+
+      - name: bank_acct_num
+        data_type: varchar
+        description: "Bank account number associated with the legal entity"
+
+      - name: lin_of_bus_cd
+        data_type: varchar
+        description: "Line of business code for the legal entity"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__lgl_ent_r
+    description: "Staged data for Legal Entity Reference table from IRMSODS"
+    columns:
+      - name: dw_lgl_ent_r_row_id
+        data_type: number
+        description: "Unique identifier for each row in the Legal Entity Reference table"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Code representing the legal entity"
+
+      - name: lgl_ent_desc
+        data_type: varchar
+        description: "Description of the legal entity"
+
+      - name: clnt_src
+        data_type: varchar
+        description: "Client source associated with the legal entity"
+
+      - name: oac_bus_ent_id
+        data_type: number
+        description: "OAC (Oracle Accounting Cloud) business entity identifier"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__lin_of_bus_r
+    description: "Staging table for line of business reference data from IRMS ODS"
+    columns:
+      - name: dw_lin_of_bus_r_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse line of business reference table"
+
+      - name: lin_of_bus_cd
+        data_type: varchar
+        description: "Line of business code"
+
+      - name: lin_of_bus_desc
+        data_type: varchar
+        description: "Description of the line of business"
+
+      - name: org_brnch
+        data_type: varchar
+        description: "Organization branch"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__lob_revnu_mpng
+    description: "Staging table for line of business revenue mapping from IRMS ODS"
+    columns:
+      - name: dw_lob_revnu_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse LOB revenue mapping table"
+
+      - name: lob_revnu_id
+        data_type: number
+        description: "Line of business revenue ID"
+
+      - name: lin_of_bus_cd
+        data_type: varchar
+        description: "Line of business code"
+
+      - name: revnu_typ_cd
+        data_type: varchar
+        description: "Revenue type code"
+
+      - name: eff_dt
+        data_type: date
+        description: "Effective date of the mapping"
+
+      - name: trmntn_dt
+        data_type: date
+        description: "Termination date of the mapping"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__ns_cc_lctn_mpng
+    description: "Staging table for NetSuite cost center location mapping from IRMS ODS"
+    columns:
+      - name: dw_ns_cc_lctn_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse NetSuite cost center location mapping table"
+
+      - name: cost_cntr
+        data_type: varchar
+        description: "Cost center code"
+
+      - name: ns_lctn_cd
+        data_type: varchar
+        description: "NetSuite location code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__ns_class_r
+    description: "Staging table for NetSuite class reference data from IRMS ODS"
+    columns:
+      - name: dw_ns_class_r_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse NetSuite class reference table"
+
+      - name: ns_class_cd
+        data_type: varchar
+        description: "NetSuite class code"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "Description of the NetSuite class"
+
+      - name: ns_class_intrnl_id
+        data_type: number
+        description: "NetSuite class internal ID"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Legal entity code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__ns_dept_mpng
+    description: "Staging table for NetSuite department mapping from IRMS ODS"
+    columns:
+      - name: dw_ns_dept_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse NetSuite department mapping table"
+
+      - name: ns_gl_acct_cd
+        data_type: varchar
+        description: "NetSuite GL account code"
+
+      - name: ns_dept_cd
+        data_type: varchar
+        description: "NetSuite department code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__ns_dept_r
+    description: "Staging table for NetSuite department reference data from IRMS ODS"
+    columns:
+      - name: dw_ns_dept_r_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse NetSuite department reference table"
+
+      - name: ns_dept_cd
+        data_type: varchar
+        description: "NetSuite department code"
+
+      - name: ns_dept_desc
+        data_type: varchar
+        description: "Description of the NetSuite department"
+
+      - name: ns_dept_intrnl_id
+        data_type: number
+        description: "NetSuite department internal ID"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Legal entity code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__ns_lctn_r
+    description: "Staging table for NetSuite location reference data from IRMS ODS"
+    columns:
+      - name: dw_ns_lctn_r_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse NetSuite location reference table"
+
+      - name: ns_lctn_cd
+        data_type: varchar
+        description: "NetSuite location code"
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: "Description of the NetSuite location"
+
+      - name: ns_lctn_intrnl_id
+        data_type: number
+        description: "NetSuite location internal ID"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Legal entity code"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__process
+    description: "Staging table for process data from IRMS ODS"
+    columns:
+      - name: dw_process_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse process table"
+
+      - name: prcs_id
+        data_type: number
+        description: "Process ID"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Description of the process"
+
+      - name: step_prcssg_flg
+        data_type: varchar
+        description: "Step processing flag"
+
+      - name: multi_prcs_flg
+        data_type: varchar
+        description: "Multi-process flag"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__product
+    description: "Staging table for product data from IRMS ODS"
+    columns:
+      - name: dw_product_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse product table"
+
+      - name: irms_prodt_id
+        data_type: number
+        description: "IRMS product ID"
+
+      - name: prodt_desc
+        data_type: varchar
+        description: "Product description"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID associated with the product"
+
+      - name: lob_revnu_id
+        data_type: number
+        description: "Line of business revenue ID"
+
+      - name: val_typ_bllng_calctn_id
+        data_type: number
+        description: "Value type billing calculation ID"
+
+      - name: rsn_typ_cd
+        data_type: varchar
+        description: "Reason type code"
+
+      - name: gl_acct_num
+        data_type: number
+        description: "GL account number"
+
+      - name: gl_sub_acct_num
+        data_type: varchar
+        description: "GL sub-account number"
+
+      - name: eff_dt
+        data_type: date
+        description: "Effective date of the product"
+
+      - name: trmntn_dt
+        data_type: date
+        description: "Termination date of the product"
+
+      - name: deflt_flg
+        data_type: varchar
+        description: "Default flag"
+
+      - name: erp_acct_id
+        data_type: number
+        description: "ERP account ID"
+
+      - name: erp_prodt
+        data_type: varchar
+        description: "ERP product code"
+
+      - name: erp_proj
+        data_type: varchar
+        description: "ERP project code"
+
+      - name: gl_ora_major_cd
+        data_type: varchar
+        description: "GL Oracle major code"
+
+      - name: gl_ora_minor_cd
+        data_type: varchar
+        description: "GL Oracle minor code"
+
+      - name: gl_ora_prodt_cd
+        data_type: varchar
+        description: "GL Oracle product code"
+
+      - name: gl_ora_segment
+        data_type: varchar
+        description: "GL Oracle segment"
+
+      - name: ns_gl_acct_cd
+        data_type: varchar
+        description: "NetSuite GL account code"
+
+      - name: ns_class_cd
+        data_type: varchar
+        description: "NetSuite class code"
+
+      - name: cost_cntr
+        data_type: varchar
+        description: "Cost center"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__remittance
+    description: "Staging table for remittance data from IRMS ODS"
+    columns:
+      - name: dw_remittance_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse remittance table"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction ID associated with the remittance"
+
+      - name: bk_to_bus_ent_id
+        data_type: number
+        description: "Book-to business entity ID"
+
+      - name: trans_media_cd
+        data_type: varchar
+        description: "Transaction media code"
+
+      - name: dpst_id
+        data_type: number
+        description: "Deposit ID"
+
+      - name: check_num
+        data_type: varchar
+        description: "Check number"
+
+      - name: check_dt
+        data_type: date
+        description: "Check date"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__retro_dme_stgng_que_dtl
+    description: "Staging model for detailed retrospective Durable Medical Equipment (DME) staging queue data from IRMSODS"
+    columns:
+      - name: dw_retro_dme_stgng_que_dtl_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse DME staging queue detail table"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key, uniquely identifying the claim"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Sequence number for the source claim"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the data processing run"
+
+      - name: svc_itm_ln_ordr
+        data_type: number
+        description: "Service item line order number"
+
+      - name: bill_id
+        data_type: varchar
+        description: "Bill identifier"
+
+      - name: bill_ln_itm_id
+        data_type: varchar
+        description: "Bill line item identifier"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction identifier"
+
+      - name: bill_id_trx
+        data_type: varchar
+        description: "Transaction bill identifier"
+
+      - name: svc_dt_from
+        data_type: date
+        description: "Service start date"
+
+      - name: svc_dt_to
+        data_type: date
+        description: "Service end date"
+
+      - name: svc_typ
+        data_type: varchar
+        description: "Service type"
+
+      - name: prov_pl_of_svc_cd
+        data_type: varchar
+        description: "Provider place of service code"
+
+      - name: bill_rsn_cd
+        data_type: varchar
+        description: "Billing reason code"
+
+      - name: qty
+        data_type: number
+        description: "Quantity of service or item"
+
+      - name: unt_msr
+        data_type: varchar
+        description: "Unit of measure"
+
+      - name: itm_desc
+        data_type: varchar
+        description: "Item description"
+
+      - name: med_cd
+        data_type: varchar
+        description: "Medical code"
+
+      - name: rev_cd
+        data_type: varchar
+        description: "Revenue code"
+
+      - name: modfr_cd_1
+        data_type: varchar
+        description: "Modifier code 1"
+
+      - name: modfr_cd_2
+        data_type: varchar
+        description: "Modifier code 2"
+
+      - name: adj_rsn_cd_1
+        data_type: varchar
+        description: "Adjustment reason code 1"
+
+      - name: adj_rsn_cd_2
+        data_type: varchar
+        description: "Adjustment reason code 2"
+
+      - name: adj_rsn_cd_3
+        data_type: varchar
+        description: "Adjustment reason code 3"
+
+      - name: svc_itm_bill_amnt
+        data_type: number
+        description: "Service item billed amount"
+
+      - name: net_bill_amnt
+        data_type: number
+        description: "Net billed amount"
+
+      - name: svc_itm_cost_amnt
+        data_type: number
+        description: "Service item cost amount"
+
+      - name: net_cost_amnt
+        data_type: number
+        description: "Net cost amount"
+
+      - name: svc_itm_fs_amnt
+        data_type: number
+        description: "Service item fee schedule amount"
+
+      - name: net_fs_amnt
+        data_type: number
+        description: "Net fee schedule amount"
+
+      - name: svc_itm_fs_amnt_rdctn
+        data_type: number
+        description: "Service item fee schedule amount reduction"
+
+      - name: net_fs_amnt_rdctn
+        data_type: number
+        description: "Net fee schedule amount reduction"
+
+      - name: svc_itm_ppo_amnt_rdctn
+        data_type: number
+        description: "Service item PPO amount reduction"
+
+      - name: net_ppo_amnt_rdctn
+        data_type: number
+        description: "Net PPO amount reduction"
+
+      - name: svc_itm_prv_bll_chrg_amnt
+        data_type: number
+        description: "Service item previous billed charge amount"
+
+      - name: net_prv_bll_chrg_amnt
+        data_type: number
+        description: "Net previous billed charge amount"
+
+      - name: svc_itm_bill_amnt_adj
+        data_type: number
+        description: "Service item billed amount adjustment"
+
+      - name: svc_itm_cost_amnt_adj
+        data_type: number
+        description: "Service item cost amount adjustment"
+
+      - name: last_upd_dt
+        data_type: date
+        description: "Date of last update in the source system"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__retro_dme_stgng_que
+    description: "Staging model for retrospective Durable Medical Equipment (DME) staging queue data from IRMSODS"
+    columns:
+      - name: dw_retro_dme_stgng_que_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse DME staging queue table"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key, uniquely identifying the claim"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Sequence number for the source claim"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the data processing run"
+
+      - name: doc_id
+        data_type: varchar
+        description: "Document identifier"
+
+      - name: csq_status_cd
+        data_type: varchar
+        description: "Status code for the claim in the staging queue"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: src_prodt_cd
+        data_type: varchar
+        description: "Source product code"
+
+      - name: bill_msg_cd
+        data_type: varchar
+        description: "Billing message code"
+
+      - name: bill_typ
+        data_type: varchar
+        description: "Billing type"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "Accounting period identifier"
+
+      - name: bid
+        data_type: varchar
+        description: "Bid identifier"
+
+      - name: bill_id
+        data_type: varchar
+        description: "Bill identifier"
+
+      - name: bill_id_retro
+        data_type: varchar
+        description: "Retrospective bill identifier"
+
+      - name: bill_id_trx
+        data_type: varchar
+        description: "Transaction bill identifier"
+
+      - name: orig_clnt_bill_id
+        data_type: varchar
+        description: "Original client bill identifier"
+
+      - name: rd_clnt_grp
+        data_type: varchar
+        description: "Client group for retrospective DME"
+
+      - name: rd_clnt_id
+        data_type: varchar
+        description: "Client identifier for retrospective DME"
+
+      - name: ae_id
+        data_type: number
+        description: "Additional entity identifier"
+
+      - name: ae_acro
+        data_type: varchar
+        description: "Additional entity acronym"
+
+      - name: adjtr_last_nm
+        data_type: varchar
+        description: "Adjuster's last name"
+
+      - name: adjtr_first_nm
+        data_type: varchar
+        description: "Adjuster's first name"
+
+      - name: adjtr_email_addr
+        data_type: varchar
+        description: "Adjuster's email address"
+
+      - name: clm_num
+        data_type: varchar
+        description: "Claim number"
+
+      - name: inj_dt
+        data_type: date
+        description: "Injury date"
+
+      - name: patnt_first_nm
+        data_type: varchar
+        description: "Patient's first name"
+
+      - name: patnt_mi
+        data_type: varchar
+        description: "Patient's middle initial"
+
+      - name: patnt_last_nm
+        data_type: varchar
+        description: "Patient's last name"
+
+      - name: jursdctn_state_cd
+        data_type: varchar
+        description: "Jurisdiction state code"
+
+      - name: patnt_ssn
+        data_type: varchar
+        description: "Patient's Social Security Number"
+
+      - name: patnt_ssn_enc
+        data_type: varchar
+        description: "Encrypted patient's Social Security Number"
+
+      - name: patnt_accnt_num
+        data_type: varchar
+        description: "Patient's account number"
+
+      - name: emplyr_nm
+        data_type: varchar
+        description: "Employer name"
+
+      - name: prov_nm
+        data_type: varchar
+        description: "Provider name"
+
+      - name: prov_tin
+        data_type: varchar
+        description: "Provider Tax Identification Number"
+
+      - name: prov_addr_line_1
+        data_type: varchar
+        description: "Provider address line 1"
+
+      - name: prov_addr_line_2
+        data_type: varchar
+        description: "Provider address line 2"
+
+      - name: prov_city
+        data_type: varchar
+        description: "Provider city"
+
+      - name: prov_state
+        data_type: varchar
+        description: "Provider state"
+
+      - name: prov_zip
+        data_type: varchar
+        description: "Provider ZIP code"
+
+      - name: prov_lctn_id
+        data_type: varchar
+        description: "Provider location identifier"
+
+      - name: prov_lctn_nm
+        data_type: varchar
+        description: "Provider location name"
+
+      - name: rnd_prov_frst_nm
+        data_type: varchar
+        description: "Rendering provider's first name"
+
+      - name: rnd_prov_lst_nm
+        data_type: varchar
+        description: "Rendering provider's last name"
+
+      - name: rnd_prov_npi
+        data_type: varchar
+        description: "Rendering provider's National Provider Identifier"
+
+      - name: rnd_prov_lcns_nm
+        data_type: varchar
+        description: "Rendering provider's license number"
+
+      - name: rnd_prov_txnmy
+        data_type: varchar
+        description: "Rendering provider's taxonomy"
+
+      - name: srvc_fclty_nm
+        data_type: varchar
+        description: "Service facility name"
+
+      - name: prov_soj
+        data_type: varchar
+        description: "Provider state of jurisdiction"
+
+      - name: nrs_cs_mgr
+        data_type: varchar
+        description: "Nurse case manager"
+
+      - name: sls_prsn
+        data_type: varchar
+        description: "Sales person"
+
+      - name: dme_type
+        data_type: varchar
+        description: "DME (Durable Medical Equipment) type"
+
+      - name: inv_seq_num
+        data_type: number
+        description: "Invoice sequence number"
+
+      - name: inv_blld_dt
+        data_type: date
+        description: "Invoice billed date"
+
+      - name: inv_bill_ttl_amnt_orig
+        data_type: number
+        description: "Original total amount of the invoice bill"
+
+      - name: inv_bill_ttl_amnt
+        data_type: number
+        description: "Current total amount of the invoice bill"
+
+      - name: inv_bill_ttl_amnt_adj
+        data_type: number
+        description: "Adjusted total amount of the invoice bill"
+
+      - name: po_seq_num
+        data_type: number
+        description: "Purchase Order sequence number"
+
+      - name: po_id
+        data_type: number
+        description: "Purchase Order identifier"
+
+      - name: po_typ
+        data_type: varchar
+        description: "Purchase Order type"
+
+      - name: po_src
+        data_type: varchar
+        description: "Purchase Order source"
+
+      - name: po_ownr
+        data_type: varchar
+        description: "Purchase Order owner"
+
+      - name: po_sts
+        data_type: varchar
+        description: "Purchase Order status"
+
+      - name: po_svc_typ
+        data_type: varchar
+        description: "Purchase Order service type"
+
+      - name: inv_po_ttl_amnt
+        data_type: number
+        description: "Current total amount of the invoice Purchase Order"
+
+      - name: inv_po_ttl_amnt_orig
+        data_type: number
+        description: "Original total amount of the invoice Purchase Order"
+
+      - name: inv_po_ttl_amnt_adj
+        data_type: number
+        description: "Adjusted total amount of the invoice Purchase Order"
+
+      - name: create_dt
+        data_type: date
+        description: "Date when the record was created in the source system"
+
+      - name: update_dt
+        data_type: date
+        description: "Date when the record was last updated in the source system"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+      - name: form_typ
+        data_type: varchar
+        description: "Form type"
+
+      - name: wc_clm_id
+        data_type: varchar
+        description: "Workers' Compensation claim identifier"
+
+  - name: stg_irmsods__run_log
+    description: "Staging table for run log data from IRMS ODS"
+    columns:
+      - name: dw_run_log_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse run log table"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID"
+
+      - name: prcs_id
+        data_type: number
+        description: "Process ID"
+
+      - name: sec_usr_id
+        data_type: number
+        description: "Security user ID"
+
+      - name: strt_dt
+        data_type: date
+        description: "Start date of the run"
+
+      - name: last_cmmt_dt
+        data_type: date
+        description: "Last commit date"
+
+      - name: stop_dt
+        data_type: date
+        description: "Stop date of the run"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__sec_usr
+    description: "Staging table for security user data from IRMS ODS"
+    columns:
+      - name: dw_sec_usr_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse security user table"
+
+      - name: sec_usr_id
+        data_type: number
+        description: "Security user ID"
+
+      - name: data_ownr_cd
+        data_type: varchar
+        description: "Data owner code"
+
+      - name: run_id
+        data_type: number
+        description: "Run ID associated with the security user"
+
+      - name: usr_login_nm_cd
+        data_type: varchar
+        description: "User login name code"
+
+      - name: sec_usr_nm
+        data_type: varchar
+        description: "Security user name"
+
+      - name: usr_login_password
+        data_type: varchar
+        description: "User login password (encrypted)"
+
+      - name: reset_password_flg
+        data_type: varchar
+        description: "Flag indicating if password reset is required"
+
+      - name: intrnl_usr_flg
+        data_type: varchar
+        description: "Flag indicating if the user is internal"
+
+      - name: eff_dt
+        data_type: date
+        description: "Effective date of the security user"
+
+      - name: trmntn_dt
+        data_type: date
+        description: "Termination date of the security user"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__trns_comnt
+    description: "Staging table for transaction comments from IRMS ODS"
+    columns:
+      - name: dw_trns_comnt_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse transaction comment table"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction ID associated with the comment"
+
+      - name: applctn_comnt_id
+        data_type: number
+        description: "Application comment ID"
+
+      - name: intrnl_extrnl_flg
+        data_type: varchar
+        description: "Flag indicating if the comment is internal or external"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__val_typ_bllng_calctn_mpng
+    description: "Staging table for value type billing calculation mapping from IRMS ODS"
+    columns:
+      - name: dw_val_typ_bllng_calctn_mpng_row_id
+        data_type: number
+        description: "Unique identifier for each row in the data warehouse value type billing calculation mapping table"
+
+      - name: val_typ_bllng_calctn_id
+        data_type: number
+        description: "Value type billing calculation ID"
+
+      - name: val_typ_cd
+        data_type: varchar
+        description: "Value type code"
+
+      - name: bllng_calctn_basis_cd
+        data_type: varchar
+        description: "Billing calculation basis code"
+
+      - name: eff_dt
+        data_type: date
+        description: "Effective date of the mapping"
+
+      - name: trmntn_dt
+        data_type: date
+        description: "Termination date of the mapping"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date when the record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date when the record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data integrity verification"
+
+  - name: stg_irmsods__wrkng_rcvbl_by_file
+    description: "Staging table for working receivable file for mapping from IRMS ODS"
+    columns:
+      - name: dw_wrkng_rcvbl_by_file_row_id
+        data_type: number
+        description: "Primary key for the working receivable by file table"
+
+      - name: run_id
+        data_type: number
+        description: "Identifier for the processing run"
+
+      - name: applctn_comnt_desc
+        data_type: varchar
+        description: "Application comment description"
+
+      - name: bllng_id
+        data_type: number
+        description: "Billing identifier"
+
+      - name: seq_num
+        data_type: number
+        description: "Sequence number"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "Accounting period identifier"
+
+      - name: intrnl_extrnl_flg
+        data_type: varchar
+        description: "Flag indicating internal or external status (I/E)"
+
+      - name: rec_indc_flg
+        data_type: varchar
+        description: "Record indicator flag"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Business entity ID for billing"
+
+      - name: bk_to_bus_ent_id
+        data_type: number
+        description: "Business entity ID for booking"
+
+      - name: irms_prodt_id
+        data_type: number
+        description: "IRMS product identifier"
+
+      - name: acctg_dt
+        data_type: date
+        description: "Accounting date"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service"
+
+      - name: prodt_string
+        data_type: varchar
+        description: "Product string identifier"
+
+      - name: trns_amnt
+        data_type: number
+        description: "Transaction amount"
+
+      - name: agng_dt
+        data_type: date
+        description: "Aging date"
+
+      - name: extrnl_inv_link
+        data_type: varchar
+        description: "External invoice link"
+
+      - name: fnlzd_dt
+        data_type: date
+        description: "Finalized date"
+
+      - name: inv_num
+        data_type: varchar
+        description: "Invoice number"
+
+      - name: err_string
+        data_type: varchar
+        description: "Error string details"
+
+      - name: dw_created_dt
+        data_type: date
+        description: "Date record was created in the data warehouse"
+
+      - name: dw_updated_dt
+        data_type: date
+        description: "Date record was last updated in the data warehouse"
+
+      - name: dw_chk_sum_key
+        data_type: varchar
+        description: "Checksum key for data validation"
+
+
+  - name: stg_irmsods__rollup
+    columns:
+      - name: purps_id
+        data_type: number
+
+      - name: rollup_lvl
+        data_type: number
+
+      - name: child_num
+        data_type: number
+
+      - name: parnt_num
+        data_type: number
+
+      - name: trmntn_dt
+        data_type: date
+
+  - name: stg_irmsods__ns_gl_acct_r
+    columns:
+      - name: DW_NS_GL_ACCT_R_ROW_ID
+        data_type: number
+
+      - name: NS_GL_ACCT_CD
+        data_type: number
+
+      - name: NS_GL_ACCT_DESC
+        data_type: varchar
+
+      - name: NS_GL_ACCT_INTRNL_ID
+        data_type: number
+
+      - name: LGL_ENT_CD
+        data_type: number
+
+      - name: JE_CATG
+        data_type: varchar
+
+  - name: stg_irmsods__dme_clm_stgng_que
+    description: "staging table for dme (durable medical equipment) claims processing queue"
+    columns:
+      - name: src_clm_key
+        data_type: varchar
+        description: "source claim key identifier"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "source claim sequence number"
+
+      - name: run_id
+        data_type: number
+        description: "batch run identifier"
+
+      - name: csq_status_cd
+        data_type: varchar
+        description: "claim staging queue status code"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "accounting period identifier"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "source system code"
+
+      - name: rec_id
+        data_type: varchar
+        description: "record identifier"
+
+      - name: ae_id
+        data_type: varchar
+        description: "account executive identifier"
+
+      - name: ae_nm
+        data_type: varchar
+        description: "account executive name"
+
+      - name: blng_addr_line1
+        data_type: varchar
+        description: "billing address line 1"
+
+      - name: blng_addr_line2
+        data_type: varchar
+        description: "billing address line 2"
+
+      - name: blng_city_nm
+        data_type: varchar
+        description: "billing city name"
+
+      - name: blng_state_cd
+        data_type: varchar
+        description: "billing state code"
+
+      - name: blng_zip_cd
+        data_type: varchar
+        description: "billing zip code"
+
+      - name: blng_ph_num
+        data_type: varchar
+        description: "billing phone number"
+
+      - name: blng_fax_num
+        data_type: varchar
+        description: "billing fax number"
+
+      - name: blng_cntct
+        data_type: varchar
+        description: "billing contact person"
+
+      - name: fs_gatekeeper_id
+        data_type: varchar
+        description: "fee schedule gatekeeper identifier"
+
+      - name: adjtr_last_nm
+        data_type: varchar
+        description: "adjuster last name"
+
+      - name: adjtr_first_nm
+        data_type: varchar
+        description: "adjuster first name"
+
+      - name: adjtr_email_addr
+        data_type: varchar
+        description: "adjuster email address"
+
+      - name: adjtr_ph_num
+        data_type: varchar
+        description: "adjuster phone number"
+
+      - name: fs_payer_id
+        data_type: varchar
+        description: "fee schedule payer identifier"
+
+      - name: clm_num
+        data_type: varchar
+        description: "claim number"
+
+      - name: inj_dt
+        data_type: date
+        description: "injury date"
+
+      - name: jursdctn_state_cd
+        data_type: varchar
+        description: "jurisdiction state code"
+
+      - name: cardhldr_id
+        data_type: varchar
+        description: "cardholder identifier"
+
+      - name: patnt_ssn
+        data_type: varchar
+        description: "patient social security number"
+
+      - name: patnt_dob
+        data_type: varchar
+        description: "patient date of birth"
+
+      - name: patnt_last_nm
+        data_type: varchar
+        description: "patient last name"
+
+      - name: patnt_first_nm
+        data_type: varchar
+        description: "patient first name"
+
+      - name: patnt_addr_line_1
+        data_type: varchar
+        description: "patient address line 1"
+
+      - name: patnt_addr_line_2
+        data_type: varchar
+        description: "patient address line 2"
+
+      - name: patnt_city
+        data_type: varchar
+        description: "patient city"
+
+      - name: patnt_state
+        data_type: varchar
+        description: "patient state"
+
+      - name: patnt_zip
+        data_type: varchar
+        description: "patient zip code"
+
+      - name: patnt_ph_num
+        data_type: varchar
+        description: "patient phone number"
+
+      - name: prov_nm
+        data_type: varchar
+        description: "provider name"
+
+      - name: prov_tin
+        data_type: varchar
+        description: "provider tax identification number"
+
+      - name: prov_addr_line_1
+        data_type: varchar
+        description: "provider address line 1"
+
+      - name: prov_addr_line_2
+        data_type: varchar
+        description: "provider address line 2"
+
+      - name: prov_city
+        data_type: varchar
+        description: "provider city"
+
+      - name: prov_state
+        data_type: varchar
+        description: "provider state"
+
+      - name: prov_zip
+        data_type: varchar
+        description: "provider zip code"
+
+      - name: prov_cont_ph_num
+        data_type: varchar
+        description: "provider contact phone number"
+
+      - name: svc_from_dt
+        data_type: date
+        description: "service from date"
+
+      - name: svc_to_dt
+        data_type: date
+        description: "service to date"
+
+      - name: svc_item_cd
+        data_type: varchar
+        description: "service item code"
+
+      - name: svc_item_desc
+        data_type: varchar
+        description: "service item description"
+
+      - name: paid_qty
+        data_type: varchar
+        description: "paid quantity"
+
+      - name: prodt_cost
+        data_type: number
+        description: "product cost"
+
+      - name: prodt_price
+        data_type: number
+        description: "product price"
+
+      - name: fee_sched_price
+        data_type: number
+        description: "fee schedule price"
+
+      - name: fee_sched_used
+        data_type: varchar
+        description: "fee schedule used indicator"
+
+      - name: prov_bill_item_rate_ttl_amnt
+        data_type: number
+        description: "provider bill item rate total amount"
+
+      - name: prchs_rentl_cd
+        data_type: varchar
+        description: "purchase/rental code"
+
+      - name: supl_svc_num
+        data_type: varchar
+        description: "supplemental service number"
+
+      - name: dme_type
+        data_type: varchar
+        description: "durable medical equipment type"
+
+      - name: svc_item_rate_ttl_amnt
+        data_type: number
+        description: "service item rate total amount"
+
+      - name: svc_item_oon
+        data_type: varchar
+        description: "service item out of network indicator"
+
+      - name: svc_item_bill_amnt
+        data_type: number
+        description: "service item bill amount"
+
+      - name: clnt_svc_flg
+        data_type: varchar
+        description: "client service flag"
+
+      - name: rev_cd
+        data_type: varchar
+        description: "revenue code"
+
+      - name: diag_cd
+        data_type: varchar
+        description: "diagnosis code"
+
+      - name: prov_first_nm
+        data_type: varchar
+        description: "provider first name"
+
+      - name: prov_last_nm
+        data_type: varchar
+        description: "provider last name"
+
+      - name: prov_dea
+        data_type: varchar
+        description: "provider dea number"
+
+      - name: prov_st_lcns_nbr
+        data_type: varchar
+        description: "provider state license number"
+
+      - name: emplyr_nm
+        data_type: varchar
+        description: "employer name"
+
+      - name: emplyr_addr_line1
+        data_type: varchar
+        description: "employer address line 1"
+
+      - name: emplyr_line2
+        data_type: varchar
+        description: "employer address line 2"
+
+      - name: emplyr_city
+        data_type: varchar
+        description: "employer city"
+
+      - name: emplyr_state
+        data_type: varchar
+        description: "employer state"
+
+      - name: emplyr_zip
+        data_type: varchar
+        description: "employer zip code"
+
+      - name: emplyr_ph_num
+        data_type: varchar
+        description: "employer phone number"
+
+      - name: svc_item_id
+        data_type: varchar
+        description: "service item identifier"
+
+      - name: prv_npi
+        data_type: varchar
+        description: "provider national provider identifier"
+
+      - name: prov_bill_rcvd_dt
+        data_type: date
+        description: "provider bill received date"
+
+      - name: prov_check_mailed_dt
+        data_type: date
+        description: "provider check mailed date"
+
+      - name: prov_pl_of_svc_cd
+        data_type: varchar
+        description: "provider place of service code"
+
+      - name: patnt_gender_cd
+        data_type: varchar
+        description: "patient gender code"
+
+      - name: modfr_cd
+        data_type: varchar
+        description: "modifier code"
+
+      - name: polcy_eff_dt
+        data_type: date
+        description: "policy effective date"
+
+      - name: polcy_num
+        data_type: varchar
+        description: "policy number"
+
+      - name: ncci_carr_cd
+        data_type: varchar
+        description: "ncci carrier code"
+
+      - name: paid_unit_of_msr_cd
+        data_type: varchar
+        description: "paid unit of measure code"
+
+      - name: secnd_modfr_cd0
+        data_type: varchar
+        description: "secondary modifier code 0"
+
+      - name: secnd_modfr_cd1
+        data_type: varchar
+        description: "secondary modifier code 1"
+
+      - name: secnd_modfr_cd2
+        data_type: varchar
+        description: "secondary modifier code 2"
+
+      - name: secnd_modfr_cd3
+        data_type: varchar
+        description: "secondary modifier code 3"
+
+      - name: secnd_modfr_cd4
+        data_type: varchar
+        description: "secondary modifier code 4"
+
+      - name: secnd_modfr_cd5
+        data_type: varchar
+        description: "secondary modifier code 5"
+
+      - name: secnd_modfr_cd6
+        data_type: varchar
+        description: "secondary modifier code 6"
+
+      - name: addl_diag_cd0
+        data_type: varchar
+        description: "additional diagnosis code 0"
+
+      - name: addl_diag_cd1
+        data_type: varchar
+        description: "additional diagnosis code 1"
+
+      - name: addl_diag_cd2
+        data_type: varchar
+        description: "additional diagnosis code 2"
+
+      - name: svc_item_rate_each_amnt
+        data_type: number
+        description: "service item rate each amount"
+
+      - name: be_id
+        data_type: varchar
+        description: "business entity identifier"
+
+      - name: clnt_adjtr_id
+        data_type: varchar
+        description: "client adjuster identifier"
+
+      - name: prov_txnmy
+        data_type: varchar
+        description: "provider taxonomy"
+
+      - name: prov_mid_init
+        data_type: varchar
+        description: "provider middle initial"
+
+      - name: svc_fclty
+        data_type: varchar
+        description: "service facility"
+
+      - name: svc_fclty_lctn
+        data_type: varchar
+        description: "service facility location"
+
+      - name: confrmtn_num
+        data_type: varchar
+        description: "confirmation number"
+
+      - name: wrt_off_rsn_cd
+        data_type: varchar
+        description: "write-off reason code"
+
+      - name: wrt_off_rsn_desc
+        data_type: varchar
+        description: "write-off reason description"
+
+      - name: dscnt_fee_sched_price
+        data_type: number
+        description: "discounted fee schedule price"
+
+      - name: addl_diag_flag0
+        data_type: varchar
+        description: "additional diagnosis flag 0"
+
+      - name: addl_diag_flag1
+        data_type: varchar
+        description: "additional diagnosis flag 1"
+
+      - name: addl_diag_flag2
+        data_type: varchar
+        description: "additional diagnosis flag 2"
+
+      - name: addl_diag_flag3
+        data_type: varchar
+        description: "additional diagnosis flag 3"
+
+      - name: addl_diag_cd4
+        data_type: varchar
+        description: "additional diagnosis code 4"
+
+      - name: addl_diag_flag4
+        data_type: varchar
+        description: "additional diagnosis flag 4"
+
+      - name: addl_diag_cd5
+        data_type: varchar
+        description: "additional diagnosis code 5"
+
+      - name: addl_diag_flag5
+        data_type: varchar
+        description: "additional diagnosis flag 5"
+
+      - name: addl_diag_cd6
+        data_type: varchar
+        description: "additional diagnosis code 6"
+
+      - name: addl_diag_flag6
+        data_type: varchar
+        description: "additional diagnosis flag 6"
+
+      - name: addl_diag_cd7
+        data_type: varchar
+        description: "additional diagnosis code 7"
+
+      - name: addl_diag_flag7
+        data_type: varchar
+        description: "additional diagnosis flag 7"
+
+      - name: addl_diag_cd8
+        data_type: varchar
+        description: "additional diagnosis code 8"
+
+      - name: addl_diag_flag8
+        data_type: varchar
+        description: "additional diagnosis flag 8"
+
+      - name: addl_diag_cd9
+        data_type: varchar
+        description: "additional diagnosis code 9"
+
+      - name: addl_diag_flag9
+        data_type: varchar
+        description: "additional diagnosis flag 9"
+
+      - name: addl_diag_cd10
+        data_type: varchar
+        description: "additional diagnosis code 10"
+
+      - name: addl_diag_flag10
+        data_type: varchar
+        description: "additional diagnosis flag 10"
+
+      - name: addl_diag_cd11
+        data_type: varchar
+        description: "additional diagnosis code 11"
+
+      - name: addl_diag_flag11
+        data_type: varchar
+        description: "additional diagnosis flag 11"
+
+      - name: recon_key
+        data_type: varchar
+        description: "reconciliation key"
+
+      - name: clnt_bill_id
+        data_type: varchar
+        description: "client bill identifier"
+
+      - name: bill_id
+        data_type: varchar
+        description: "bill identifier"
+
+      - name: bill_ln_itm_id
+        data_type: varchar
+        description: "bill line item identifier"
+
+      - name: rnd_prov_frst_nm
+        data_type: varchar
+        description: "rendering provider first name"
+
+      - name: rnd_prov_lst_nm
+        data_type: varchar
+        description: "rendering provider last name"
+
+      - name: rnd_prov_npi
+        data_type: varchar
+        description: "rendering provider npi"
+
+      - name: rnd_prov_lcns_nm
+        data_type: varchar
+        description: "rendering provider license name"
+
+      - name: rnd_prov_txnmy
+        data_type: varchar
+        description: "rendering provider taxonomy"
+
+      - name: srvc_fclty_nm
+        data_type: varchar
+        description: "service facility name"
+
+      - name: srvc_fclty_addr_line1
+        data_type: varchar
+        description: "service facility address line 1"
+
+      - name: srvc_fclty_addr_line2
+        data_type: varchar
+        description: "service facility address line 2"
+
+      - name: srvc_fclty_city
+        data_type: varchar
+        description: "service facility city"
+
+      - name: srvc_fclty_state
+        data_type: varchar
+        description: "service facility state"
+
+      - name: srvc_fclty_zip
+        data_type: varchar
+        description: "service facility zip code"
+
+      - name: pst_dt
+        data_type: date
+        description: "post date"
+
+      - name: bid
+        data_type: varchar
+        description: "business identifier"
+
+      - name: inv_tot_adj
+        data_type: number
+        description: "invoice total adjustment"
+
+      - name: inv_seq_num
+        data_type: number
+        description: "invoice sequence number"
+
+      - name: nrs_cs_mgr
+        data_type: varchar
+        description: "nurse case manager"
+
+      - name: sls_prsn
+        data_type: varchar
+        description: "sales person"
+
+      - name: ordr_typ
+        data_type: varchar
+        description: "order type"
+
+      - name: ordr_src
+        data_type: varchar
+        description: "order source"
+
+      - name: ordr_sts
+        data_type: varchar
+        description: "order status"
+
+      - name: bll_typ
+        data_type: varchar
+        description: "bill type"
+
+      - name: srvc_fclty_typ
+        data_type: varchar
+        description: "service facility type"
+
+      - name: prchs_ord_id
+        data_type: number
+        description: "purchase order identifier"
+
+      - name: prchs_ord_ttl
+        data_type: number
+        description: "purchase order total"
+
+      - name: prchs_ord_ttl_org
+        data_type: number
+        description: "purchase order total original"
+
+      - name: prchs_ord_ttl_adj
+        data_type: number
+        description: "purchase order total adjustment"
+
+      - name: prchs_ord_seg
+        data_type: number
+        description: "purchase order segment"
+
+      - name: prov_lctn_id
+        data_type: number
+        description: "provider location identifier"
+
+      - name: srvc_ln
+        data_type: varchar
+        description: "service line"
+
+      - name: ordr_owner
+        data_type: varchar
+        description: "order owner"
+
+      - name: ln_ordr
+        data_type: number
+        description: "line order"
+
+      - name: md_cd
+        data_type: varchar
+        description: "medical code"
+
+      - name: qty
+        data_type: number
+        description: "quantity"
+
+      - name: uom
+        data_type: varchar
+        description: "unit of measure"
+
+      - name: itm_cst_adj
+        data_type: number
+        description: "item cost adjustment"
+
+      - name: itm_blld_adj
+        data_type: number
+        description: "item billed adjustment"
+
+      - name: trn_typ
+        data_type: varchar
+        description: "transaction type"
+
+      - name: resubmit
+        data_type: varchar
+        description: "resubmit indicator"
+
+      - name: create_date
+        data_type: date
+        description: "record creation date"
+
+      - name: update_date
+        data_type: date
+        description: "record update date"
+
+      - name: ttl_whlsl_inv_rt
+        data_type: number
+        description: "total wholesale invoice rate"
+
+      - name: bill_form_cd
+        data_type: varchar
+        description: "bill form code"
+
+      - name: doc_id
+        data_type: varchar
+        description: "document identifier"
+
+      - name: grp_id
+        data_type: number
+        description: "group identifier"
+
+      - name: tob
+        data_type: varchar
+        description: "type of bill"
+
+      - name: clnt_bill_sent_dt
+        data_type: date
+        description: "client bill sent date"
+
+      - name: clm_typ
+        data_type: varchar
+        description: "claim type"
+
+  - name: stg_irmsods__patient
+    description: "Patient information table containing demographic and identification details for individuals in the healthcare system."
+    columns:
+      - name: dw_patient_row_id
+        description: "Unique identifier for each patient record in the data warehouse. Primary key for the patient table."
+        data_type: number
+
+      - name: patient_id
+        description: "Business identifier for the patient. Used for referencing the patient across operational systems."
+        data_type: number
+
+      - name: first_nm
+        description: "Patient's legal first name."
+        data_type: varchar
+
+      - name: mid_init
+        description: "Patient's middle initial or middle name."
+        data_type: varchar
+
+      - name: last_nm
+        description: "Patient's legal last name or surname."
+        data_type: varchar
+
+      - name: dob
+        description: "Patient's date of birth."
+        data_type: date
+
+      - name: tax_rptng_id
+        description: "Tax reporting identifier, typically Social Security Number (SSN) or other government-issued identifier."
+        data_type: varchar
+
+      - name: dw_created_dt
+        description: "Date when the patient record was first created in the data warehouse."
+        data_type: date
+
+      - name: dw_updated_dt
+        description: "Date when the patient record was last updated in the data warehouse."
+        data_type: date
+
+      - name: dw_chk_sum_key
+        description: "Checksum key used for data integrity validation and change detection."
+        data_type: varchar
+
+  - name: stg_irmsods__usr_prcs_rqst
+    description: "User process request table that tracks processing requests and their execution status."
+    columns:
+      - name: dw_usr_prcs_rqst_row_id
+        description: "Unique identifier for each user process request record in the data warehouse. Primary key for the table."
+        data_type: number
+
+      - name: run_id
+        description: "Identifier for the processing run. Forms part of a composite unique key with seq_num."
+        data_type: number
+
+      - name: seq_num
+        description: "Sequence number within a run. Forms part of a composite unique key with run_id."
+        data_type: number
+
+      - name: rqst_typ_cd
+        description: "Code indicating the type of process request."
+        data_type: varchar
+
+      - name: acctg_period_id
+        description: "Identifier for the accounting period associated with this request."
+        data_type: number
+
+      - name: rqst_dt
+        description: "Date when the process request was submitted."
+        data_type: date
+
+      - name: rqst_val_num
+        description: "Numeric value parameter for the request, if applicable."
+        data_type: number
+
+      - name: rqst_val_txt
+        description: "Text value parameter for the request, if applicable."
+        data_type: varchar
+
+      - name: cmpltd_dt
+        description: "Date when the process request was completed."
+        data_type: date
+
+      - name: dw_created_dt
+        description: "Date when the record was first created in the data warehouse."
+        data_type: date
+
+      - name: dw_updated_dt
+        description: "Date when the record was last updated in the data warehouse."
+        data_type: date
+
+      - name: dw_chk_sum_key
+        description: "Checksum key used for data integrity validation and change detection."
+        data_type: varchar
+
+  - name: stg_irmsods__edi_835b
+  - name: stg_irmsods__edi_835s

@@ -1,0 +1,875 @@
+version: 2
+
+models:
+
+  - name: stg_sandpodsdbo__cmosalesforcedata__hist
+    description: Staging model for CMS Salesforce opportunity and quote line data with standardized column names
+    # tests:
+    #  - dbt_utils.unique_combination_of_columns:
+    #      arguments:
+    #        combination_of_columns:
+    #          - opportunity_id_case_safe
+    #          - line_item_id_case_safe
+    #          - quote_line_quote_line_id_case_safe
+    columns:
+      - name: price_book_price_book_name
+        description: Name of the price book associated with the opportunity
+
+      - name: opportunity_id_case_safe
+        description: Case-safe unique identifier for the opportunity
+        tests:
+          - not_null
+
+      - name: line_item_id_case_safe
+        description: Case-safe unique identifier for the opportunity line item
+        tests:
+          - not_null
+
+      - name: quote_line_quote_line_id_case_safe
+        description: Case-safe unique identifier for the quote line
+        tests:
+          - not_null
+
+      - name: quote_line_line_name
+        description: Name or description of the quote line item
+
+      - name: quote_line_required_by_line_name
+        description: Name of the line item that this quote line is required by (dependency)
+
+      - name: package_parent_product_code
+        description: Product code of the parent package if this is part of a bundle
+
+      - name: primary_quote_quote_number
+        description: Quote number of the primary quote associated with the opportunity
+
+      - name: price_book_entry_product_product_code
+        description: Product code from the price book entry
+
+      - name: price_book_entry_product_product_name
+        description: Product name from the price book entry
+
+      - name: opportunity_name
+        description: Name of the sales opportunity
+
+      - name: type
+        description: Type of opportunity (e.g., New Business, Renewal, Upsell)
+
+      - name: opportunity_owner_full_name
+        description: Full name of the sales representative who owns the opportunity
+
+      - name: opportunity_owner_manager
+        description: Manager of the opportunity owner
+
+      - name: account_name_account_name
+        description: Name of the customer account
+
+      - name: account_name_billing_state_province
+        description: Billing state or province for the customer account
+
+      - name: opportunity_line_of_business
+        description: Line of business for the opportunity
+
+      - name: description
+        description: Detailed description of the opportunity
+
+      - name: revenue_start_date
+        description: Date when revenue recognition begins
+
+      - name: stage
+        description: Current sales stage of the opportunity
+
+      - name: created_date
+        description: Date when the opportunity was created
+
+      - name: price_book_entry_product_product_description
+        description: Detailed description of the product from the price book
+
+      - name: price_book_entry_product_unit_of_measure
+        description: Unit of measure for the product (e.g., Each, Hour, Month)
+
+      - name: competition
+        description: Competitors involved in this opportunity
+
+      - name: quantity
+        description: Quantity of the product/service
+
+      - name: cpq_annual_qty
+        description: Annual quantity for CPQ (Configure Price Quote) calculations
+
+      - name: quote_line_billing_frequency
+        description: Billing frequency for the quote line (e.g., Monthly, Quarterly, Annual)
+
+      - name: sales_price
+        description: Unit sales price for the line item
+
+      - name: quote_line_list_price
+        description: List price from the quote line
+
+      - name: quote_line_quote_price
+        description: Quoted price for the line item
+
+      - name: total_price
+        description: Total price for the line item (quantity × sales price)
+
+      - name: amount
+        description: Total opportunity amount
+
+      - name: cpq_acv
+        description: Annual Contract Value calculated by CPQ
+
+      - name: quote_line_quote_line_acv
+        description: Annual Contract Value for the specific quote line
+
+      - name: price_book_entry_product_margin_category
+        description: Margin category classification for the product
+
+      - name: current_vendor
+        description: Current vendor being used by the customer (for competitive situations)
+
+      - name: quote_line_anchor
+        description: Anchor price point for negotiation
+
+      - name: quote_line_target
+        description: Target price point for the quote line
+
+      - name: quote_line_floor
+        description: Floor (minimum) price for the quote line
+
+      - name: quote_line_floor_cm_pct
+        description: Contribution margin percentage at floor price
+
+      - name: quote_line_quote_line_cm_pct
+        description: Contribution margin percentage for the quoted price
+
+      - name: account_name_market_segment
+        description: Market segment of the customer account
+
+      - name: account_name_customer_segment
+        description: Customer segment classification
+
+      - name: account_name_road
+        description: Sales road/route assignment for the account
+
+      - name: price_book_entry_product_rgo_product
+        description: RGO (Revenue Growth Office) product classification
+
+      - name: price_book_entry_product_rgo_sub_product
+        description: RGO sub-product classification
+
+      - name: primary_quote_status
+        description: Status of the primary quote
+
+      - name: close_date
+        description: Expected or actual close date for the opportunity
+
+      - name: quote_line_approvals_required
+        description: Number of approvals required for this quote line
+
+      - name: quote_line_approval_rule_1
+        description: First approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_2
+        description: Second approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_3
+        description: Third approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_4
+        description: Fourth approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_5
+        description: Fifth approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_6
+        description: Sixth approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_7
+        description: Seventh approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_8
+        description: Eighth approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_9
+        description: Ninth approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_10
+        description: Tenth approval rule triggered for this quote line
+
+      - name: quote_line_approval_rule_11
+        description: Approval rule 11 triggered for this quote line
+
+      - name: quote_line_approval_rule_12
+        description: Approval rule 12 triggered for this quote line
+
+      - name: quote_line_approval_rule_13
+        description: Approval rule 13 triggered for this quote line
+
+      - name: quote_line_approval_rule_14
+        description: Approval rule 14 triggered for this quote line
+
+      - name: quote_line_approval_rule_15
+        description: Approval rule 15 triggered for this quote line
+
+      - name: quote_line_approval_rule_16
+        description: Approval rule 16 triggered for this quote line
+
+      - name: quote_line_approval_rule_17
+        description: Approval rule 17 triggered for this quote line
+
+      - name: quote_line_approval_rule_18
+        description: Approval rule 18 triggered for this quote line
+
+      - name: quote_line_approval_rule_19
+        description: Approval rule 19 triggered for this quote line
+
+      - name: quote_line_approval_rule_20
+        description: Approval rule 20 triggered for this quote line
+
+      - name: quote_line_approval_rule_21
+        description: Approval rule 21 triggered for this quote line
+
+      - name: quote_line_approval_rule_22
+        description: Approval rule 22 triggered for this quote line
+
+      - name: quote_line_approval_rule_23
+        description: Approval rule 23 triggered for this quote line
+
+      - name: quote_line_approval_rule_24
+        description: Approval rule 24 triggered for this quote line
+
+      - name: quote_line_approval_rule_25
+        description: Approval rule 25 triggered for this quote line
+
+      - name: quote_line_approval_rule_26
+        description: Approval rule 26 triggered for this quote line
+
+      - name: quote_line_approval_rule_27
+        description: Approval rule 27 triggered for this quote line
+
+      - name: quote_line_approval_rule_28
+        description: Approval rule 28 triggered for this quote line
+
+      - name: quote_line_approval_rule_29
+        description: Approval rule 29 triggered for this quote line
+
+      - name: quote_line_approval_rule_30
+        description: Approval rule 30 triggered for this quote line
+
+      - name: quote_line_approval_rule_31
+        description: Approval rule 31 triggered for this quote line
+
+      - name: quote_line_approval_rule_32
+        description: Approval rule 32 triggered for this quote line
+
+      - name: quote_line_approval_rule_33
+        description: Approval rule 33 triggered for this quote line
+
+  - name: stg_sandpodsdbo__dealdashboardv2__hist
+    description: >
+      Comprehensive deal tracking dashboard data that includes pricing information, approval workflow stages, 
+      financial metrics, and deal lifecycle details. This model provides a unified view of deals across the 
+      organization for analysis and reporting purposes.
+    # tests: # TODO: Re-enable after we clean up dups at the source
+    #  - dbt_utils.unique_combination_of_columns:
+    #      arguments:
+    #        combination_of_columns:
+    #          - dealid
+    #          - sfproductid
+    columns:
+      - name: productid
+        description: Unique identifier for the product in the deal
+
+      - name: dealid
+        description: Unique identifier for the deal
+        tests:
+          - not_null
+
+      - name: originaldealid
+        description: Reference to the original deal ID for deals that have been resubmitted or cloned
+
+      - name: active
+        description: Boolean flag indicating if the deal is currently active in the system
+
+      - name: mainopportunity
+        description: Main Salesforce opportunity associated with this deal
+
+      - name: accountname
+        description: Name of the customer account associated with the deal
+
+      - name: dealdescription
+        description: Detailed description of the deal's scope and objectives
+
+      - name: rundate
+        description: Date and time when the deal dashboard data was last refreshed or processed
+
+      - name: intakesheetreceived
+        description: Date when the intake sheet was received from the sales team
+
+      - name: intakesheetfinalized
+        description: Date when the intake sheet was finalized and approved for processing
+
+      - name: spvalidationcomplete
+        description: Date when Strategic Pricing completed validation of the deal information
+
+      - name: intakesheetconsumedandpalapplied
+        description: Date when the intake sheet was processed and Pricing Approval Logic was applied
+
+      - name: buproductreversestagingpopulated
+        description: Date when Business Unit product reverse staging data was populated
+
+      - name: spmanualreviewofpaloutput
+        description: Date when Strategic Pricing manually reviewed the Pricing Approval Logic output
+
+      - name: tatcommunicatedtoliaison
+        description: Date when the turnaround time was communicated to the liaison
+
+      - name: buoutputgenerated
+        description: Date when the Business Unit output was generated
+
+      - name: buoutputemailed
+        description: Date when the Business Unit output was emailed to relevant stakeholders
+
+      - name: spreceivesandvalidatesbuoutput
+        description: Date when Strategic Pricing received and validated the Business Unit output
+
+      - name: allproductpricingdeterminationscomplete
+        description: Date when all product pricing determinations were completed
+
+      - name: communicationtoliaisonwithfinalpricing
+        description: Date when final pricing was communicated to the liaison
+
+      - name: sschallengebualternatepricing
+        description: Date when Sales Strategy challenged the Business Unit's alternate pricing
+
+      - name: challengemeeting
+        description: Date when the challenge meeting occurred to resolve pricing disagreements
+
+      - name: buoutputformupdatedwithchallengeoutcome
+        description: Date when Business Unit output form was updated with challenge outcome
+
+      - name: dealcomplete
+        description: Date when the deal was marked as complete
+
+      - name: tatactual
+        description: Actual turnaround time in days from intake to completion
+
+      - name: tatrequested
+        description: Requested turnaround time in days as specified by the sales team
+
+      - name: renewalleadtime
+        description: Lead time for renewal in days before contract expiration
+
+      - name: dealstage
+        description: Current stage of the deal in the workflow process
+
+      - name: salesexecutive
+        description: Sales executive responsible for the deal
+
+      - name: clientservicesexecutive
+        description: Client services executive assigned to the account
+
+      - name: submittor
+        description: Person who submitted the deal for review and approval
+
+      - name: resubmissionreason
+        description: Reason for deal resubmission if applicable
+
+      - name: accounttype
+        description: Type classification of the account (e.g., Enterprise, SMB)
+
+      - name: accountmotivation
+        description: Identified motivation factors driving the account's purchase decision
+
+      - name: accounthealth
+        description: Health status of the account relationship (e.g., Good, At Risk)
+
+      - name: accounthealthexplanation
+        description: Detailed explanation of the account health status assessment
+
+      - name: accountsegment
+        description: Market segment classification of the account
+
+      - name: accountbudget
+        description: Known budget for the account relevant to this deal
+
+      - name: accountbudgetyear
+        description: Fiscal year for the account budget
+
+      - name: clientbuyingmotivation
+        description: Client's primary motivation for purchasing (e.g., Cost Savings, Compliance)
+
+      - name: pointofcontactandtitleforclient
+        description: Main point of contact and their title at the client organization
+
+      - name: decisionmakerandtitleforclient
+        description: Decision maker and their title at the client organization
+
+      - name: opportunityname
+        description: Name of the Salesforce opportunity associated with the deal
+
+      - name: opptype
+        description: Type of opportunity (e.g., New Business, Renewal, Upsell)
+
+      - name: opptypegroup
+        description: Grouping category for the opportunity type
+
+      - name: saletype
+        description: Type of sale (e.g., Direct, Partner, Reseller)
+
+      - name: customerresponsedeadline
+        description: Deadline by which the customer must respond to the proposal
+
+      - name: desiredgolivedate
+        description: Customer's desired implementation or go-live date
+
+      - name: targetcontractlength
+        description: Target length of the contract in months
+
+      - name: autorenewalclause
+        description: Auto-renewal clause included in the contract terms
+
+      - name: autorenewalclausecomments
+        description: Additional comments regarding the auto-renewal clause
+
+      - name: termforconveinence
+        description: Term for convenience clause in the contract
+
+      - name: termforconveinencecomments
+        description: Comments regarding the term for convenience clause
+
+      - name: currentcontractacv
+        description: Annual Contract Value of the current contract if this is a renewal
+
+      - name: quotenumber
+        description: Quote number for the deal from the CPQ system
+
+      - name: productname
+        description: Name of the product included in the deal
+
+      - name: productcode
+        description: Product code from the product catalog
+
+      - name: cleanproductcode
+        description: Standardized version of the product code for consistent reporting
+
+      - name: paldealapproval
+        description: Pricing Approval Logic approval status for the overall deal
+
+      - name: palproductapproval
+        description: Pricing Approval Logic approval status for the specific product
+
+      - name: buproductapproval
+        description: Business Unit approval status for the product
+
+      - name: businessunit
+        description: Business unit responsible for the product in the deal
+
+      - name: lineofbusiness
+        description: Line of business for the product
+
+      - name: cleanlineofbusiness
+        description: Standardized version of the line of business for consistent reporting
+
+      - name: pricingtype
+        description: Type of pricing model used (e.g., Fixed, Tiered, Usage-based)
+
+      - name: tierstairstep
+        description: Tier or stair-step pricing structure if applicable
+
+      - name: priceadjustmentbyproduct
+        description: Price adjustment percentage specific to the product
+
+      - name: nonstandardpricing
+        description: Indicator if non-standard pricing is being used for this deal
+
+      - name: proposedpricelessthancurrentprice
+        description: Indicator if proposed price is less than current price for renewals
+
+      - name: sojmixchange
+        description: Indicator if there is a change in the State of Jurisdiction mix
+
+      - name: sojs
+        description: States of Jurisdiction included in the deal
+
+      - name: package
+        description: Package name if the product is part of a package offering
+
+      - name: imepeerspecificvendorpanelorexclusive
+        description: IME peer-specific vendor panel or exclusive arrangement details
+
+      - name: imepeerspecificsizeofvendorpanel
+        description: Size of the IME peer-specific vendor panel
+
+      - name: imepeerspecificsharepercentage
+        description: Share percentage for IME peer-specific arrangements
+
+      - name: unitofmeasure
+        description: Unit of measure for the product pricing (e.g., Each, Monthly, Annual)
+
+      - name: volumechange
+        description: Indicator of volume change compared to previous contract
+
+      - name: expectedvolume
+        description: Expected volume for the product based on customer forecasts
+
+      - name: floorprice
+        description: Floor price for the product below which approval is required
+
+      - name: targetprice
+        description: Target price for the product that sales should aim for
+
+      - name: acvatproposedfloor
+        description: Annual Contract Value calculated at the proposed floor price
+
+      - name: comments
+        description: General comments about the deal or product pricing
+
+      - name: brandinvoiceoffawp
+        description: Brand invoice off Average Wholesale Price percentage for pharmacy products
+
+      - name: genericinvoiceoffawp
+        description: Generic invoice off Average Wholesale Price percentage for pharmacy products
+
+      - name: brandinvoicedispensefee
+        description: Brand invoice dispense fee for pharmacy products
+
+      - name: genericinvoicedispensefee
+        description: Generic invoice dispense fee for pharmacy products
+
+      - name: rebatesharedwithcustomer
+        description: Percentage of rebates shared with the customer
+
+      - name: perscriptfeetocustomer
+        description: Per script fee charged to the customer
+
+      - name: networkpenetration
+        description: Network penetration percentage for pharmacy network
+
+      - name: brandratio
+        description: Expected ratio of brand prescriptions in the mix
+
+      - name: genericratio
+        description: Expected ratio of generic prescriptions in the mix
+
+      - name: brandawp
+        description: Average Wholesale Price for brand drugs
+
+      - name: genericawp
+        description: Average Wholesale Price for generic drugs
+
+      - name: approver
+        description: Name of the person who approved the deal pricing
+
+      - name: suggestedfloor
+        description: Suggested floor price from Strategic Pricing analysis
+
+      - name: suggestedtarget
+        description: Suggested target price from Strategic Pricing analysis
+
+      - name: suggestedbrandinvoiceoffawp
+        description: Suggested brand invoice off AWP percentage from Strategic Pricing
+
+      - name: suggestedgenericinvoiceoffawp
+        description: Suggested generic invoice off AWP percentage from Strategic Pricing
+
+      - name: suggestedbrandinvoicedispensefee
+        description: Suggested brand invoice dispense fee from Strategic Pricing
+
+      - name: suggestedgenericinvoicedispensefee
+        description: Suggested generic invoice dispense fee from Strategic Pricing
+
+      - name: suggestedrebatesharedwithcustomer
+        description: Suggested percentage of rebates to share with customer
+
+      - name: suggestedperscriptfeetocustomer
+        description: Suggested per script fee to charge the customer
+
+      - name: suggestednetworkpenetration
+        description: Suggested network penetration percentage from Strategic Pricing
+
+      - name: suggestedbrandratio
+        description: Suggested brand ratio from Strategic Pricing analysis
+
+      - name: suggestedgenericratio
+        description: Suggested generic ratio from Strategic Pricing analysis
+
+      - name: suggestedbrandawp
+        description: Suggested Average Wholesale Price for brand drugs
+
+      - name: suggestedgenericawp
+        description: Suggested Average Wholesale Price for generic drugs
+
+      - name: productlinecommentsforsalesteammember
+        description: Product line comments specifically for sales team members
+
+      - name: comprehensivepricingcommentsforcmoandspteam
+        description: Comprehensive pricing comments for CMO and Strategic Pricing team
+
+      - name: comprehensivepricingcommentsforsalesteammember
+        description: Comprehensive pricing comments for sales team members
+
+      - name: rush
+        description: Indicator if the deal is being rushed through the approval process
+
+      - name: seltnomination
+        description: Senior Executive Leadership Team nomination status for the deal
+
+      - name: preapprovedforall
+        description: Indicator if the deal is pre-approved for all products
+
+      - name: resubmission
+        description: Indicator if the deal is a resubmission of a previous deal
+
+      - name: spowner
+        description: Strategic Pricing owner responsible for this deal
+
+      - name: approvaltypeid
+        description: ID of the approval type required for this deal
+
+      - name: trueapprovalrouting
+        description: Actual approval routing path used for this deal
+
+      - name: standardtat
+        description: Standard turnaround time in days for this type of deal
+
+      - name: circumventprocess
+        description: Flag indicating if normal approval process was circumvented
+
+      - name: spcommentary
+        description: Commentary from Strategic Pricing team on the deal
+
+      - name: liaisonengaged
+        description: Date when the liaison was engaged in the deal process
+
+      - name: volumechangetocurrent
+        description: Percentage change in volume compared to current contract
+
+      - name: pricingchangetocurrent
+        description: Percentage change in pricing compared to current contract
+
+      - name: revenuechangetocurrent
+        description: Percentage change in revenue compared to current contract
+
+      - name: cpichangetocurrent
+        description: Consumer Price Index change compared to current contract
+
+      - name: sfproductid
+        description: Salesforce product ID for integration reference
+        tests:
+          - not_null
+
+      - name: oppid
+        description: Salesforce opportunity ID for integration reference
+
+      - name: lineitemid
+        description: Salesforce line item ID for integration reference
+
+      - name: quotelineid
+        description: Salesforce quote line ID for integration reference
+
+      - name: priceoutlierstatus
+        description: Status indicating if the price is an outlier compared to similar deals
+
+      - name: volumecategory
+        description: Volume category classification for the deal
+
+      - name: q1floorprice
+        description: First quartile (25th percentile) of floor prices for similar products
+
+      - name: q3floorprice
+        description: Third quartile (75th percentile) of floor prices for similar products
+
+      - name: iqrfloorprice
+        description: Interquartile range of floor prices for similar products
+
+      - name: lowerboundfloorprice
+        description: Lower bound of acceptable floor price range based on statistical analysis
+
+      - name: upperboundfloorprice
+        description: Upper bound of acceptable floor price range based on statistical analysis
+
+      - name: totaloccurrences
+        description: Total number of occurrences of this product in historical deals
+
+      - name: minfloorprice
+        description: Minimum floor price observed for this product in historical deals
+
+      - name: maxfloorprice
+        description: Maximum floor price observed for this product in historical deals
+
+      - name: avgfloorprice
+        description: Average floor price for this product across historical deals
+
+      - name: nopackageflooracv
+        description: Floor Annual Contract Value excluding package components
+
+      - name: totalnonpackageacv
+        description: Total Annual Contract Value excluding package components
+
+      - name: totalacvchangetocurrent
+        description: Total change in Annual Contract Value compared to current contract
+
+      - name: dealopptypegroup
+        description: Deal opportunity type grouping for classification purposes
+
+      - name: mettat
+        description: Indicator if the deal met the target turnaround time
+
+      - name: tatrequestedclean
+        description: Cleaned version of requested turnaround time for analysis
+
+      - name: renewalleadtimeclean
+        description: Cleaned version of renewal lead time for analysis
+
+      - name: rev_yr1
+        description: Projected revenue for year 1 of the contract
+
+      - name: rev_yr2
+        description: Projected revenue for year 2 of the contract
+
+      - name: rev_yr3
+        description: Projected revenue for year 3 of the contract
+
+      - name: rev_yr4
+        description: Projected revenue for year 4 of the contract
+
+      - name: rev_yr5
+        description: Projected revenue for year 5 of the contract
+
+      - name: revchange_yr1
+        description: Revenue change for year 1 compared to current contract
+
+      - name: revchange_yr2
+        description: Revenue change for year 2 compared to current contract
+
+      - name: revchange_yr3
+        description: Revenue change for year 3 compared to current contract
+
+      - name: revchange_yr4
+        description: Revenue change for year 4 compared to current contract
+
+      - name: revchange_yr5
+        description: Revenue change for year 5 compared to current contract
+
+      - name: revtotalchange
+        description: Total revenue change across all years of the contract
+
+      - name: increaseatleastonce
+        description: Indicator if price increases at least once during contract term
+
+      - name: date_yr1
+        description: Date information for year 1 revenue projections
+
+      - name: date_yr2
+        description: Date information for year 2 revenue projections
+
+      - name: date_yr3
+        description: Date information for year 3 revenue projections
+
+      - name: date_yr4
+        description: Date information for year 4 revenue projections
+
+      - name: date_yr5
+        description: Date information for year 5 revenue projections
+
+  - name: stg_sandpodsdbo__pricingprodlist__hist
+    description: >
+      Standardized representation of the pricing product list containing detailed product information, 
+      pricing details, and approval information. This model sources data from the raw pricing product list
+      and applies consistent naming conventions.
+    columns:
+      - name: productcode
+        description: Unique product code identifier used across systems to reference this product
+        tests:
+          - not_null
+        #  - unique # TODO: Re-enable after we clean up dups at the source
+
+      - name: productfamily
+        description: High-level product family categorization that groups related products together
+
+      - name: productsubfamily
+        description: Sub-category within the product family providing more granular product classification
+
+      - name: lineofbusiness
+        description: Line of business associated with the product, indicating which business segment owns or sells it
+
+      - name: businessunit
+        description: Business unit responsible for the product's development, management, and profitability
+
+      - name: pricebookname
+        description: Name of the Salesforce price book containing this product's pricing information
+
+      - name: productname
+        description: Full descriptive name of the product as it appears in catalogs and sales materials
+
+      - name: component
+        description: Component identifier if the product is a component of a larger product or package
+
+      - name: package
+        description: Package identifier if the product is part of a bundled package offering
+
+      - name: salesforcestatus
+        description: Current status of the product in Salesforce (Active, Inactive, etc.)
+
+      - name: componentorpackage
+        description: Indicator specifying whether the product is a component, package, or standalone offering
+
+      - name: productdescription
+        description: Detailed description of the product including its features, benefits, and use cases
+
+      - name: productmanager
+        description: Name of the product manager responsible for this product's strategy and roadmap
+
+      - name: productmanageremail
+        description: Email address of the product manager for contact purposes
+
+      - name: pricingtype
+        description: Type of pricing model used for the product (e.g., Fixed, Tiered, Usage-based)
+
+      - name: unitofmeasure
+        description: Unit of measure for the product pricing (e.g., Each, Monthly, Annual, Per User)
+
+      - name: listprice
+        description: Standard list price for the product before any discounts or negotiations
+
+      - name: productcostsf
+        description: Product cost as recorded in Salesforce for margin calculations
+
+      - name: marginprofile
+        description: Margin profile percentage indicating the target profit margin for this product
+
+      - name: productcostsp
+        description: Product cost as determined by Strategic Pricing, which may differ from Salesforce cost
+
+      - name: cost_project
+        description: Projected cost for the product based on forecasting and planning
+
+      - name: cost_project_notes
+        description: Additional notes regarding the projected cost calculations or assumptions
+
+      - name: costtypempuc
+        description: Cost type classification (MP/UC) used for internal cost categorization
+
+      - name: rgo_product
+        description: Revenue Group Organization product classification for financial reporting
+
+      - name: rgo_sub_product
+        description: Revenue Group Organization sub-product classification for more detailed financial reporting
+
+      - name: rgo_sub_sub_product
+        description: Revenue Group Organization sub-sub-product classification for the most granular financial reporting
+
+      - name: primaryapprover1
+        description: Name of the primary approver responsible for approving pricing exceptions
+
+      - name: primaryapprover1email
+        description: Email address of the primary approver for automated approval routing
+
+      - name: primaryapprover2
+        description: Name of the secondary approver for pricing exceptions when primary is unavailable
+
+      - name: primaryapprover2email
+        description: Email address of the secondary approver for automated approval routing
+
+      - name: created_date
+        description: Date when the product record was initially created in the system

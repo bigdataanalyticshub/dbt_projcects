@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: wcsodsadm
+    database: wcsods
+    schema: adm
+    tables:
+      - name: app_version
+      - name: customer
+      - name: data_extract_type
+      - name: edw_duplicate_check
+      - name: error_log
+      - name: event
+      - name: injest_process_file_audit
+      - name: mail_configuration
+      - name: mail_ens_configuration
+      - name: posting_group
+      - name: posting_group_audit
+      - name: posting_group_injest_audit
+      - name: process
+      - name: process_audit
+      - name: process_file_audit
+      - name: process_format_files
+      - name: process_injest_audit
+      - name: process_primary_key
+      - name: process_reconciliation_history
+      - name: product
+      - name: provider_cluster_audit
+      - name: status_code
+      - name: transient_overall_loading_status
+      - name: transient_table_column_profile
+      - name: vw_process_reconciliation
+      - name: vw_process_reconciliation_detail

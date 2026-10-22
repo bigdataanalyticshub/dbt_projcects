@@ -1,0 +1,8 @@
+version: 1
+
+sources:
+  - name: dwctsref
+    database: DATAWAREHOUSE_CTS
+    schema: REF
+    tables:
+      - name: prospective_pos_ref
