@@ -1,0 +1,227 @@
+version: 2
+
+models:
+  ###########################################################################
+  # CUCH_AC_BILLING_DATA - Church Mutual AC billing summary
+  ###########################################################################
+  - name: cuch_ac_billing_data
+    description: >
+      Weekly-refreshed billing summary for Church Mutual AC.
+      Aggregates bill counts and provider charges by SP/Salesforce account
+      and bill-create month, joined with NCO mapping, NetSuite customer,
+      and legal-entity dimensions.
+      One row per (SP_NAME, SALESFORCE_ID, BILL_CREATE_DATE_MONTH/YEAR).
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_AC_CLAIMS_DATA - Church Mutual AC claims summary
+  ###########################################################################
+  - name: cuch_ac_claims_data
+    description: >
+      Weekly-refreshed claims summary for Church Mutual AC.
+      Aggregates claim counts by SP/Salesforce account and claim-create month,
+      joined with NCO mapping, NetSuite customer, and legal-entity dimensions.
+      One row per (SP_NAME, SALESFORCE_ID, CLAIM_CREATE_DATE_MONTH/YEAR).
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_APRI_CASES_DATA - Church Mutual Apricus cases summary
+  ###########################################################################
+  - name: cuch_apri_cases_data
+    description: >
+      Weekly-refreshed Apricus cases summary for Church Mutual.
+      Aggregates closed case counts by SP/Salesforce account and closed month,
+      joined with NCO mapping and legal-entity dimensions.
+      One row per (SP_NAME, SALESFORCE_ID, clean_client_number, BE_ID, CLOSED_MONTH_YEAR).
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_CLIN_FCM_REF_VOL_CUSTOMER - Clinical FCM referral volume by customer
+  ###########################################################################
+  - name: cuch_clin_fcm_ref_vol_customer
+    description: >
+      Weekly-refreshed FCM (Field Case Management) referral volume by customer.
+      Aggregates referral counts by SP/Salesforce account and referral month,
+      joined with NCO mapping, Genex BE/C-code mapping, and legal-entity dimensions.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_CLIN_TCM_REF_VOL_CUSTOMER - Clinical TCM referral volume by customer
+  ###########################################################################
+  - name: cuch_clin_tcm_ref_vol_customer
+    description: >
+      Weekly-refreshed TCM (Telephonic Case Management) referral volume by customer.
+      Aggregates referral counts by SP/Salesforce account and referral month,
+      joined with NCO mapping, Genex BE/C-code mapping, and legal-entity dimensions.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_COV_AUTO_PPO_BILL_VOL_SAVINGS - Coventry Auto PPO bill volume & savings
+  ###########################################################################
+  - name: cuch_cov_auto_ppo_bill_vol_savings
+    description: >
+      Weekly-refreshed Auto PPO bill volume and savings from Coventry MCPS.
+      Filters AUTO/3AUTO LOB with DIRECT/PARTNER network class, last 18 months.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_COV_WC_OON_BILL_VOL_SAVINGS - Coventry WC Out-of-Network bill volume & savings
+  ###########################################################################
+  - name: cuch_cov_wc_oon_bill_vol_savings
+    description: >
+      Weekly-refreshed WC/Auto Out-of-Network bill volume and OON savings from Coventry MCPS.
+      Filters WC/AUTO/3AUTO LOB with OUT OF NETWORK class, last 18 months.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_COV_WC_PPO_BILL_VOL_SAVINGS - Coventry WC PPO bill volume & savings
+  ###########################################################################
+  - name: cuch_cov_wc_ppo_bill_vol_savings
+    description: >
+      Weekly-refreshed WC PPO bill volume and savings from Coventry MCPS.
+      Filters WC LOB with DIRECT/PARTNER network class, last 18 months.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_PH_AUTO_PRESC_BILLAMOUNT - Pharmacy Auto prescription billing
+  ###########################################################################
+  - name: cuch_ph_auto_presc_billamount
+    description: >
+      Weekly-refreshed Auto pharmacy prescription volume and billable amounts.
+      Filters claimcoveragetypecode = 'A', last 14 months.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_PH_WC_PRESC_BILLAMOUNT - Pharmacy WC prescription billing
+  ###########################################################################
+  - name: cuch_ph_wc_presc_billamount
+    description: >
+      Weekly-refreshed WC pharmacy prescription volume and billable amounts.
+      Filters claimcoveragetypecode = 'WC', last 14 months.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_WCA_BILLING_DATA - WCA billing summary
+  ###########################################################################
+  - name: cuch_wca_billing_data
+    description: >
+      Weekly-refreshed WCA billing summary. Aggregates bill counts and charges
+      by SP/Salesforce account and bill-create month from WCS claim detail,
+      joined with WCS client breakouts, NCO mapping, NetSuite customer,
+      and legal-entity dimensions.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_WCA_CLAIMS_DATA - WCA claims summary
+  ###########################################################################
+  - name: cuch_wca_claims_data
+    description: >
+      Weekly-refreshed WCA claims summary. Aggregates distinct claim counts
+      and charges by SP/Salesforce account and bill-create month from WCS
+      claim detail, joined with WCS client breakouts, NCO mapping, and
+      legal-entity dimensions.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # CUCH_CID_REVIEWS_DATA - CID utilization review data
+  ###########################################################################
+  - name: cuch_cid_reviews_data
+    description: >
+      Weekly-refreshed CID utilization review counts by SP/Salesforce account
+      and UR decision month. Filters Initial/Peer Clinical Reviews excluding
+      Withdrawn and Decision Modified groups.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+
+  ###########################################################################
+  # RETRO_PAR_PYMT_AGGREGATE - Retro par payment aggregate
+  ###########################################################################
+  - name: retro_par_pymt_aggregate
+    description: >
+      Weekly-refreshed retro par payment aggregates by SP/Salesforce account,
+      client, and deposit month. Includes transaction counts, distinct PO/bill/claim
+      counts, adjustment counts, and average TAT metrics.
+    columns:
+      - name: SALESFORCE_ID
+        description: "Salesforce account ID."
+        tests:
+          - not_null:
+              config:
+                severity: warn

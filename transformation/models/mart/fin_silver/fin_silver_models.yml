@@ -1,0 +1,2363 @@
+version: 2
+
+models:
+  - name: accounting_periods
+    description: "This model represents accounting periods used for financial reporting and analysis."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the accounting period"
+        tests:
+        - unique
+        - not_null
+
+      - name: original_accounting_id
+        data_type: varchar
+        description: "Original identifier for the accounting period from the source system"
+
+      - name: period_type
+        data_type: varchar
+        description: "Type of accounting period (e.g., month, quarter, year)"
+
+      - name: start_date
+        data_type: varchar
+        description: "Start date of the accounting period"
+
+      - name: end_date
+        data_type: varchar
+        description: "End date of the accounting period"
+
+  - name: apricus_adjustment_report
+    description: "This table contains detailed information about adjustments made in the Apricus system, including business entity details, service types, revenue information, and accounting data."
+    columns:
+      - name: be_id
+        description: "Unique identifier for the business entity"
+        data_type: integer
+        tests:
+          - not_null
+
+      - name: be_name
+        description: "Name of the business entity"
+        data_type: varchar
+
+      - name: ae_id
+        description: "Unique identifier for the accounting entity"
+        data_type: integer
+
+      - name: ae_name
+        description: "Name of the accounting entity"
+        data_type: varchar
+
+      - name: po_svc_typ
+        description: "Type of service at the purchase order level"
+        data_type: varchar
+
+      - name: line_svc_typ
+        description: "Type of service at the line item level"
+        data_type: varchar
+
+      - name: src_syst_cd
+        description: "Code identifying the source system of the data"
+        data_type: varchar
+
+      - name: lob
+        description: "Line of Business"
+        data_type: varchar
+
+      - name: revenue_typ
+        description: "Type of revenue"
+        data_type: varchar
+
+      - name: reason_typ
+        description: "Type of reason for the adjustment"
+        data_type: varchar
+
+      - name: adj_rsn_cd
+        description: "Code for the adjustment reason"
+        data_type: varchar
+
+      - name: adj_rsn_desc
+        description: "Description of the adjustment reason"
+        data_type: varchar
+
+      - name: value_typ
+        description: "Type of value (e.g., monetary, percentage)"
+        data_type: varchar
+
+      - name: bcb
+        description: "Business Component Block identifier"
+        data_type: varchar
+
+      - name: mic_bill_id
+        description: "Unique identifier for the MIC bill"
+        data_type: varchar
+
+      - name: extrnl_inv_id
+        description: "External invoice identifier"
+        data_type: varchar
+
+      - name: irms_rcvbl_num
+        description: "IRMS receivable number"
+        data_type: varchar
+
+      - name: acctg_period
+        description: "Accounting period for the adjustment"
+        data_type: integer
+
+      - name: billed_dt
+        description: "Date when the amount was billed"
+        data_type: date
+
+      - name: accntng_dt
+        description: "Date of accounting for the adjustment"
+        data_type: date
+
+      - name: trns_amnt
+        description: "Transaction amount of the adjustment"
+        data_type: numeric
+
+      - name: po_id
+        description: "Purchase Order identifier"
+        data_type: varchar
+
+      - name: run_id
+        description: "Identifier for the processing run"
+        data_type: integer
+
+      - name: prcs_desc
+        description: "Description of the process"
+        data_type: varchar
+
+      - name: adj_comment
+        description: "Comments related to the adjustment"
+        data_type: varchar
+
+      - name: irms_user
+        description: "IRMS user who made the adjustment"
+        data_type: varchar
+
+      - name: gl_acct
+        description: "General Ledger account associated with the adjustment"
+        data_type: varchar
+
+      - name: ns_class_desc
+        description: "NetSuite class description"
+        data_type: varchar
+
+      - name: create_dt
+        description: "Date when the record was created"
+        data_type: timestamp
+
+      - name: acctg_dt_start
+        description: "Start date of the accounting period"
+        data_type: date
+
+      - name: acctg_dt_end
+        description: "End date of the accounting period"
+        data_type: date
+
+  - name: prospective_revenue_cost
+    description: "Model for financial transactions and adjustments"
+    columns:
+      - name: be_id
+        description: "Business Entity identifier"
+        data_type: integer
+
+      - name: be_name
+        description: "Business Entity name"
+        data_type: varchar
+
+      - name: ae_id
+        description: "Accounting Entity identifier"
+        data_type: integer
+
+      - name: ae_name
+        description: "Accounting Entity name"
+        data_type: varchar
+
+      - name: line_svc_typ
+        description: "Line of service type"
+        data_type: varchar
+
+      - name: src_syst_cd
+        description: "Source system code"
+        data_type: varchar
+
+      - name: lob
+        description: "Line of business"
+        data_type: varchar
+
+      - name: revenue_typ
+        description: "Revenue type"
+        data_type: varchar
+
+      - name: reason_typ
+        description: "Reason type"
+        data_type: varchar
+
+      - name: adjmt_rsn_cd
+        description: "Adjustment reason code"
+        data_type: varchar
+
+      - name: adjmt_rsn_desc
+        description: "Adjustment reason description"
+        data_type: varchar
+
+      - name: val_typ_cd
+        description: "Value type code"
+        data_type: varchar
+
+      - name: bllng_calctn_basis_cd
+        description: "Billing calculation basis code"
+        data_type: varchar
+
+      - name: svc_item_cd
+        description: "Service item code"
+        data_type: varchar
+
+      - name: extrnl_inv_id
+        description: "External invoice identifier"
+        data_type: varchar
+
+      - name: irms_rcvbl_num
+        description: "IRMS receivable number"
+        data_type: varchar
+
+      - name: acctg_period
+        description: "Accounting period"
+        data_type: integer
+
+      - name: billed_dt
+        description: "Billed date"
+        data_type: date
+
+      - name: acctg_dt
+        description: "Accounting date"
+        data_type: date
+
+      - name: trns_amnt
+        description: "Transaction amount"
+        data_type: numeric
+
+      - name: run_id
+        description: "Processing run identifier"
+        data_type: integer
+
+      - name: prcs_desc
+        description: "Process description"
+        data_type: varchar
+
+      - name: adj_comment
+        description: "Adjustment comment"
+        data_type: varchar
+
+      - name: irms_user
+        description: "IRMS user"
+        data_type: varchar
+
+      - name: gl_acct
+        description: "General ledger account"
+        data_type: varchar
+
+      - name: ns_class_desc
+        description: "NetSuite class description"
+        data_type: varchar
+
+  - name: apricus_dmerd_gldownload
+    description: "This view provides a report of DMERD (Durable Medical Equipment Rental/Disposition)"
+    columns:
+      - name: BE_ID
+        description: "Bill to Business Entity ID"
+
+      - name: AE_ID
+        description: "Book to Business Entity ID"
+
+      - name: ACCTG_PERIOD
+        description: "Accounting Period ID"
+
+      - name: SRC_SYST_CD
+        description: "Source System Code"
+
+      - name: TRNS_AMNT
+        description: "Transaction Amount"
+
+      - name: LOB
+        description: "Line of Business Code"
+
+      - name: REASON_TYP
+        description: "Reason Type Code"
+
+      - name: GL_ACCT
+        description: "General Ledger Account Code"
+
+      - name: NS_CLASS_CD
+        description: "NS Class Code"
+
+      - name: COST_CNTR
+        description: "Cost Center"
+
+      - name: REVNU_TYP_CD
+        description: "Revenue Type Code"
+
+      - name: VALUE_TYP
+        description: "Value Type Code"
+
+      - name: BCB
+        description: "Billing Calculation Basis Code"
+
+  - name: bill_to_accounts
+    description: "This model contains information about billing accounts and their associated entities."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the bill-to account"
+        tests:
+        - unique
+        - not_null
+
+      - name: bus_ent_id
+        data_type: number
+        description: "Business entity identifier"
+
+      - name: admin_typ_cd
+        data_type: varchar
+        description: "Administrative type code for the account"
+
+      - name: bus_ent_nm
+        data_type: varchar
+        description: "Name of the business entity"
+
+      - name: inv_nm
+        data_type: varchar
+        description: "Invoice name associated with the account"
+
+      - name: sector_cd
+        data_type: number
+        description: "Sector code for the business entity"
+
+      - name: lgl_ent_cd
+        data_type: number
+        description: "Legal entity code"
+
+      - name: dept
+        data_type: varchar
+        description: "Department associated with the account"
+
+      - name: oprtng_unit
+        data_type: varchar
+        description: "Operating unit of the business entity"
+
+      - name: cntrct_ent_flg
+        data_type: varchar
+        description: "Flag indicating if the entity is a contract entity"
+
+      - name: cntrctd_bus_ent_id
+        data_type: number
+        description: "Contracted business entity identifier, if applicable"
+
+      - name: ns_cust_id
+        data_type: number
+        description: "NetSuite customer identifier"
+
+      - name: clnt_src
+        data_type: varchar
+        description: "Source of the client information"
+
+      - name: clnt_cd
+        data_type: varchar
+        description: "Client code"
+
+  - name: credits
+    description: "This model represents credit transactions in the system."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the credit transaction"
+        tests:
+        - unique
+        - not_null
+
+      - name: original_credit_id
+        data_type: number
+        description: "Original identifier for the credit from the source system"
+
+      - name: bill_to_bus_ent_id
+        data_type: binary
+        description: "Identifier for the bill-to business entity"
+
+      - name: bllng_id
+        data_type: number
+        description: "Billing identifier associated with the credit"
+
+      - name: invoice_no
+        data_type: varchar
+        description: "Invoice number related to the credit"
+
+      - name: product_id
+        data_type: binary
+        description: "Identifier for the product associated with the credit"
+
+      - name: account_id
+        data_type: number
+        description: "Account identifier"
+
+      - name: run_id
+        data_type: number
+        description: "Run identifier for the credit transaction"
+
+      - name: accounting_period_id
+        data_type: binary
+        description: "Identifier for the accounting period of the credit"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service for the credit"
+
+      - name: rcvbl_id
+        data_type: number
+        description: "Receivable identifier associated with the credit"
+
+      - name: amount
+        data_type: float
+        description: "Amount of the credit"
+
+      - name: lob_id
+        data_type: binary
+        description: "Line of business identifier"
+
+      - name: revnu_typ_cd
+        data_type: varchar
+        description: "Revenue type code"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Adjustment reason code"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Description of the adjustment reason"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: "Transaction type code"
+
+      - name: actv_dt
+        data_type: timestamp_ntz
+        description: "Active date of the credit"
+
+      - name: acctg_dt
+        data_type: timestamp_ntz
+        description: "Accounting date of the credit"
+
+      - name: agng_dt
+        data_type: timestamp_ntz
+        description: "Aging date of the credit"
+
+      - name: date_load_id
+        data_type: number
+        description: "Date load identifier"
+
+      - name: date
+        data_type: timestamp_ntz
+        description: "Date of the credit transaction"
+
+      - name: ae
+        data_type: varchar
+        description: "Additional information or code (purpose unclear from context)"
+
+      - name: ppa_flag
+        data_type: varchar
+        description: "Flag indicating if this is a prior period adjustment"
+
+      - name: xref_trns_id
+        data_type: number
+        description: "Cross-reference transaction identifier"
+
+      - name: glbl_mpng_typ_cd
+        data_type: varchar
+        description: "Global mapping type code"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Source claim sequence number"
+
+  - name: credits_irms_details
+    description: "This model provides additional details for credit transactions from the IRMS system."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the credit IRMS detail record"
+        tests:
+        - unique
+        - not_null
+
+      - name: credits_id
+        data_type: binary
+        description: "Identifier linking to the main credits table"
+
+      - name: prcs_id
+        data_type: number
+        description: "Process identifier"
+
+      - name: sec_usr_id
+        data_type: number
+        description: "Security user identifier"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Description of the process"
+
+      - name: sec_usr_nm
+        data_type: varchar
+        description: "Name of the security user"
+
+      - name: usr_login_nm_cd
+        data_type: varchar
+        description: "User login name or code"
+
+      - name: pymt_status_cd
+        data_type: varchar
+        description: "Payment status code"
+
+      - name: revnu_typ_cd
+        data_type: varchar
+        description: "Revenue type code"
+
+      - name: bkng_status_cd
+        data_type: varchar
+        description: "Booking status code"
+
+      - name: applctn_comnt_desc
+        data_type: varchar
+        description: "Application comment description"
+
+      - name: bllng_calctn_basis_cd
+        data_type: varchar
+        description: "Billing calculation basis code"
+
+      - name: val_typ_cd
+        data_type: varchar
+        description: "Value type code"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Adjustment reason description"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Adjustment reason code"
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: "NetSuite location description"
+
+      - name: prcs_dt
+        data_type: timestamp_ntz
+        description: "Process date"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "NetSuite class description"
+
+      - name: ns_dept_cd
+        data_type: varchar
+        description: "NetSuite department code"
+
+      - name: ns_dept_desc
+        data_type: varchar
+        description: "NetSuite department description"
+
+      - name: ns_lctn_cd
+        data_type: varchar
+        description: "NetSuite location code"
+
+      - name: rsn_typ_cd
+        data_type: varchar
+        description: "Reason type code"
+
+      - name: bal
+        data_type: float
+        description: "Balance amount"
+
+      - name: comments_int
+        data_type: varchar
+        description: "Internal comments"
+
+  - name: irms_clinical_details
+    description: "This model contains clinical details related to IRMS transactions."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the IRMS clinical detail record"
+        tests:
+        - unique
+        - not_null
+
+      - name: inv_num
+        data_type: varchar
+        description: "Invoice number"
+
+      - name: transaction_id
+        data_type: number
+        description: "Transaction identifier"
+
+      - name: adjstr_nm
+        data_type: varchar
+        description: "Adjuster name"
+
+      - name: adjstr_email
+        data_type: varchar
+        description: "Adjuster email"
+
+      - name: adjstr_fax
+        data_type: varchar
+        description: "Adjuster fax number"
+
+      - name: adjstr_phone
+        data_type: varchar
+        description: "Adjuster phone number"
+
+      - name: claimant_name
+        data_type: varchar
+        description: "Name of the claimant"
+
+      - name: claim_number
+        data_type: varchar
+        description: "Claim number"
+
+      - name: employer
+        data_type: varchar
+        description: "Employer name"
+
+      - name: injury_date
+        data_type: date
+        description: "Date of injury"
+
+      - name: referral_date
+        data_type: date
+        description: "Date of referral"
+
+      - name: provider_service_date_from
+        data_type: date
+        description: "Start date of provider service"
+
+      - name: provider_service_date_to
+        data_type: date
+        description: "End date of provider service"
+
+      - name: referral_type
+        data_type: varchar
+        description: "Type of referral"
+
+      - name: line_of_insurance
+        data_type: varchar
+        description: "Line of insurance"
+
+      - name: claimant_benefit_state
+        data_type: varchar
+        description: "Claimant's benefit state"
+
+      - name: customer_client_number
+        data_type: varchar
+        description: "Customer client number"
+
+      - name: customer_subclient_number
+        data_type: varchar
+        description: "Customer subclient number"
+
+      - name: customer_client_loc_number
+        data_type: varchar
+        description: "Customer client location number"
+
+      - name: customer_client_other_loc_number
+        data_type: varchar
+        description: "Customer client other location number"
+
+      - name: case_type
+        data_type: varchar
+        description: "Type of case"
+
+      - name: provider_bill_amount
+        data_type: varchar
+        description: "Amount billed by the provider"
+
+      - name: recommended_allowance
+        data_type: varchar
+        description: "Recommended allowance amount"
+
+      - name: br_fee
+        data_type: varchar
+        description: "BR fee amount"
+
+      - name: ppo_fee
+        data_type: varchar
+        description: "PPO fee amount"
+
+      - name: irms_rcvbl_seq_num
+        data_type: number
+        description: "IRMS receivable sequence number"
+
+      - name: invoice_line_count
+        data_type: number
+        description: "Number of lines in the invoice"
+
+      - name: record_type
+        data_type: varchar
+        description: "Type of record"
+
+      - name: gl_product
+        data_type: varchar
+        description: "GL product code"
+
+      - name: run_id
+        data_type: number
+        description: "Run identifier"
+
+      - name: acct_location
+        data_type: varchar
+        description: "Account location"
+
+      - name: src_clm_key
+        data_type: varchar
+        description: "Source claim key"
+
+      - name: ship_to_nm
+        data_type: varchar
+        description: "Ship to name"
+
+      - name: whlsl_rtl_flg
+        data_type: varchar
+        description: "Wholesale/Retail flag"
+
+      - name: inv_amnt_whlsl
+        data_type: number
+        description: "Invoice amount wholesale"
+
+      - name: csq_status_cd
+        data_type: varchar
+        description: "CSQ status code"
+
+      - name: src_prodt_cd
+        data_type: varchar
+        description: "Source product code"
+
+      - name: gl_location
+        data_type: varchar
+        description: "GL location"
+
+      - name: pymt_status_cd
+        data_type: varchar
+        description: "Payment status code"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "NetSuite class description"
+
+      - name: ns_dept_desc
+        data_type: varchar
+        description: "NetSuite department description"
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: "NetSuite location description"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Process description"
+
+      - name: revnu_typ_cd
+        data_type: varchar
+        description: "Revenue type code"
+
+      - name: prodt_desc
+        data_type: varchar
+        description: "Product description"
+
+      - name: inv_dt
+        data_type: date
+        description: "Invoice date"
+
+      - name: acctg_dt
+        data_type: date
+        description: "Accounting date"
+
+      - name: orig_inv_num
+        data_type: varchar
+        description: "Original invoice number"
+
+  - name: irms_detail
+    description: "This model provides detailed information about IRMS transactions."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the IRMS detail record"
+        tests:
+        - unique
+        - not_null
+
+      - name: transaction_id
+        data_type: binary
+        description: "Identifier linking to the main transaction table"
+
+      - name: source_sequence
+        data_type: number
+        description: "Sequence number from the source system"
+
+      - name: e_code
+        data_type: varchar
+        description: "E-code (purpose unclear from context)"
+
+      - name: c_code
+        data_type: varchar
+        description: "C-code (purpose unclear from context)"
+
+      - name: br_bill_id
+        data_type: number
+        description: "BR bill identifier"
+
+      - name: prev_iteration
+        data_type: varchar
+        description: "Previous iteration information"
+
+      - name: source_system
+        data_type: varchar
+        description: "Source system code"
+
+      - name: le
+        data_type: varchar
+        description: "Legal entity code"
+
+      - name: rcvbl_num
+        data_type: number
+        description: "Receivable number"
+
+      - name: revnu
+        data_type: varchar
+        description: "Revenue code"
+
+      - name: rsn
+        data_type: varchar
+        description: "Reason code"
+
+      - name: vt
+        data_type: varchar
+        description: "Value type code"
+
+      - name: bc
+        data_type: varchar
+        description: "Billing calculation code"
+
+      - name: prodt
+        data_type: varchar
+        description: "Product code"
+
+      - name: cc
+        data_type: varchar
+        description: "Cost center code"
+
+      - name: irms_rcvbl_seq_num
+        data_type: varchar
+        description: "IRMS receivable sequence number"
+
+      - name: comments
+        data_type: varchar
+        description: "Comments related to the transaction"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Adjustment reason code"
+
+      - name: lob
+        data_type: binary
+        description: "Line of business identifier"
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: "NetSuite location description"
+
+      - name: agng_dt
+        data_type: date
+        description: "Aging date of the transaction"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service"
+
+      - name: run_id
+        data_type: number
+        description: "Run identifier for the transaction"
+
+      - name: ppa_flg
+        data_type: varchar
+        description: "Flag indicating if this is a prior period adjustment"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Description of the adjustment reason"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Description of the process"
+
+      - name: user_code
+        data_type: varchar
+        description: "User code associated with the transaction"
+
+      - name: prcs_dt
+        data_type: date
+        description: "Process date"
+
+      - name: pc
+        data_type: varchar
+        description: "Product code (abbreviated)"
+
+      - name: ts
+        data_type: varchar
+        description: "Transaction status code"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "NetSuite class description"
+
+      - name: ns_dept_cd
+        data_type: varchar
+        description: "NetSuite department code"
+
+      - name: ns_dept_desc
+        data_type: varchar
+        description: "NetSuite department description"
+
+      - name: ns_lctn_cd
+        data_type: varchar
+        description: "NetSuite location code"
+
+      - name: bal
+        data_type: number
+        description: "Balance amount"
+
+      - name: comments_int
+        data_type: varchar
+        description: "Internal comments"
+
+      - name: usr_login_nm_cd
+        data_type: varchar
+        description: "User login name or code"
+
+  - name: line_of_business
+    description: "This model represents different lines of business within the organization."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the line of business"
+        tests:
+        - unique
+        - not_null
+
+      - name: lin_of_bus_cd
+        data_type: varchar
+        description: "Line of business code"
+
+      - name: business_unit_id
+        data_type: number
+        description: "Business unit identifier associated with the line of business"
+
+      - name: name
+        data_type: varchar
+        description: "Name of the line of business"
+
+  - name: payments
+    description: "This model represents payment transactions in the system."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the payment transaction"
+
+      - name: original_payment_id
+        data_type: number
+        description: "Original identifier for the payment from the source system"
+
+      - name: bill_to_bus_ent_id
+        data_type: binary
+        description: "Identifier for the bill-to business entity"
+
+      - name: bllng_id
+        data_type: number
+        description: "Billing identifier associated with the payment"
+
+      - name: invoice_no
+        data_type: varchar
+        description: "Invoice number related to the payment"
+
+      - name: product_id
+        data_type: binary
+        description: "Identifier for the product associated with the payment"
+
+      - name: account_id
+        data_type: number
+        description: "Account identifier"
+
+      - name: run_id
+        data_type: number
+        description: "Run identifier for the payment transaction"
+
+      - name: accounting_period_id
+        data_type: binary
+        description: "Identifier for the accounting period of the payment"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service for the payment"
+
+      - name: rcvbl_id
+        data_type: number
+        description: "Receivable identifier associated with the payment"
+
+      - name: amount
+        data_type: float
+        description: "Amount of the payment"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: "Transaction type code"
+
+      - name: actv_dt
+        data_type: timestamp_ntz
+        description: "Active date of the payment"
+
+      - name: acctg_dt
+        data_type: timestamp_ntz
+        description: "Accounting date of the payment"
+
+      - name: agng_dt
+        data_type: timestamp_ntz
+        description: "Aging date of the payment"
+
+      - name: date_load_id
+        data_type: number
+        description: "Date load identifier"
+
+      - name: date
+        data_type: timestamp_ntz
+        description: "Date of the payment transaction"
+
+      - name: lob_id
+        data_type: binary
+        description: "Line of business identifier"
+
+      - name: ae
+        data_type: varchar
+        description: "Additional information or code (purpose unclear from context)"
+
+      - name: ppa_flag
+        data_type: varchar
+        description: "Flag indicating if this is a prior period adjustment"
+
+      - name: xref_trns_id
+        data_type: number
+        description: "Cross-reference transaction identifier"
+
+      - name: glbl_mpng_typ_cd
+        data_type: varchar
+        description: "Global mapping type code"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Source claim sequence number"
+
+  - name: payments_details
+    description: "This model provides additional details for payment transactions."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the payment detail record"
+        tests:
+        - unique
+        - not_null
+
+      - name: payments_id
+        data_type: binary
+        description: "Identifier linking to the main payments table"
+
+      - name: dpst_id
+        data_type: number
+        description: "Deposit identifier"
+
+      - name: check_num
+        data_type: varchar
+        description: "Check number"
+
+      - name: check_dt
+        data_type: timestamp_ntz
+        description: "Check date"
+
+      - name: dpst_dt
+        data_type: timestamp_ntz
+        description: "Deposit date"
+
+      - name: dpst_amnt
+        data_type: number
+        description: "Deposit amount"
+
+      - name: dpst_desc
+        data_type: varchar
+        description: "Description of the deposit"
+
+      - name: dpst_balnc
+        data_type: number
+        description: "Deposit balance"
+
+      - name: dpst_finlzd_flg
+        data_type: varchar
+        description: "Flag indicating if the deposit is finalized"
+
+      - name: bank_acct_num
+        data_type: varchar
+        description: "Bank account number"
+
+      - name: bank_id
+        data_type: number
+        description: "Bank identifier"
+
+  - name: payments_irms_details
+    description: "This model provides IRMS-specific details for payment transactions."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the payment IRMS detail record"
+        tests:
+        - unique
+        - not_null
+
+      - name: payments_id
+        data_type: binary
+        description: "Identifier linking to the main payments table"
+
+      - name: prcs_id
+        data_type: number
+        description: "Process identifier"
+
+      - name: sec_usr_id
+        data_type: number
+        description: "Security user identifier"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Description of the process"
+
+      - name: sec_usr_nm
+        data_type: varchar
+        description: "Name of the security user"
+
+      - name: usr_login_nm_cd
+        data_type: varchar
+        description: "User login name or code"
+
+      - name: pymt_status_cd
+        data_type: varchar
+        description: "Payment status code"
+
+      - name: revnu_typ_cd
+        data_type: varchar
+        description: "Revenue type code"
+
+      - name: strt_dt
+        data_type: varchar
+        description: "Start date"
+
+      - name: bkng_status_cd
+        data_type: varchar
+        description: "Booking status code"
+
+      - name: applctn_comnt_desc
+        data_type: varchar
+        description: "Application comment description"
+
+      - name: bllng_calctn_basis_cd
+        data_type: varchar
+        description: "Billing calculation basis code"
+
+      - name: val_typ_cd
+        data_type: varchar
+        description: "Value type code"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Adjustment reason description"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Adjustment reason code"
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: "NetSuite location description"
+
+      - name: prcs_dt
+        data_type: timestamp_ntz
+        description: "Process date"
+
+      - name: ns_dept_cd
+        data_type: varchar
+        description: "NetSuite department code"
+
+      - name: ns_dept_desc
+        data_type: varchar
+        description: "NetSuite department description"
+
+      - name: ns_lctn_cd
+        data_type: varchar
+        description: "NetSuite location code"
+
+      - name: rsn_typ_cd
+        data_type: varchar
+        description: "Reason type code"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "NetSuite class description"
+
+      - name: bal
+        data_type: float
+        description: "Balance amount"
+
+      - name: comments_int
+        data_type: varchar
+        description: "Internal comments"
+
+  - name: products
+    description: "This model represents products or services offered by the organization."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the product"
+        tests:
+        - unique
+        - not_null
+
+      - name: original_product_id
+        data_type: number
+        description: "Original identifier for the product from the source system"
+
+      - name: line_of_business_id
+        data_type: number
+        description: "Line of business identifier associated with the product"
+
+      - name: prodt_desc
+        data_type: varchar
+        description: "Description of the product"
+
+      - name: run_id
+        data_type: number
+        description: "Run identifier associated with the product"
+
+      - name: lob_revnu_id
+        data_type: number
+        description: "Line of business revenue identifier"
+
+      - name: val_typ_bllng_calctn_id
+        data_type: number
+        description: "Value type billing calculation identifier"
+
+      - name: rsn_typ_cd
+        data_type: varchar
+        description: "Reason type code"
+
+      - name: gl_acct_num
+        data_type: number
+        description: "General ledger account number"
+
+      - name: gl_sub_acct_num
+        data_type: varchar
+        description: "General ledger sub-account number"
+
+      - name: eff_dt
+        data_type: timestamp_ntz
+        description: "Effective date of the product"
+
+      - name: trmntn_dt
+        data_type: timestamp_ntz
+        description: "Termination date of the product"
+
+      - name: deflt_flg
+        data_type: varchar
+        description: "Default flag"
+
+      - name: erp_acct_id
+        data_type: number
+        description: "ERP account identifier"
+
+      - name: erp_prodt
+        data_type: varchar
+        description: "ERP product code"
+
+      - name: erp_proj
+        data_type: varchar
+        description: "ERP project code"
+
+      - name: gl_ora_major_cd
+        data_type: varchar
+        description: "GL Oracle major code"
+
+      - name: gl_ora_minor_cd
+        data_type: varchar
+        description: "GL Oracle minor code"
+
+      - name: gl_ora_prodt_cd
+        data_type: varchar
+        description: "GL Oracle product code"
+
+      - name: gl_ora_segment
+        data_type: varchar
+        description: "GL Oracle segment"
+
+      - name: ns_gl_acct_cd
+        data_type: varchar
+        description: "NetSuite GL account code"
+
+      - name: ns_class_cd
+        data_type: varchar
+        description: "NetSuite class code"
+
+      - name: cost_cntr
+        data_type: varchar
+        description: "Cost center"
+
+  - name: slvr_reporting_adjustments_tbl
+    description: "Reporting view for adjustments with legal entity codes"
+    columns:
+      - name: le_code
+        description: "Legal entity code derived from various business rules"
+
+      - name: trns_id
+        description: "Unique identifier for the transaction"
+
+      - name: bus_ent_id
+        description: "Business entity identifier"
+
+      - name: bus_ent_nm
+        description: "Business entity name"
+
+      - name: genex_e_code
+        description: "Genex E-code (customer subclient number)"
+
+      - name: be
+        description: "Bill-to business entity identifier"
+
+      - name: be_name
+        description: "Bill-to business entity name"
+
+      - name: genex_c_code
+        description: "Genex C-code (account location)"
+
+      - name: sector_cd
+        description: "Sector code"
+
+      - name: src_syst_cd
+        description: "Source system code"
+
+      - name: prcs_desc
+        description: "Process description"
+
+      - name: receivable_cd
+        description: "Receivable code (invoice number)"
+
+      - name: agng_dt
+        description: "Aging date"
+
+      - name: actv_dt
+        description: "Active date"
+
+      - name: acctg_period
+        description: "Accounting period"
+
+      - name: mos
+        description: "Month of service"
+
+      - name: lob
+        description: "Line of business"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['OACGNX', 'WCGNX', 'CLNGNX']
+
+      - name: revnu
+        description: "Revenue type"
+
+      - name: reason
+        description: "Reason type code"
+
+      - name: val_typ
+        description: "Value type"
+
+      - name: bcb
+        description: "Billing calculation basis"
+
+      - name: gl_acct_num
+        description: "GL account number"
+
+      - name: ns_gl_acct_cd
+        description: "NetSuite GL account code"
+
+      - name: gl_prodt
+        description: "GL product code"
+
+      - name: class_cd
+        description: "Class code"
+
+      - name: cost_cntr
+        description: "Cost center"
+
+      - name: location
+        description: "Location description"
+
+      - name: gl_segment
+        description: "GL segment"
+
+      - name: amount
+        description: "Transaction amount"
+
+      - name: user_code
+        description: "User code associated with the transaction"
+
+      - name: adjmt_rsn_cd
+        description: "Adjustment reason code"
+
+      - name: adjmt_rsn_desc
+        description: "Adjustment reason description"
+
+      - name: finalize_run_id
+        description: "Finalize run identifier"
+
+      - name: comments
+        description: "Internal comments"
+
+      - name: gl_ora_major_cd
+        description: "GL Oracle major code"
+
+      - name: gl_ora_minor_cd
+        description: "GL Oracle minor code"
+
+      - name: ae
+        description: "Additional entity identifier"
+
+      - name: bank_acct_num
+        description: "Bank account number"
+
+      - name: src_prodt_cd
+        description: "Source product code"
+
+  - name: slvr_reporting_cash_receipts_tbl
+    description: "Reporting model for cash receipts, combining data from various sources"
+    columns:
+      - name: le_code
+        description: "Legal entity code derived from business rules"
+        tests:
+          - not_null
+
+      - name: bus_ent_nm
+        description: "Business entity name"
+
+      - name: bill_to_bus_ent_id
+        description: "Bill-to business entity identifier"
+
+      - name: genex_c_code
+        description: "Genex C-code (account location)"
+
+      - name: genex_e_code
+        description: "Genex E-code (customer subclient number)"
+
+      - name: admin_typ_cd
+        description: "Administrative type code"
+
+      - name: dpst_dt
+        description: "Deposit date"
+
+      - name: receivable_cd
+        description: "Receivable code (invoice number)"
+
+      - name: patient_nm
+        description: "Patient name (currently NULL, placeholder for future use)"
+
+      - name: mos
+        description: "Month of service"
+
+      - name: net_fee
+        description: "Net fee amount"
+
+      - name: prodt_desc
+        description: "Product description (combination of LOB and revenue)"
+
+      - name: applied_amount
+        description: "Applied payment amount"
+
+      - name: rcvbl_bal
+        description: "Receivable balance"
+
+      - name: check_num
+        description: "Check number"
+
+      - name: check_dt
+        description: "Check date"
+
+      - name: dpst_id
+        description: "Deposit ID"
+
+      - name: dpst_fnlz_dt
+        description: "Deposit finalize date"
+
+      - name: source
+        description: "Source system code"
+
+      - name: pc
+        description: "Payment status code"
+
+      - name: ts
+        description: "Booking status code"
+
+      - name: trns_id
+        description: "Transaction ID"
+        tests:
+          - not_null
+
+      - name: prcs_desc
+        description: "Process description"
+
+      - name: prcs_dt
+        description: "Process date"
+
+      - name: irms_user
+        description: "IRMS user code"
+
+      - name: comnt
+        description: "Comments"
+
+      - name: lob
+        description: "Line of business"
+
+      - name: acctg_period
+        description: "Accounting period"
+
+      - name: ae
+        description: "Additional entity identifier"
+
+      - name: cost_cntr
+        description: "Cost center"
+
+      - name: pymt_status_cd
+        description: "Payment status code"
+
+      - name: acctg_dt
+        description: "Accounting date"
+
+      - name: bank_acct_num
+        description: "Bank account number"
+
+      - name: src_prodt_cd
+        description: "Source product code"
+
+  - name: slvr_reporting_clncl_fin_extract_tbl
+    description: "Clinical Financial Extract reporting model, combining data from various sources"
+    columns:
+      - name: le_code
+        description: "Legal entity code derived from business rules"
+
+      - name: trns_id
+        description: "Transaction ID"
+
+      - name: inv_num
+        description: "Invoice number"
+
+      - name: prior_bill_iteration
+        description: "Prior bill iteration number"
+
+      - name: be_number
+        description: "Business entity number"
+
+      - name: be_name
+        description: "Business entity name"
+
+      - name: ae_number
+        description: "Additional entity number"
+
+      - name: ae_name
+        description: "Additional entity name"
+
+      - name: genex_c_code
+        description: "Genex C-code (account location)"
+
+      - name: genex_e_code
+        description: "Genex E-code (customer subclient number)"
+
+      - name: adjstr_nm
+        description: "Adjuster name"
+
+      - name: ae_address1
+        description: "Additional entity address line 1"
+
+      - name: ae_address2
+        description: "Additional entity address line 2"
+
+      - name: private_label
+        description: "Private label indicator"
+
+      - name: invoice_type
+        description: "Type of invoice"
+
+      - name: ae_city
+        description: "Additional entity city"
+
+      - name: ae_zip
+        description: "Additional entity zip code"
+
+      - name: ae_state
+        description: "Additional entity state"
+
+      - name: referral_number
+        description: "Referral number"
+
+      - name: claimant_name
+        description: "Name of the claimant"
+
+      - name: claim_number
+        description: "Claim number"
+
+      - name: employer
+        description: "Employer name"
+
+      - name: product
+        description: "Product description"
+
+      - name: cost_center
+        description: "Cost center"
+
+      - name: injury_date
+        description: "Date of injury"
+
+      - name: referral_date
+        description: "Date of referral"
+
+      - name: accounting_period
+        description: "Accounting period"
+
+      - name: irms_booked_revenue
+        description: "IRMS booked revenue amount"
+
+      - name: invoice_date
+        description: "Date of invoice"
+
+      - name: billing_date_from
+        description: "Billing period start date"
+
+      - name: billing_date_to
+        description: "Billing period end date"
+
+      - name: prcs_desc
+        description: "Process description"
+
+      - name: claimant_ssn
+        description: "Claimant Social Security Number"
+
+      - name: irms_rcvbl_num
+        description: "IRMS receivable number"
+
+      - name: irms_rcvbl_seq_num
+        description: "IRMS receivable sequence number"
+
+      - name: revnu_typ_cd
+        description: "Revenue type code"
+
+      - name: rsn_typ_cd
+        description: "Reason type code"
+
+      - name: rev_code
+        description: "Revenue code"
+
+      - name: referral_type
+        description: "Type of referral"
+
+      - name: line_of_insurance
+        description: "Line of insurance"
+
+      - name: case_type
+        description: "Type of case"
+
+      - name: claimant_benefit_state
+        description: "Claimant benefit state"
+
+      - name: customer_client_number
+        description: "Customer client number"
+
+      - name: customer_subclient_number
+        description: "Customer subclient number"
+
+      - name: source_system_name
+        description: "Source system name"
+
+      - name: invoice_line_count
+        description: "Number of invoice lines"
+
+      - name: gl_acct_num
+        description: "GL account number"
+
+      - name: dept_desc
+        description: "Department description"
+
+      - name: class_desc
+        description: "Class description"
+
+      - name: lctn_desc
+        description: "Location description"
+
+      - name: comments
+        description: "Comments"
+
+      - name: ns_class_cd
+        description: "NetSuite class code"
+
+      - name: lob
+        description: "Line of business"
+
+      - name: bank_acct_num
+        description: "Bank account number"
+
+      - name: mos
+        description: "Month of service"
+
+  - name: slvr_reporting_gl_dwnld_tbl
+    description: "GL Download reporting model, combining data from various sources for financial reporting and analysis"
+    columns:
+      - name: le_code
+        description: "Legal entity code derived from business rules"
+
+      - name: trns_id
+        description: "Unique transaction identifier"
+
+      - name: rcvbl_num
+        description: "Receivable number, typically the invoice number"
+
+      - name: amnt
+        description: "Transaction amount"
+
+      - name: be
+        description: "Business entity identifier"
+
+      - name: be_name
+        description: "Business entity name"
+
+      - name: c_code
+        description: "Customer code (Genex C-code)"
+
+      - name: ae
+        description: "Additional entity identifier"
+
+      - name: ae_name
+        description: "Additional entity name"
+
+      - name: e_code
+        description: "Employee code (Genex E-code)"
+
+      - name: acctg_dt
+        description: "Accounting date"
+
+      - name: src
+        description: "Source system code"
+
+      - name: lob
+        description: "Line of business"
+
+      - name: revnu
+        description: "Revenue type"
+
+      - name: rsn
+        description: "Reason type code"
+
+      - name: vt
+        description: "Value type"
+
+      - name: bc
+        description: "Business classification"
+
+      - name: prodt
+        description: "Product code"
+
+      - name: gl_acct
+        description: "GL account number"
+
+      - name: ns_dept
+        description: "NetSuite department code"
+
+      - name: ns_class_cd
+        description: "NetSuite class code"
+
+      - name: ns_class_desc
+        description: "NetSuite class description"
+
+      - name: cc
+        description: "Cost center"
+
+      - name: ns_lctn
+        description: "NetSuite location description"
+
+      - name: inv_num
+        description: "Invoice number"
+
+      - name: dpst_id
+        description: "Deposit ID"
+
+      - name: sector
+        description: "Sector code"
+
+      - name: acctg_period_id
+        description: "Accounting period identifier"
+
+      - name: bank_acct_num
+        description: "Bank account number"
+
+      - name: mos
+        description: "Month of service"
+
+  - name: slvr_reporting_ipc_view
+    description: "This model represents a view for silver reporting, possibly related to Integrated Payment Capture (IPC)."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the record"
+        tests:
+        - not_null
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction identifier"
+
+      - name: invoice_no
+        data_type: varchar
+        description: "Invoice number"
+
+      - name: amount
+        data_type: float
+        description: "Transaction amount"
+
+      - name: bill_to_bus_ent_id
+        data_type: number
+        description: "Bill-to business entity identifier"
+
+      - name: ae
+        data_type: varchar
+        description: "Additional information or code (purpose unclear from context)"
+
+      - name: acctg_dt
+        data_type: timestamp_ntz
+        description: "Accounting date"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: lob
+        data_type: varchar
+        description: "Line of business"
+
+      - name: original_product_id
+        data_type: number
+        description: "Original product identifier"
+
+      - name: dpst_id
+        data_type: number
+        description: "Deposit identifier"
+
+      - name: original_accounting_id
+        data_type: varchar
+        description: "Original accounting identifier"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Process description"
+
+      - name: agng_dt
+        data_type: timestamp_ntz
+        description: "Aging date"
+
+      - name: mos
+        data_type: number
+        description: "Month of service"
+
+      - name: revnu
+        data_type: varchar
+        description: "Revenue code"
+
+      - name: val_typ
+        data_type: varchar
+        description: "Value type"
+
+      - name: bcb
+        data_type: varchar
+        description: "Billing calculation basis"
+
+      - name: location
+        data_type: varchar
+        description: "Location information"
+
+      - name: user_code
+        data_type: varchar
+        description: "User code"
+
+      - name: adjmt_rsn_cd
+        data_type: varchar
+        description: "Adjustment reason code"
+
+      - name: adjmt_rsn_desc
+        data_type: varchar
+        description: "Adjustment reason description"
+
+      - name: finalize_run_id
+        data_type: number
+        description: "Finalize run identifier"
+
+      - name: comments
+        data_type: varchar
+        description: "Comments related to the transaction"
+
+      - name: dpst_dt
+        data_type: timestamp_ntz
+        description: "Deposit date"
+
+      - name: check_dt
+        data_type: timestamp_ntz
+        description: "Check date"
+
+      - name: check_num
+        data_type: varchar
+        description: "Check number"
+
+      - name: strt_dt
+        data_type: varchar
+        description: "Start date"
+
+      - name: pymt_status_cd
+        data_type: varchar
+        description: "Payment status code"
+
+      - name: bkng_status_cd
+        data_type: varchar
+        description: "Booking status code"
+
+      - name: prcs_dt
+        data_type: timestamp_ntz
+        description: "Process date"
+
+      - name: ns_dept_cd
+        data_type: varchar
+        description: "NetSuite department code"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "NetSuite class description"
+
+      - name: ns_lctn_desc
+        data_type: varchar
+        description: "NetSuite location description"
+
+      - name: ns_dept_desc
+        data_type: varchar
+        description: "NetSuite department description"
+
+      - name: ns_lctn_cd
+        data_type: varchar
+        description: "NetSuite location code"
+
+      - name: rsn_typ_cd
+        data_type: varchar
+        description: "Reason type code"
+
+      - name: ppa_flag
+        data_type: varchar
+        description: "Flag indicating if this is a prior period adjustment"
+
+      - name: bal
+        data_type: float
+        description: "Balance amount"
+
+      - name: actv_dt
+        data_type: timestamp_ntz
+        description: "Active date of the transaction"
+
+      - name: comment_int
+        data_type: varchar
+        description: "Internal comment"
+
+      - name: xref_trns_id
+        data_type: number
+        description: "Cross-reference transaction identifier"
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: "Transaction type code"
+
+      - name: bank_acct_num
+        data_type: varchar
+        description: "Bank account number"
+
+      - name: rcvbl_id
+        data_type: number
+        description: "Receivable identifier"
+
+      - name: glbl_mpng_typ_cd
+        data_type: varchar
+        description: "Global mapping type code"
+
+      - name: bllng_id
+        data_type: number
+        description: "Billing identifier"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Source claim sequence number"
+
+      - name: bank_id
+        data_type: number
+        description: "Bank identifier"
+
+      - name: source
+        data_type: varchar
+        description: "Source of the transaction"
+
+  - name: transactions
+    description: "This model represents financial transactions in the system."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the transaction"
+        tests:
+        - unique
+        - not_null
+
+      - name: original_transaction_id
+        data_type: number
+        description: "Original identifier for the transaction from the source system"
+
+      - name: bill_to_bus_ent_id
+        data_type: binary
+        description: "Identifier for the bill-to business entity"
+
+      - name: bllng_id
+        data_type: number
+        description: "Billing identifier associated with the transaction"
+
+      - name: invoice_no
+        data_type: varchar
+        description: "Invoice number related to the transaction"
+
+      - name: account_id
+        data_type: number
+        description: "Account identifier"
+
+      - name: run_id
+        data_type: number
+        description: "Run identifier for the transaction"
+
+      - name: accounting_period_id
+        data_type: binary
+        description: "Identifier for the accounting period of the transaction"
+
+      - name: mnth_of_svc
+        data_type: number
+        description: "Month of service for the transaction"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source system code"
+
+      - name: trns_typ_cd
+        data_type: varchar
+        description: "Transaction type code"
+
+      - name: actv_dt
+        data_type: timestamp_ntz
+        description: "Active date of the transaction"
+
+      - name: acctg_dt
+        data_type: timestamp_ntz
+        description: "Accounting date of the transaction"
+
+      - name: due_dt
+        data_type: timestamp_ntz
+        description: "Due date of the transaction"
+
+      - name: date_load_id
+        data_type: number
+        description: "Date load identifier"
+
+      - name: date
+        data_type: timestamp_ntz
+        description: "Date of the transaction"
+
+      - name: ae
+        data_type: varchar
+        description: "Additional information or code (purpose unclear from context)"
+
+      - name: xref_trns_id
+        data_type: number
+        description: "Cross-reference transaction identifier"
+
+      - name: glbl_mpng_typ_cd
+        data_type: varchar
+        description: "Global mapping type code"
+
+      - name: src_clm_seq_num
+        data_type: number
+        description: "Source claim sequence number"
+
+  - name: transaction_lines
+    description: "This model represents individual line items within transactions."
+    columns:
+      - name: id
+        data_type: binary
+        description: "Unique identifier for the transaction line"
+        tests:
+        - unique
+        - not_null
+
+      - name: transaction_id
+        data_type: binary
+        description: "Identifier linking to the main transactions table"
+
+      - name: gl_account_id
+        data_type: number
+        description: "General ledger account identifier"
+
+      - name: product_id
+        data_type: binary
+        description: "Identifier for the product associated with the transaction line"
+
+      - name: quantity
+        data_type: number
+        description: "Quantity of the product or service"
+
+      - name: receivable_code
+        data_type: varchar
+        description: "Receivable code for the transaction line"
+
+      - name: unit_price
+        data_type: float
+        description: "Unit price of the product or service"
+
+      - name: subtotal
+        data_type: float
+        description: "Subtotal amount for the transaction line"
+
+      - name: tax
+        data_type: float
+        description: "Tax amount for the transaction line"
+
+      - name: total
+        data_type: float
+        description: "Total amount for the transaction line"
+
+  - name: prospective_cash_receipts_report
+    description: "Report showing prospective cas receipts"
+    columns:
+      - name: be_id
+        data_type: number
+        description: "Business Entity ID representing the entity to which the payment was applied"
+
+      - name: bus_ent_nm
+        data_type: varchar
+        description: "Business Entity Name corresponding to the BE_ID"
+
+      - name: ae_id
+        data_type: number
+        description: "Adjusting Entity ID representing the entity that processed the payment"
+
+      - name: ae_nm
+        data_type: varchar
+        description: "Adjusting Entity Name from the DME claim staging queue"
+
+      - name: emplyr_nm
+        data_type: varchar
+        description: "Employer Name associated with the DME claim"
+
+      - name: clm_num
+        data_type: varchar
+        description: "Claim Number for the DME service"
+
+      - name: patient_name
+        data_type: varchar
+        description: "Patient's full name (First Name + Last Name)"
+
+      - name: line_svc_typ
+        data_type: varchar
+        description: "DME Type indicating the category of DME service provided"
+
+      - name: src_syst_cd
+        data_type: varchar
+        description: "Source System Code indicating the originating system for the transaction"
+
+      - name: proc_cd
+        data_type: varchar
+        description: "Procedure Code (Service Item Code) for the DME service"
+
+      - name: lob
+        data_type: varchar
+        description: "Line of Business Code - filtered to show only DMESLF (DME Self-Pay) transactions"
+
+      - name: irms_rcvbl_num
+        data_type: varchar
+        description: "IRMS Receivable Number (Source Claim Key) uniquely identifying the receivable"
+
+      - name: extrnl_inv_id
+        data_type: varchar
+        description: "External Invoice ID (Service Item ID) for the DME service"
+
+      - name: acctg_period_id
+        data_type: number
+        description: "Accounting Period ID in YYYYMM format (e.g., 202503 for March 2025)"
+
+      - name: billed_dt
+        data_type: date
+        description: "Date when the DME service was billed (Create Date from DME claim staging queue)"
+
+      - name: acctg_dt
+        data_type: date
+        description: "Accounting Date when the transaction was recorded in the financial system"
+
+      - name: applied_amnt
+        data_type: number
+        description: "Transaction Amount applied as payment for the DME service"
+
+      - name: check_num
+        data_type: varchar
+        description: "Check Number associated with the payment"
+
+      - name: check_dt
+        data_type: date
+        description: "Check Date when the payment was issued"
+
+      - name: dpst_id
+        data_type: number
+        description: "Deposit ID linking the payment to a specific bank deposit"
+
+      - name: dpst_dt
+        data_type: date
+        description: "Deposit Date when the payment was deposited"
+
+      - name: trns_id
+        data_type: number
+        description: "Transaction ID uniquely identifying the payment transaction"
+
+      - name: prcs_desc
+        data_type: varchar
+        description: "Process Description indicating the type of process that created the transaction"
+
+      - name: sec_usr_nm
+        data_type: varchar
+        description: "Security User Name of the user who processed the transaction"
+
+      - name: gl_accnt
+        data_type: varchar
+        description: "GL Account Code where the transaction was posted in the general ledger"
+
+      - name: ns_class_desc
+        data_type: varchar
+        description: "NS Class Description providing additional classification information"
+
+  - name: prospective_gl_download
+    description: "Model that processes GL download data for DMESLF transactions with various source systems"
+    columns:
+      - name: legal_entity
+        description: "Legal entity description"
+
+      - name: le
+        description: "Legal entity code, hardcoded to 2"
+
+      - name: rcvbl_num
+        description: "Global mapping code for receivable"
+
+      - name: amnt
+        description: "Transaction amount"
+
+      - name: be
+        description: "Bill to business entity ID"
+
+      - name: be_name
+        description: "Bill to business entity name"
+
+      - name: ae
+        description: "Book to business entity ID"
+
+      - name: ae_name
+        description: "Book to business entity name"
+
+      - name: acctg_dt
+        description: "Accounting date of the transaction"
+
+      - name: src
+        description: "Source system code (OAC, MANR, SLSF)"
+
+      - name: lob
+        description: "Line of business code, filtered to DMESLF"
+
+      - name: revnu
+        description: "Revenue type code"
+
+      - name: rsn
+        description: "Reason type code"
+
+      - name: vt
+        description: "Value type code"
+
+      - name: bc
+        description: "Billing calculation basis code"
+
+      - name: gl_acct
+        description: "NetSuite GL account code"
+
+      - name: ns_dept
+        description: "NetSuite department description"
+
+      - name: ns_class_cd
+        description: "NetSuite class code"
+
+      - name: ns_class_desc
+        description: "NetSuite class description"
+
+      - name: cc
+        description: "Cost center code"
+
+      - name: ns_lctn
+        description: "NetSuite location description"
+
+      - name: bill_id
+        description: "Bill ID, updated based on transaction source and type"
+
+      - name: svc_item_id
+        description: "Service item ID, updated based on transaction source and type"
+
+      - name: rx_code
+        description: "Prescription/medical code, updated based on transaction source and type"
+
+      - name: paid_qty
+        description: "Paid quantity, updated based on transaction source and type"
+
+      - name: clm_num
+        description: "Claim number, updated based on transaction source and type"
+
+      - name: patnt_first_nm
+        description: "Patient first name, updated based on transaction source and type"
+
+      - name: patnt_last_nm
+        description: "Patient last name, updated based on transaction source and type"
+
+      - name: jur_st
+        description: "Jurisdiction state code, updated based on transaction source and type"
+
+      - name: acctg_period_id
+        description: "Accounting period identifier"
+

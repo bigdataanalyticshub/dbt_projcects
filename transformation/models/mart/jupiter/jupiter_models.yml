@@ -1,0 +1,164 @@
+version: 2
+
+models:
+
+  ###########################################################################
+  # JUPITER BILL LEVEL — one row per (ods_customer_id, bill_header_id)
+  ###########################################################################
+  - name: jupiter_bill_level
+    description: >
+      Primary reporting table for Jupiter legal/savings analysis.
+      Bill grain with claim, client, provider, cycle summary, legal case
+      context, and attorney firm names denormalized as scalars.
+      carrier_name walks the reporting-group tree to the root ancestor
+      and normalizes GENEX/INTRACORP-GENEX, Gallagher Bassett, Coventry,
+      and Mitchell variants into a single label.
+      Firm names are the most recently linked firm per role (by contact
+      create date); multi-firm flags indicate when more than one firm
+      exists on the same side.
+      Observed giveback is first-minus-latest cycle savings (descriptive,
+      not legal attribution). Disputed amount is NOT additive across bills
+      that share legal cases; placeholder values 999,999,999.98/.99 are
+      filtered to NULL.
+    columns:
+      - name: bill_header_id
+        description: "Source GUID primary key for the bill header."
+        tests:
+          - not_null
+          - unique
+      - name: ods_customer_id
+        tests:
+          - not_null
+      - name: bill_total_charges
+        description: "Total billed charges from the bill header."
+      - name: product_name
+        description: "Jupiter product name via CLAIM.PRODUCTCLIENT -> PRODUCTCLIENTXREF -> PRODUCT."
+      - name: product_code
+        description: "Product abbreviation (SBR, KPN, MNS, EWK, BMK, AP, SPS)."
+      - name: product_group
+        description: "FairPay = SBR (Repricing); Negotiations = KPN + MNS; everything else, including unmatched bills, = Other."
+      - name: provider_facility_state
+        description: "State of the bill's provider facility address (BILLHEADER.PROVIDERFACILITYPOSTALADDRESS). Distinct from provider_practice_state. NULL when the bill has no facility address."
+      - name: type_of_bill_category
+        description: >
+          Top-level type of bill category (TOBC) from the ODS: the bill's
+          BILLHEADEREXTENSION override category when set, otherwise its
+          selection category, rolled up to the root of GLOBAL.TYPEOFBILLCATEGORY.
+          NULL when the bill has no category.
+      - name: type_of_bill_subcategory
+        description: "The bill's TOBC as stored (override, else selection), e.g. Inpatient (Surgical) (Implant)."
+      - name: fee_schedule_amount
+        description: "Sum of line-level state fee-schedule allowed amounts. Savings % denominator; NULL when the bill has no extension rows."
+      - name: original_cycle_started_at
+        description: "DATEFROM of the first review cycle (same ordering as first_observed_cycle_savings)."
+      - name: original_cycle_ended_at
+        description: "DATETO of the first review cycle. Used as the reporting date for reviewed-bill metrics."
+      - name: is_sent_back
+        description: "True when the latest cycle outcome is SNDBK (sent back, never reviewed). Exclude for reviewed-bill metrics."
+      - name: bill_count
+        description: "Always 1. SUM this column for bill counts."
+      - name: observed_giveback_status
+        description: >
+          Dashboard-friendly label for giveback calculation status.
+          Savings Decreased = giveback > 0 (savings went down after review).
+          Savings Increased = giveback < 0 (savings went up after review).
+          No Change = giveback = 0 (includes bills where first savings was zero).
+          Error states: No Review Cycles, Cycle Dates Missing,
+          Initial Savings Missing, Current Savings Missing.
+      - name: legal_case_id
+        description: "Scalar case ID when bill links to exactly one case; NULL for multi-case bills."
+      - name: recon_bill_denominator
+        description: "1 if reconsideration status is known, 0 if unknown. SUM for denominator."
+      - name: recon_bill_numerator
+        description: "1 if bill has reconsideration, 0 if not. SUM for numerator."
+      - name: latest_cycle_outcome_code
+        description: "Outcome code from the most recent cycle: DECL, SNDBK, REVWD, UPHRCMD, ALTRCMD, CRDT, CANX, CORRECTION, DUP. NULL if no cycles."
+      - name: carrier_name
+        description: >
+          Normalized carrier name from the reporting group tree root.
+          GENEX variants (including INTRACORP-GENEX) map to GENEX.
+          Gallagher Bassett variants map to GALLAGHER BASSETT.
+          Coventry and Mitchell map to their respective names.
+          Other carriers use the root reporting group name as-is.
+      - name: carrier_reporting_group_name
+        description: "Raw name of the root reporting group ancestor before normalization."
+
+  ###########################################################################
+  # JUPITER LEGAL CASE — one row per (ods_customer_id, legal_case_id)
+  ###########################################################################
+  - name: jupiter_legal_case
+    description: >
+      Case-level reporting: status, disputed amounts, hearing dates, and
+      attorney firm associations by role. Includes cases with no bill links.
+    columns:
+      - name: legal_case_id
+        description: "Source GUID primary key for the legal case."
+        tests:
+          - not_null
+          - unique
+      - name: ods_customer_id
+        tests:
+          - not_null
+      - name: legal_case_number
+        description: "Business-facing case number (CASEID)."
+      - name: linked_bill_count
+        description: "Count of bills linked to this case. Zero means no bill associations."
+
+  ###########################################################################
+  # JUPITER BILL CYCLE — one row per (ods_customer_id, bill_cycle_id)
+  ###########################################################################
+  - name: jupiter_bill_cycle
+    description: >
+      Cycle-level detail for savings movement analysis. Each row is one
+      review cycle on a bill, with sequencing, type, outcome, and the
+      savings snapshot at that point. Enriched with bill-level context
+      from jupiter_bill_level.
+    columns:
+      - name: bill_cycle_id
+        description: "Source GUID primary key for the cycle."
+        tests:
+          - not_null
+          - unique
+      - name: ods_customer_id
+        tests:
+          - not_null
+      - name: bill_header_id
+        description: "FK to jupiter_bill_level. Not all cycles have a matching WORKINPROGRESS bill."
+      - name: cycle_sequence
+        description: "Deterministic ordering within the bill (1 = first cycle)."
+      - name: cycle_type_code
+        description: "N=New, RR=Reconsideration, RC=Fee Adjustment, COR=Correction, DUP=Duplicate. NULL if unmatched."
+      - name: bill_stage
+        description: >
+          WIP = bill reached WorkInProgress (in jupiter_bill_level).
+          Staging - Declined / Sent Back / Other = intake-only bill that never left
+          Staging, labeled by the bill's latest cycle outcome. Orphan = bill header
+          not found in WorkInProgress or Staging. Filter to 'WIP' for review/savings
+          metrics; use Staging rows for intake decline rates.
+      - name: product_group
+        description: "FairPay (SBR) / Negotiations (KPN + MNS) / Other. Backfilled from Staging BillHeader.PRODUCTGUID for intake-only bills."
+
+  ###########################################################################
+  # JUPITER BILL LINE — one row per (ods_customer_id, bill_line_id)
+  ###########################################################################
+  - name: jupiter_bill_line
+    description: >
+      Line-level procedure codes, charges, and units with bill context.
+      No bill-level financial measures; those are not additive across lines.
+      Use procedure_code_resolution to distinguish dictionary-resolved codes
+      from raw-prefix fallbacks.
+    columns:
+      - name: bill_line_id
+        description: "Source GUID primary key for the line item."
+        tests:
+          - not_null
+          - unique
+      - name: ods_customer_id
+        tests:
+          - not_null
+      - name: bill_header_id
+        description: "FK to jupiter_bill_level. Not all lines have a matching WORKINPROGRESS bill."
+      - name: line_number
+        description: "Line ordinal within the bill."
+      - name: procedure_code_resolution
+        description: "PSSCODE_LOOKUP = dictionary match, RAW_PREFIX_UNVALIDATED = first 5 chars fallback, UNRESOLVED = no code."
